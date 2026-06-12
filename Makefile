@@ -13,7 +13,7 @@ generate:
 	$(PYTHON) scripts/generate_pages.py
 
 build: generate
-	$(PYTHON) -m mkdocs build --strict
+	MKDOCS_SITE_URL=https://mbalagot12.github.io/multiplanar-fabric/ $(PYTHON) -m mkdocs build --strict
 
 serve: generate
 	$(PYTHON) -m mkdocs serve --dev-addr 127.0.0.1:8000
