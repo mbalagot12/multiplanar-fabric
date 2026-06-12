@@ -1,8 +1,9 @@
 site_name: Multiplanar Fabric Documentation
 site_description: MkDocs site rendering user-supplied HTML pages
-site_url: https://example.com/docs/
+site_url: https://mbalagot12.github.io/multiplanar-fabric/
 
-repo_name: multiplanar-fabric
+repo_name: mbalagot12/multiplanar-fabric
+repo_url: https://github.com/mbalagot12/multiplanar-fabric
 
 theme:
   name: material
