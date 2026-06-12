@@ -1,0 +1,992 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MkDocs site rendering user-supplied HTML pages">
+      
+      
+      
+        <link rel="canonical" href="https://mbalagot12.github.io/multiplanar-fabric/generated/dgx-mrc-diagram-1/">
+      
+      
+        <link rel="prev" href="../amd-mi350x-mrc-srv6-fabric/">
+      
+      
+        <link rel="next" href="../gb300-nvl72-dc-rack-1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Nvidia DGX H100 — MRC Fabric Integration - Multiplanar Fabric Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/html-pages.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Multiplanar Fabric Documentation" class="md-header__button md-logo" aria-label="Multiplanar Fabric Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Multiplanar Fabric Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Nvidia DGX H100 — MRC Fabric Integration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mbalagot12/multiplanar-fabric" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mbalagot12/multiplanar-fabric
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../amd-mi350x-mrc-srv6-fabric/" class="md-tabs__link">
+          
+  
+  
+  Pages
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Multiplanar Fabric Documentation" class="md-nav__button md-logo" aria-label="Multiplanar Fabric Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Multiplanar Fabric Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mbalagot12/multiplanar-fabric" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mbalagot12/multiplanar-fabric
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pages
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pages
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amd-mi350x-mrc-srv6-fabric/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AMD MI350X — MRC SRv6 Fabric Connectivity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nvidia DGX H100 — MRC Fabric Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gb300-nvl72-dc-rack-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GB300 NVL72 — Liquid-Cooled Data Center Rack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mrc-72gpu-rack-diagram-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    72-GPU MRC Rack — Arista 7060XE7 + Nvidia DGX H100
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mrc-blackwell-ultra-rack-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../srv6-mrc-packet-ev-header/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MRC Packet Structure — SRv6 + Entropy Value
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mrc-packet-spray-animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MRC Packet Spray Animation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<div class="html-page">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Arial, sans-serif;
+    background: #F8F8F6;
+    color: #1A1A18;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+  }
+  h1 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1A1A18;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .subtitle {
+    font-size: 12px;
+    color: #73726C;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .diagram-wrap {
+    background: #FFFFFF;
+    border: 1px solid #D3D1C7;
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    max-width: 960px;
+  }
+  svg { display: block; width: 100%; height: auto; }
+
+  /* Box styles - all hardcoded for standalone use */
+  .gpu-box     { fill: #EEEDFE; stroke: #7F77DD; stroke-width: 0.8; }
+  .nvswitch    { fill: #CECBF6; stroke: #534AB7; stroke-width: 1; }
+  .nic-box     { fill: #FAEEDA; stroke: #BA7517; stroke-width: 0.8; }
+  .fabric-box  { fill: #E1F5EE; stroke: #0F6E56; stroke-width: 1; }
+  .node-box    { fill: none;    stroke: #534AB7; stroke-width: 0.8; stroke-dasharray: 5 3; }
+  .callout     { fill: #F1EFE8; stroke: #B4B2A9; stroke-width: 0.8; }
+  .callout-g   { fill: #E1F5EE; stroke: #0F6E56; stroke-width: 0.8; }
+  .callout-a   { fill: #FAEEDA; stroke: #BA7517; stroke-width: 0.8; }
+
+  /* Text */
+  .lbl-dark    { font-family: Arial, sans-serif; font-size: 11px; font-weight: 600; fill: #3C3489; }
+  .lbl-nic     { font-family: Arial, sans-serif; font-size: 11px; font-weight: 600; fill: #633806; }
+  .lbl-small   { font-family: Arial, sans-serif; font-size: 9px;  fill: #5F5E5A; }
+  .lbl-fabric  { font-family: Arial, sans-serif; font-size: 11px; font-weight: 600; fill: #085041; }
+  .lbl-section { font-family: Arial, sans-serif; font-size: 10px; fill: #534AB7; }
+  .lbl-anno    { font-family: Arial, sans-serif; font-size: 9px;  fill: #5F5E5A; }
+  .lbl-callout-title { font-family: Arial, sans-serif; font-size: 10px; font-weight: 600; fill: #444441; }
+  .lbl-callout-g-title { font-family: Arial, sans-serif; font-size: 10px; font-weight: 600; fill: #085041; }
+  .lbl-callout-a-title { font-family: Arial, sans-serif; font-size: 10px; font-weight: 600; fill: #633806; }
+  .lbl-callout-sub { font-family: Arial, sans-serif; font-size: 9px; fill: #5F5E5A; }
+  .lbl-callout-g-sub { font-family: Arial, sans-serif; font-size: 9px; fill: #0F6E56; }
+  .lbl-callout-a-sub { font-family: Arial, sans-serif; font-size: 9px; fill: #854F0B; }
+
+  /* Connector lines */
+  .nvlink-line { stroke: #7F77DD; stroke-width: 0.6; fill: none; opacity: 0.7; }
+  .pcie-line   { stroke: #BA7517; stroke-width: 0.6; fill: none; opacity: 0.7; }
+  .fabric-line { stroke: #0F6E56; stroke-width: 1.2; fill: none; }
+  .fabric-dash { stroke: #0F6E56; stroke-width: 1;   fill: none; stroke-dasharray: 5 3; }
+</style>
+
+<h1>Nvidia DGX/HGX H100 — MRC Fabric Integration</h1>
+<p class="subtitle">NVLink for intra-node all-reduce · ConnectX-7 NICs for MRC inter-node fabric · 8 × 400G = 3.2 Tbps per node</p>
+
+<div class="diagram-wrap">
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+
+
+<rect x="14" y="14" width="340" height="320" rx="10" class="node-box"></rect>
+<text x="22" y="10" class="lbl-section">DGX H100 — Node A</text>
+
+
+
+<rect x="24" y="24" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="55" y="42" text-anchor="middle" class="lbl-dark">H100</text>
+<rect x="94" y="24" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="125" y="42" text-anchor="middle" class="lbl-dark">H100</text>
+<rect x="164" y="24" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="195" y="42" text-anchor="middle" class="lbl-dark">H100</text>
+<rect x="234" y="24" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="265" y="42" text-anchor="middle" class="lbl-dark">H100</text>
+
+<rect x="24" y="60" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="55" y="78" text-anchor="middle" class="lbl-dark">H100</text>
+<rect x="94" y="60" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="125" y="78" text-anchor="middle" class="lbl-dark">H100</text>
+<rect x="164" y="60" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="195" y="78" text-anchor="middle" class="lbl-dark">H100</text>
+<rect x="234" y="60" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="265" y="78" text-anchor="middle" class="lbl-dark">H100</text>
+
+
+<text x="184" y="100" text-anchor="middle" class="lbl-anno" style="fill:#534AB7">NVLink 900 GB/s intra-node</text>
+
+
+<rect x="54" y="108" width="210" height="28" rx="4" class="nvswitch"></rect>
+<text x="159" y="126" text-anchor="middle" class="lbl-dark">NVSwitch × 4</text>
+
+
+<line x1="55" y1="88" x2="100" y2="108" class="nvlink-line"></line>
+<line x1="125" y1="88" x2="130" y2="108" class="nvlink-line"></line>
+<line x1="195" y1="88" x2="185" y2="108" class="nvlink-line"></line>
+<line x1="265" y1="88" x2="218" y2="108" class="nvlink-line"></line>
+<line x1="55" y1="60" x2="90" y2="108" class="nvlink-line"></line>
+<line x1="125" y1="60" x2="123" y2="108" class="nvlink-line"></line>
+<line x1="195" y1="60" x2="192" y2="108" class="nvlink-line"></line>
+<line x1="265" y1="60" x2="228" y2="108" class="nvlink-line"></line>
+
+
+<text x="184" y="152" text-anchor="middle" class="lbl-anno" style="fill:#854F0B">PCIe Gen5 — kernel-bypass RDMA</text>
+
+
+<rect x="24" y="158" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="50" y="174" text-anchor="middle" class="lbl-nic">CX-7</text>
+<rect x="84" y="158" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="110" y="174" text-anchor="middle" class="lbl-nic">CX-7</text>
+<rect x="144" y="158" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="170" y="174" text-anchor="middle" class="lbl-nic">CX-7</text>
+<rect x="204" y="158" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="230" y="174" text-anchor="middle" class="lbl-nic">CX-7</text>
+
+<rect x="24" y="192" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="50" y="208" text-anchor="middle" class="lbl-nic">CX-7</text>
+<rect x="84" y="192" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="110" y="208" text-anchor="middle" class="lbl-nic">CX-7</text>
+<rect x="144" y="192" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="170" y="208" text-anchor="middle" class="lbl-nic">CX-7</text>
+<rect x="204" y="192" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="230" y="208" text-anchor="middle" class="lbl-nic">CX-7</text>
+
+
+<line x1="100" y1="136" x2="50" y2="158" class="pcie-line"></line>
+<line x1="130" y1="136" x2="110" y2="158" class="pcie-line"></line>
+<line x1="175" y1="136" x2="170" y2="158" class="pcie-line"></line>
+<line x1="210" y1="136" x2="230" y2="158" class="pcie-line"></line>
+<line x1="100" y1="136" x2="50" y2="192" class="pcie-line" opacity="0.4"></line>
+<line x1="130" y1="136" x2="110" y2="192" class="pcie-line" opacity="0.4"></line>
+<line x1="175" y1="136" x2="170" y2="192" class="pcie-line" opacity="0.4"></line>
+<line x1="210" y1="136" x2="230" y2="192" class="pcie-line" opacity="0.4"></line>
+
+
+<text x="184" y="232" text-anchor="middle" class="lbl-anno" style="fill:#0F6E56;font-weight:600">8 × 400G = 3.2 Tbps</text>
+<line x1="50" y1="216" x2="50" y2="268" class="fabric-line"></line>
+<line x1="110" y1="216" x2="110" y2="268" class="fabric-line"></line>
+<line x1="170" y1="216" x2="170" y2="268" class="fabric-line"></line>
+<line x1="230" y1="216" x2="230" y2="268" class="fabric-line"></line>
+<line x1="50" y1="216" x2="50" y2="268" class="fabric-line" opacity="0.5"></line>
+<line x1="110" y1="216" x2="110" y2="268" class="fabric-line" opacity="0.5"></line>
+<line x1="170" y1="216" x2="170" y2="268" class="fabric-line" opacity="0.5"></line>
+<line x1="230" y1="216" x2="230" y2="268" class="fabric-line" opacity="0.5"></line>
+
+
+<text x="184" y="290" text-anchor="middle" class="lbl-section">→ Plane P1–P8 leaf switches</text>
+
+
+
+<rect x="546" y="14" width="340" height="320" rx="10" class="node-box"></rect>
+<text x="554" y="10" class="lbl-section">DGX H100 — Node B</text>
+
+
+<rect x="556" y="24" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="587" y="42" text-anchor="middle" class="lbl-dark">H100</text>
+<rect x="626" y="24" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="657" y="42" text-anchor="middle" class="lbl-dark">H100</text>
+<rect x="696" y="24" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="727" y="42" text-anchor="middle" class="lbl-dark">H100</text>
+<rect x="766" y="24" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="797" y="42" text-anchor="middle" class="lbl-dark">H100</text>
+
+<rect x="556" y="60" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="587" y="78" text-anchor="middle" class="lbl-dark">H100</text>
+<rect x="626" y="60" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="657" y="78" text-anchor="middle" class="lbl-dark">H100</text>
+<rect x="696" y="60" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="727" y="78" text-anchor="middle" class="lbl-dark">H100</text>
+<rect x="766" y="60" width="62" height="28" rx="4" class="gpu-box"></rect>
+<text x="797" y="78" text-anchor="middle" class="lbl-dark">H100</text>
+
+<text x="716" y="100" text-anchor="middle" class="lbl-anno" style="fill:#534AB7">NVLink 900 GB/s intra-node</text>
+
+<rect x="586" y="108" width="210" height="28" rx="4" class="nvswitch"></rect>
+<text x="691" y="126" text-anchor="middle" class="lbl-dark">NVSwitch × 4</text>
+
+
+<line x1="587" y1="88" x2="632" y2="108" class="nvlink-line"></line>
+<line x1="657" y1="88" x2="662" y2="108" class="nvlink-line"></line>
+<line x1="727" y1="88" x2="717" y2="108" class="nvlink-line"></line>
+<line x1="797" y1="88" x2="750" y2="108" class="nvlink-line"></line>
+<line x1="587" y1="60" x2="622" y2="108" class="nvlink-line"></line>
+<line x1="657" y1="60" x2="655" y2="108" class="nvlink-line"></line>
+<line x1="727" y1="60" x2="724" y2="108" class="nvlink-line"></line>
+<line x1="797" y1="60" x2="760" y2="108" class="nvlink-line"></line>
+
+<text x="716" y="152" text-anchor="middle" class="lbl-anno" style="fill:#854F0B">PCIe Gen5 — kernel-bypass RDMA</text>
+
+
+<rect x="556" y="158" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="582" y="174" text-anchor="middle" class="lbl-nic">CX-7</text>
+<rect x="616" y="158" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="642" y="174" text-anchor="middle" class="lbl-nic">CX-7</text>
+<rect x="676" y="158" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="702" y="174" text-anchor="middle" class="lbl-nic">CX-7</text>
+<rect x="736" y="158" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="762" y="174" text-anchor="middle" class="lbl-nic">CX-7</text>
+
+<rect x="556" y="192" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="582" y="208" text-anchor="middle" class="lbl-nic">CX-7</text>
+<rect x="616" y="192" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="642" y="208" text-anchor="middle" class="lbl-nic">CX-7</text>
+<rect x="676" y="192" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="702" y="208" text-anchor="middle" class="lbl-nic">CX-7</text>
+<rect x="736" y="192" width="52" height="24" rx="3" class="nic-box"></rect>
+<text x="762" y="208" text-anchor="middle" class="lbl-nic">CX-7</text>
+
+
+<line x1="632" y1="136" x2="582" y2="158" class="pcie-line"></line>
+<line x1="662" y1="136" x2="642" y2="158" class="pcie-line"></line>
+<line x1="707" y1="136" x2="702" y2="158" class="pcie-line"></line>
+<line x1="745" y1="136" x2="762" y2="158" class="pcie-line"></line>
+<line x1="632" y1="136" x2="582" y2="192" class="pcie-line" opacity="0.4"></line>
+<line x1="662" y1="136" x2="642" y2="192" class="pcie-line" opacity="0.4"></line>
+<line x1="707" y1="136" x2="702" y2="192" class="pcie-line" opacity="0.4"></line>
+<line x1="745" y1="136" x2="762" y2="192" class="pcie-line" opacity="0.4"></line>
+
+
+<text x="716" y="232" text-anchor="middle" class="lbl-anno" style="fill:#0F6E56;font-weight:600">8 × 400G = 3.2 Tbps</text>
+<line x1="582" y1="216" x2="582" y2="268" class="fabric-line"></line>
+<line x1="642" y1="216" x2="642" y2="268" class="fabric-line"></line>
+<line x1="702" y1="216" x2="702" y2="268" class="fabric-line"></line>
+<line x1="762" y1="216" x2="762" y2="268" class="fabric-line"></line>
+<line x1="582" y1="216" x2="582" y2="268" class="fabric-line" opacity="0.5"></line>
+<line x1="642" y1="216" x2="642" y2="268" class="fabric-line" opacity="0.5"></line>
+<line x1="702" y1="216" x2="702" y2="268" class="fabric-line" opacity="0.5"></line>
+<line x1="762" y1="216" x2="762" y2="268" class="fabric-line" opacity="0.5"></line>
+
+<text x="716" y="290" text-anchor="middle" class="lbl-section">→ Plane P1–P8 leaf switches</text>
+
+
+
+<rect x="358" y="240" width="184" height="50" rx="8" class="fabric-box"></rect>
+<text x="450" y="260" text-anchor="middle" class="lbl-fabric">MRC Fabric</text>
+<text x="450" y="276" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#0F6E56">Planes P1–P8  ·  7060XE7</text>
+
+
+<path d="M184 268 L184 280 L358 265" class="fabric-dash"></path>
+<path d="M716 268 L716 280 L542 265" class="fabric-dash"></path>
+
+
+
+
+<rect x="14" y="350" width="264" height="52" rx="8" class="callout"></rect>
+<text x="146" y="368" text-anchor="middle" class="lbl-callout-title">Intra-node: NVLink / NVSwitch</text>
+<text x="146" y="384" text-anchor="middle" class="lbl-callout-sub">900 GB/s per GPU · CPU uninvolved</text>
+<text x="146" y="396" text-anchor="middle" class="lbl-callout-sub">all-reduce stays on-node</text>
+
+
+<rect x="318" y="350" width="264" height="52" rx="8" class="callout-g"></rect>
+<text x="450" y="368" text-anchor="middle" class="lbl-callout-g-title">Inter-node: MRC Ethernet</text>
+<text x="450" y="384" text-anchor="middle" class="lbl-callout-g-sub">CX-7 MRC engine · zero-copy RDMA</text>
+<text x="450" y="396" text-anchor="middle" class="lbl-callout-g-sub">SRv6 uN SID encodes 32-bit EV · 128–256 EVs per QP</text>
+
+
+<rect x="622" y="350" width="264" height="52" rx="8" class="callout-a"></rect>
+<text x="754" y="368" text-anchor="middle" class="lbl-callout-a-title">vs InfiniBand HDR</text>
+<text x="754" y="384" text-anchor="middle" class="lbl-callout-a-sub">MRC: 8×400G = 3.2 Tbps per node</text>
+<text x="754" y="396" text-anchor="middle" class="lbl-callout-a-sub">IB HDR: 8×200G = 1.6 Tbps  ·  2×</text>
+
+
+
+<rect x="14" y="418" width="12" height="12" rx="2" style="fill:#CECBF6;stroke:#534AB7;stroke-width:0.8"></rect>
+<text x="32" y="428" font-family="Arial,sans-serif" font-size="10" fill="#5F5E5A">H100 GPU / NVSwitch</text>
+
+<rect x="160" y="418" width="12" height="12" rx="2" style="fill:#FAEEDA;stroke:#BA7517;stroke-width:0.8"></rect>
+<text x="178" y="428" font-family="Arial,sans-serif" font-size="10" fill="#5F5E5A">ConnectX-7 NIC</text>
+
+<line x1="310" y1="424" x2="334" y2="424" style="stroke:#7F77DD;stroke-width:2"></line>
+<text x="340" y="428" font-family="Arial,sans-serif" font-size="10" fill="#5F5E5A">NVLink</text>
+
+<line x1="410" y1="424" x2="434" y2="424" style="stroke:#BA7517;stroke-width:1.5"></line>
+<text x="440" y="428" font-family="Arial,sans-serif" font-size="10" fill="#5F5E5A">PCIe Gen5</text>
+
+<line x1="530" y1="424" x2="554" y2="424" style="stroke:#0F6E56;stroke-width:2"></line>
+<text x="560" y="428" font-family="Arial,sans-serif" font-size="10" fill="#5F5E5A">400G fabric uplink</text>
+
+<text x="450" y="464" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#888780">NIC n of every node connects to plane n leaf switch — the wiring discipline that makes MRC work</text>
+
+</svg>
+</div>
+
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

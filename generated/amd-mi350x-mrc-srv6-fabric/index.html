@@ -1,0 +1,1274 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MkDocs site rendering user-supplied HTML pages">
+      
+      
+      
+        <link rel="canonical" href="https://mbalagot12.github.io/multiplanar-fabric/generated/amd-mi350x-mrc-srv6-fabric/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../dgx-mrc-diagram-1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>AMD MI350X — MRC SRv6 Fabric Connectivity - Multiplanar Fabric Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/html-pages.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Multiplanar Fabric Documentation" class="md-header__button md-logo" aria-label="Multiplanar Fabric Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Multiplanar Fabric Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AMD MI350X — MRC SRv6 Fabric Connectivity
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mbalagot12/multiplanar-fabric" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mbalagot12/multiplanar-fabric
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Pages
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Multiplanar Fabric Documentation" class="md-nav__button md-logo" aria-label="Multiplanar Fabric Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Multiplanar Fabric Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mbalagot12/multiplanar-fabric" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mbalagot12/multiplanar-fabric
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pages
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pages
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AMD MI350X — MRC SRv6 Fabric Connectivity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dgx-mrc-diagram-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nvidia DGX H100 — MRC Fabric Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gb300-nvl72-dc-rack-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GB300 NVL72 — Liquid-Cooled Data Center Rack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mrc-72gpu-rack-diagram-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    72-GPU MRC Rack — Arista 7060XE7 + Nvidia DGX H100
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mrc-blackwell-ultra-rack-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../srv6-mrc-packet-ev-header/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MRC Packet Structure — SRv6 + Entropy Value
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mrc-packet-spray-animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MRC Packet Spray Animation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<div class="html-page">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#F4F3EF;color:#1A1A18;padding:20px;min-height:100vh}
+h1{font-size:16px;font-weight:700;text-align:center;margin-bottom:4px;color:#1A1A18}
+.sub{font-size:11px;color:#73726C;text-align:center;margin-bottom:16px}
+
+/* ── Layout ── */
+.page{display:flex;flex-direction:column;gap:16px;max-width:1200px;margin:0 auto}
+.top-row{display:flex;gap:14px;align-items:flex-start}
+.bottom-row{display:flex;gap:14px;align-items:flex-start}
+.card{background:#fff;border:1px solid #D3D1C7;border-radius:10px;padding:14px}
+.card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#5F5E5A;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #E5E3DC}
+
+/* ── Sections ── */
+.node-card{flex:2}
+.compare-card{flex:1}
+.fabric-card{flex:3}
+.key-card{flex:1}
+
+/* ── Legend & stat items ── */
+.leg-item{display:flex;align-items:flex-start;gap:7px;margin-bottom:5px;font-size:10px;color:#444441;line-height:1.4}
+.swatch{width:13px;height:13px;border-radius:2px;flex-shrink:0;margin-top:1px}
+.note{font-size:9px;color:#73726C;line-height:1.5;padding:7px 9px;background:#F8F7F4;border-radius:5px;border:1px solid #E5E3DC;margin-top:8px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.stat{background:#F8F7F4;border:1px solid #D3D1C7;border-radius:6px;padding:6px 8px;text-align:center}
+.stat-num{font-size:15px;font-weight:700;color:#B8410A;line-height:1.1}
+.stat-lbl{font-size:8px;color:#73726C;margin-top:2px}
+
+/* ── Comparison table ── */
+table{width:100%;border-collapse:collapse;font-size:10px;margin-top:4px}
+th{background:#F4F3EF;color:#5F5E5A;font-weight:700;padding:5px 7px;text-align:left;border-bottom:1px solid #D3D1C7}
+td{padding:5px 7px;border-bottom:1px solid #F0EEE8;color:#444441;vertical-align:top}
+tr:last-child td{border-bottom:none}
+.tag{display:inline-block;font-size:9px;font-weight:600;padding:1px 6px;border-radius:3px;margin:1px 0}
+.tag-green{background:#D5F5E3;color:#145A32}
+.tag-amber{background:#FEF3E2;color:#784212}
+.tag-blue{background:#D6EEF8;color:#1A5276}
+.tag-red{background:#FADBD8;color:#78281F}
+.tag-gray{background:#F0EEE8;color:#5F5E5A}
+
+svg{display:block;width:100%;height:auto}
+</style>
+
+<h1>AMD Instinct MI350X — MRC + SRv6 Fabric Connectivity</h1>
+<p class="sub">
+  AMD Pensando Pollara 400 NIC  ·  8× 400G per node  ·  8-plane MRC fabric  ·  Arista 7060XE7 leaf+spine  ·  OCP MRC Rev 1.0
+</p>
+
+<div class="page">
+
+
+<div class="top-row">
+
+
+  <div class="card node-card">
+    <div class="card-title">AMD MI350X Node — Internal topology</div>
+    <svg viewBox="0 0 620 320" xmlns="http://www.w3.org/2000/svg">
+
+
+      <rect x="4" y="4" width="612" height="312" rx="8" fill="#FAFAF8" stroke="#B8410A" stroke-width="1" stroke-dasharray="5 3"></rect>
+      <text x="16" y="18" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#B8410A">AMD Instinct MI350X Platform node</text>
+
+
+      <rect x="14" y="26" width="90" height="32" rx="4" fill="#EBF5FB" stroke="#2E86C1" stroke-width=".8"></rect>
+      <text x="59" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#1A5276">EPYC Turin</text>
+      <text x="59" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="#2E86C1">CPU 1</text>
+
+      <rect x="114" y="26" width="90" height="32" rx="4" fill="#EBF5FB" stroke="#2E86C1" stroke-width=".8"></rect>
+      <text x="159" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#1A5276">EPYC Turin</text>
+      <text x="159" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="#2E86C1">CPU 2</text>
+
+
+      <rect x="14" y="74" width="190" height="22" rx="3" fill="#F5EEF8" stroke="#7D3C98" stroke-width=".8"></rect>
+      <text x="109" y="88" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#4A235A">PCIe Gen5 Switch fabric</text>
+
+
+      <line x1="59" y1="58" x2="80" y2="74" stroke="#2E86C1" stroke-width=".8"></line>
+      <line x1="159" y1="58" x2="140" y2="74" stroke="#2E86C1" stroke-width=".8"></line>
+
+
+
+      <rect x="14" y="106" width="52" height="36" rx="4" fill="#FEF3E2" stroke="#E67E22" stroke-width=".8"></rect>
+      <text x="40" y="122" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#784212">MI350X</text>
+      <text x="40" y="134" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#A04000">HBM3e</text>
+
+      <rect x="72" y="106" width="52" height="36" rx="4" fill="#FEF3E2" stroke="#E67E22" stroke-width=".8"></rect>
+      <text x="98" y="122" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#784212">MI350X</text>
+      <text x="98" y="134" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#A04000">HBM3e</text>
+
+      <rect x="130" y="106" width="52" height="36" rx="4" fill="#FEF3E2" stroke="#E67E22" stroke-width=".8"></rect>
+      <text x="156" y="122" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#784212">MI350X</text>
+      <text x="156" y="134" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#A04000">HBM3e</text>
+
+      <rect x="188" y="106" width="52" height="36" rx="4" fill="#FEF3E2" stroke="#E67E22" stroke-width=".8"></rect>
+      <text x="214" y="122" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#784212">MI350X</text>
+      <text x="214" y="134" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#A04000">HBM3e</text>
+
+
+      <rect x="14" y="152" width="52" height="36" rx="4" fill="#FEF3E2" stroke="#E67E22" stroke-width=".8"></rect>
+      <text x="40" y="168" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#784212">MI350X</text>
+      <text x="40" y="180" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#A04000">HBM3e</text>
+
+      <rect x="72" y="152" width="52" height="36" rx="4" fill="#FEF3E2" stroke="#E67E22" stroke-width=".8"></rect>
+      <text x="98" y="168" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#784212">MI350X</text>
+      <text x="98" y="180" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#A04000">HBM3e</text>
+
+      <rect x="130" y="152" width="52" height="36" rx="4" fill="#FEF3E2" stroke="#E67E22" stroke-width=".8"></rect>
+      <text x="156" y="168" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#784212">MI350X</text>
+      <text x="156" y="180" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#A04000">HBM3e</text>
+
+      <rect x="188" y="152" width="52" height="36" rx="4" fill="#FEF3E2" stroke="#E67E22" stroke-width=".8"></rect>
+      <text x="214" y="168" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#784212">MI350X</text>
+      <text x="214" y="180" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#A04000">HBM3e</text>
+
+
+      <rect x="14" y="198" width="226" height="16" rx="3" fill="#D5F5E3" stroke="#1E8449" stroke-width=".8"></rect>
+      <text x="127" y="209" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#145A32">Infinity Fabric  —  1,075 GB/s all-to-all intra-node</text>
+
+
+      <line x1="40" y1="142" x2="40" y2="198" stroke="#1E8449" stroke-width=".6"></line>
+      <line x1="98" y1="142" x2="98" y2="198" stroke="#1E8449" stroke-width=".6"></line>
+      <line x1="156" y1="142" x2="156" y2="198" stroke="#1E8449" stroke-width=".6"></line>
+      <line x1="214" y1="142" x2="214" y2="198" stroke="#1E8449" stroke-width=".6"></line>
+      <line x1="40" y1="152" x2="40" y2="198" stroke="#1E8449" stroke-width=".6"></line>
+      <line x1="98" y1="152" x2="98" y2="198" stroke="#1E8449" stroke-width=".6"></line>
+      <line x1="156" y1="152" x2="156" y2="198" stroke="#1E8449" stroke-width=".6"></line>
+      <line x1="214" y1="152" x2="214" y2="198" stroke="#1E8449" stroke-width=".6"></line>
+
+
+      <line x1="40" y1="96" x2="40" y2="106" stroke="#7D3C98" stroke-width=".6"></line>
+      <line x1="98" y1="96" x2="98" y2="106" stroke="#7D3C98" stroke-width=".6"></line>
+      <line x1="156" y1="96" x2="156" y2="106" stroke="#7D3C98" stroke-width=".6"></line>
+      <line x1="214" y1="96" x2="214" y2="106" stroke="#7D3C98" stroke-width=".6"></line>
+      <line x1="40" y1="96" x2="40" y2="152" stroke="#7D3C98" stroke-width=".5" opacity=".4"></line>
+      <line x1="98" y1="96" x2="98" y2="152" stroke="#7D3C98" stroke-width=".5" opacity=".4"></line>
+      <line x1="156" y1="96" x2="156" y2="152" stroke="#7D3C98" stroke-width=".5" opacity=".4"></line>
+      <line x1="214" y1="96" x2="214" y2="152" stroke="#7D3C98" stroke-width=".5" opacity=".4"></line>
+
+
+
+
+      <text x="370" y="70" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#5F5E5A">AMD Pensando Pollara 400  (8× NICs, 1:1 GPU:NIC)</text>
+
+      <rect x="256" y="76" width="56" height="44" rx="4" fill="#EAFAF1" stroke="#1E8449" stroke-width=".8"></rect>
+      <text x="284" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara</text>
+      <text x="284" y="103" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#1E8449">400G</text>
+      <text x="284" y="113" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#239B56">NIC 1</text>
+
+      <rect x="320" y="76" width="56" height="44" rx="4" fill="#EAFAF1" stroke="#1E8449" stroke-width=".8"></rect>
+      <text x="348" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara</text>
+      <text x="348" y="103" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#1E8449">400G</text>
+      <text x="348" y="113" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#239B56">NIC 2</text>
+
+      <rect x="384" y="76" width="56" height="44" rx="4" fill="#EAFAF1" stroke="#1E8449" stroke-width=".8"></rect>
+      <text x="412" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara</text>
+      <text x="412" y="103" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#1E8449">400G</text>
+      <text x="412" y="113" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#239B56">NIC 3</text>
+
+      <rect x="448" y="76" width="56" height="44" rx="4" fill="#EAFAF1" stroke="#1E8449" stroke-width=".8"></rect>
+      <text x="476" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara</text>
+      <text x="476" y="103" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#1E8449">400G</text>
+      <text x="476" y="113" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#239B56">NIC 4</text>
+
+
+      <rect x="256" y="130" width="56" height="44" rx="4" fill="#EAFAF1" stroke="#1E8449" stroke-width=".8"></rect>
+      <text x="284" y="146" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara</text>
+      <text x="284" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#1E8449">400G</text>
+      <text x="284" y="167" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#239B56">NIC 5</text>
+
+      <rect x="320" y="130" width="56" height="44" rx="4" fill="#EAFAF1" stroke="#1E8449" stroke-width=".8"></rect>
+      <text x="348" y="146" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara</text>
+      <text x="348" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#1E8449">400G</text>
+      <text x="348" y="167" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#239B56">NIC 6</text>
+
+      <rect x="384" y="130" width="56" height="44" rx="4" fill="#EAFAF1" stroke="#1E8449" stroke-width=".8"></rect>
+      <text x="412" y="146" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara</text>
+      <text x="412" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#1E8449">400G</text>
+      <text x="412" y="167" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#239B56">NIC 7</text>
+
+      <rect x="448" y="130" width="56" height="44" rx="4" fill="#EAFAF1" stroke="#1E8449" stroke-width=".8"></rect>
+      <text x="476" y="146" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara</text>
+      <text x="476" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#1E8449">400G</text>
+      <text x="476" y="167" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#239B56">NIC 8</text>
+
+
+      <line x1="190" y1="85" x2="256" y2="98" stroke="#7D3C98" stroke-width=".7"></line>
+      <line x1="200" y1="85" x2="320" y2="98" stroke="#7D3C98" stroke-width=".7"></line>
+      <line x1="200" y1="85" x2="384" y2="98" stroke="#7D3C98" stroke-width=".7"></line>
+      <line x1="204" y1="85" x2="448" y2="98" stroke="#7D3C98" stroke-width=".7"></line>
+      <line x1="190" y1="90" x2="256" y2="152" stroke="#7D3C98" stroke-width=".7"></line>
+      <line x1="200" y1="90" x2="320" y2="152" stroke="#7D3C98" stroke-width=".7"></line>
+      <line x1="200" y1="90" x2="384" y2="152" stroke="#7D3C98" stroke-width=".7"></line>
+      <line x1="204" y1="90" x2="448" y2="152" stroke="#7D3C98" stroke-width=".7"></line>
+      <text x="228" y="115" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#7D3C98">PCIe G5</text>
+      <text x="228" y="125" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#7D3C98">x16 each</text>
+
+
+      <rect x="515" y="76" width="96" height="98" rx="5" fill="#FEF9EC" stroke="#E67E22" stroke-width=".8"></rect>
+      <text x="563" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#784212">MRC engine</text>
+      <text x="563" y="105" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="#A04000">in hardware</text>
+      <text x="563" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#A04000">Pollara P4 ASIC</text>
+      <text x="563" y="131" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#A04000">SW-programmable</text>
+      <text x="563" y="144" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#B8410A">32-bit EV (UDP src port</text>
+      <text x="563" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#B8410A">+ IPv6 flow label)</text>
+      <text x="563" y="168" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#B8410A">128–256 EVs/QP startup</text>
+
+
+      <line x1="504" y1="98" x2="515" y2="115" stroke="#E67E22" stroke-width=".7" stroke-dasharray="3 2"></line>
+      <line x1="504" y1="152" x2="515" y2="150" stroke="#E67E22" stroke-width=".7" stroke-dasharray="3 2"></line>
+
+
+      <text x="563" y="193" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#1E8449">8 × 400G uplinks</text>
+      <text x="563" y="204" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#239B56">→ 8 plane leaf</text>
+      <text x="563" y="215" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#239B56">switches (7060XE7)</text>
+      <text x="563" y="226" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#239B56">NIC n → plane n</text>
+
+
+      <line x1="504" y1="98" x2="515" y2="198" stroke="#1E8449" stroke-width="1" opacity=".5"></line>
+      <line x1="504" y1="152" x2="515" y2="205" stroke="#1E8449" stroke-width="1" opacity=".5"></line>
+      <polygon points="511,198 519,194 519,202" fill="#1E8449" opacity=".6"></polygon>
+
+
+      <rect x="256" y="198" width="250" height="26" rx="3" fill="#D5F5E3" stroke="#1E8449" stroke-width=".6"></rect>
+      <text x="381" y="209" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#145A32">Intra-node: Infinity Fabric (all-to-all 1,075 GB/s)</text>
+      <text x="381" y="219" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#1E8449">RCCL uses IF for same-node GPU collectives — fabric never sees intra-node traffic</text>
+
+
+      <line x1="240" y1="124" x2="256" y2="211" stroke="#1E8449" stroke-width=".6" opacity=".4"></line>
+      <line x1="240" y1="170" x2="256" y2="211" stroke="#1E8449" stroke-width=".6" opacity=".4"></line>
+
+
+      <rect x="14" y="228" width="226" height="24" rx="3" fill="#F5EEF8" stroke="#7D3C98" stroke-width=".6"></rect>
+      <text x="127" y="238" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#4A235A">ROCm / RCCL collective framework</text>
+      <text x="127" y="249" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#6C3483">topology-aware: IF for intra-node  ·  MRC Pollara for inter-node</text>
+
+
+      <rect x="256" y="234" width="250" height="22" rx="3" fill="#EBF5FB" stroke="#2E86C1" stroke-width=".6"></rect>
+      <text x="381" y="244" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#1A5276">Pollara 400 port configs: 1×400G  |  2×200G  |  4×100G  |  4×50G</text>
+      <text x="381" y="253" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#2E86C1">Multi-plane: 8×100G (4 ports × 2 NICs) or 4×200G (2 ports × 2 NICs) also supported</text>
+
+
+      <rect x="14" y="262" width="226" height="38" rx="3" fill="#FEF3E2" stroke="#E67E22" stroke-width=".6"></rect>
+      <text x="127" y="277" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#784212">Memory per node</text>
+      <text x="127" y="289" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="#A04000">MI350X: 192 GB HBM3e per GPU  →  1.5 TB total</text>
+      <text x="127" y="300" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#A04000">MI355X: 288 GB per GPU  →  2.3 TB total  ·  8 TB/s BW per GPU</text>
+
+
+      <rect x="256" y="266" width="250" height="34" rx="3" fill="#EAFAF1" stroke="#1E8449" stroke-width=".8"></rect>
+      <text x="381" y="280" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#145A32">Node fabric bandwidth:  8 × 400G  =  3.2 Tbps</text>
+      <text x="381" y="292" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="#1E8449">Paper: NCCL over MRC at 42K GPUs = 92 GB/s per NIC (96% peak) · MI400 + Vulcano 800G → 2.4 Tbps/GPU</text>
+      <text x="381" y="303" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#239B56">Vulcano: PCIe Gen6  ·  4×200G or 8×100G configs  ·  qualifying for MI400 now</text>
+
+    </svg>
+  </div>
+
+
+  <div class="card compare-card">
+    <div class="card-title">AMD vs Nvidia — MRC node comparison</div>
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>AMD MI350X</th>
+        <th>Nvidia B300</th>
+      </tr>
+      <tr>
+        <td>GPU</td>
+        <td>8× MI350X (CDNA4)</td>
+        <td>8× B300 (Blackwell)</td>
+      </tr>
+      <tr>
+        <td>Scale-up fabric</td>
+        <td><span class="tag tag-green">Infinity Fabric</span><br></br>1,075 GB/s</td>
+        <td><span class="tag tag-blue">NVLink 5</span><br></br>1.8 TB/s</td>
+      </tr>
+      <tr>
+        <td>Scale-up silicon</td>
+        <td>On-package / PCIe switch</td>
+        <td>Dedicated NVSwitch ×4</td>
+      </tr>
+      <tr>
+        <td>Scale-out NIC</td>
+        <td><span class="tag tag-amber">Pollara 400</span><br></br>400 Gbps</td>
+        <td><span class="tag tag-blue">ConnectX-8</span><br></br>800 Gbps</td>
+      </tr>
+      <tr>
+        <td>NIC:GPU ratio</td>
+        <td>1:1 (8 NICs/node)</td>
+        <td>1:1 (8 NICs/node)</td>
+      </tr>
+      <tr>
+        <td>NIC host bus</td>
+        <td>PCIe Gen5 x16</td>
+        <td>PCIe Gen5 x16</td>
+      </tr>
+      <tr>
+        <td>MRC support</td>
+        <td><span class="tag tag-green">Yes</span> P4 ASIC FW</td>
+        <td><span class="tag tag-green">Yes</span> HW native</td>
+      </tr>
+      <tr>
+        <td>SRv6 uN SID</td>
+        <td><span class="tag tag-green">Yes</span></td>
+        <td><span class="tag tag-green">Yes</span></td>
+      </tr>
+      <tr>
+        <td>Packet spray</td>
+        <td><span class="tag tag-green">Yes</span> (Pollara HW)</td>
+        <td><span class="tag tag-green">Yes</span> (CX-8 HW)</td>
+      </tr>
+      <tr>
+        <td>Coll. lib.</td>
+        <td><span class="tag tag-amber">RCCL</span> + MRC shim</td>
+        <td><span class="tag tag-blue">NCCL</span> + MRC plugin</td>
+      </tr>
+      <tr>
+        <td>Fabric BW/node</td>
+        <td>3.2 Tbps</td>
+        <td>6.4 Tbps</td>
+      </tr>
+      <tr>
+        <td>Arista 7060XE7</td>
+        <td><span class="tag tag-green">Compatible</span></td>
+        <td><span class="tag tag-green">Compatible</span></td>
+      </tr>
+      <tr>
+        <td>Next-gen NIC</td>
+        <td><span class="tag tag-amber">Vulcano 800G</span><br></br>MI400, PCIe Gen6</td>
+        <td><span class="tag tag-blue">CX-9 (future)</span></td>
+      </tr>
+      <tr>
+        <td>Key diff</td>
+        <td>PCIe switch connects GPUs + NICs. No dedicated NVSwitch-equivalent.</td>
+        <td>NVSwitch dedicated silicon for GPU mesh.</td>
+      </tr>
+    </table>
+
+    <div class="note" style="margin-top:10px">
+      <strong>MRC is fabric-agnostic.</strong> Both implement OCP MRC Rev 1.0: 32-bit EV striped across UDP src port + IPv6 flow label; 128–256 EVs per QP split equally across planes; SRv6 uN SID static source routing; PFC disabled (lossy Ethernet); dynamic routing disabled. The Arista 7060XE7 sees identical traffic from both. Mixed AMD+Nvidia clusters on the same MRC fabric are architecturally valid.
+    </div>
+  </div>
+
+</div>
+
+
+<div class="bottom-row">
+
+
+  <div class="card fabric-card">
+    <div class="card-title">MRC SRv6 fabric — AMD MI350X node → 8 planes → Arista 7060XE7</div>
+    <svg viewBox="0 0 740 310" xmlns="http://www.w3.org/2000/svg">
+
+
+      <rect x="4" y="30" width="130" height="240" rx="6" fill="#FEF9EC" stroke="#E67E22" stroke-width="1"></rect>
+      <text x="69" y="46" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#784212">MI350X Node</text>
+
+
+      <rect x="12" y="54" width="114" height="22" rx="3" fill="#EAFAF1" stroke="#1E8449" stroke-width=".7"></rect>
+      <text x="60" y="65" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara NIC 1 → P1</text>
+      <text x="60" y="73" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#1E8449">plane 1 · 400G · SRv6 uN</text>
+
+      <rect x="12" y="80" width="114" height="22" rx="3" fill="#EAFAF1" stroke="#1E8449" stroke-width=".7"></rect>
+      <text x="60" y="91" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara NIC 2 → P2</text>
+      <text x="60" y="99" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#1E8449">plane 2 · 400G · SRv6 uN</text>
+
+      <rect x="12" y="106" width="114" height="22" rx="3" fill="#EAFAF1" stroke="#1E8449" stroke-width=".7"></rect>
+      <text x="60" y="117" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara NIC 3 → P3</text>
+      <text x="60" y="125" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#1E8449">plane 3 · 400G · SRv6 uN</text>
+
+      <rect x="12" y="132" width="114" height="22" rx="3" fill="#EAFAF1" stroke="#1E8449" stroke-width=".7"></rect>
+      <text x="60" y="143" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara NIC 4 → P4</text>
+      <text x="60" y="151" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#1E8449">plane 4 · 400G · SRv6 uN</text>
+
+      <rect x="12" y="158" width="114" height="22" rx="3" fill="#EAFAF1" stroke="#1E8449" stroke-width=".7"></rect>
+      <text x="60" y="169" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara NIC 5 → P5</text>
+      <text x="60" y="177" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#1E8449">plane 5 · 400G · SRv6 uN</text>
+
+      <rect x="12" y="184" width="114" height="22" rx="3" fill="#EAFAF1" stroke="#1E8449" stroke-width=".7"></rect>
+      <text x="60" y="195" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara NIC 6 → P6</text>
+      <text x="60" y="203" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#1E8449">plane 6 · 400G · SRv6 uN</text>
+
+      <rect x="12" y="210" width="114" height="22" rx="3" fill="#EAFAF1" stroke="#1E8449" stroke-width=".7"></rect>
+      <text x="60" y="221" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara NIC 7 → P7</text>
+      <text x="60" y="229" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#1E8449">plane 7 · 400G · SRv6 uN</text>
+
+      <rect x="12" y="236" width="114" height="22" rx="3" fill="#EAFAF1" stroke="#1E8449" stroke-width=".7"></rect>
+      <text x="60" y="247" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#145A32">Pollara NIC 8 → P8</text>
+      <text x="60" y="255" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#1E8449">plane 8 · 400G · SRv6 uN</text>
+
+
+      <text x="69" y="275" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#B8410A">MRC: 32-bit EV · 128–256/QP</text>
+      <text x="69" y="285" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#B8410A">PFC off · lossy · no dyn. routing</text>
+
+
+
+
+
+
+
+      <rect x="148" y="30" width="60" height="240" rx="5" fill="#E8F8F0" stroke="#1D9E75" stroke-width=".8"></rect>
+      <rect x="154" y="38" width="48" height="20" rx="3" fill="#1D9E75"></rect>
+      <text x="178" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="white">Leaf P1</text>
+      <text x="178" y="70" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#0F6E56">7060XE7</text>
+      <text x="178" y="82" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#0F6E56">800G ports</text>
+      <text x="178" y="94" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#0F6E56">ECN mark</text>
+      <text x="178" y="108" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#0F6E56">stateless</text>
+      <text x="178" y="120" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#0F6E56">reads uN SID</text>
+
+      <line x1="178" y1="140" x2="178" y2="200" stroke="#1D9E75" stroke-width="1.5" stroke-dasharray="4 3"></line>
+      <text x="178" y="220" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#0F6E56">↑ spine</text>
+      <text x="178" y="232" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#0F6E56">P1</text>
+      <text x="178" y="255" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#888780">no cross-</text>
+      <text x="178" y="265" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#888780">plane link</text>
+
+
+      <rect x="216" y="30" width="60" height="240" rx="5" fill="#FEF3E2" stroke="#BA7517" stroke-width=".8"></rect>
+      <rect x="222" y="38" width="48" height="20" rx="3" fill="#BA7517"></rect>
+      <text x="246" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="white">Leaf P2</text>
+      <text x="246" y="70" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#854F0B">7060XE7</text>
+      <text x="246" y="82" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#854F0B">800G ports</text>
+      <text x="246" y="94" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#854F0B">ECN mark</text>
+      <text x="246" y="108" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#854F0B">stateless</text>
+      <text x="246" y="120" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#854F0B">reads uN SID</text>
+      <line x1="246" y1="140" x2="246" y2="200" stroke="#BA7517" stroke-width="1.5" stroke-dasharray="4 3"></line>
+      <text x="246" y="220" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#854F0B">↑ spine</text>
+      <text x="246" y="232" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#854F0B">P2</text>
+
+
+      <rect x="284" y="30" width="60" height="240" rx="5" fill="#EEEDFE" stroke="#534AB7" stroke-width=".8"></rect>
+      <rect x="290" y="38" width="48" height="20" rx="3" fill="#534AB7"></rect>
+      <text x="314" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="white">Leaf P3</text>
+      <text x="314" y="70" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#3C3489">7060XE7</text>
+      <text x="314" y="82" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#3C3489">800G ports</text>
+      <text x="314" y="94" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#3C3489">ECN mark</text>
+      <text x="314" y="108" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#3C3489">stateless</text>
+      <text x="314" y="120" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#3C3489">reads uN SID</text>
+      <line x1="314" y1="140" x2="314" y2="200" stroke="#534AB7" stroke-width="1.5" stroke-dasharray="4 3"></line>
+      <text x="314" y="220" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#3C3489">↑ spine</text>
+      <text x="314" y="232" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#3C3489">P3</text>
+
+
+      <rect x="352" y="30" width="60" height="240" rx="5" fill="#FDEDEC" stroke="#E24B4A" stroke-width=".8"></rect>
+      <rect x="358" y="38" width="48" height="20" rx="3" fill="#E24B4A"></rect>
+      <text x="382" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="white">Leaf P4</text>
+      <text x="382" y="70" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#791F1F">7060XE7</text>
+      <text x="382" y="82" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#791F1F">800G ports</text>
+      <text x="382" y="94" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#791F1F">ECN mark</text>
+      <text x="382" y="108" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#791F1F">stateless</text>
+      <line x1="382" y1="140" x2="382" y2="200" stroke="#E24B4A" stroke-width="1.5" stroke-dasharray="4 3"></line>
+      <text x="382" y="220" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#791F1F">↑ spine P4</text>
+
+
+      <rect x="420" y="30" width="60" height="240" rx="5" fill="#EBF5FB" stroke="#378ADD" stroke-width=".8"></rect>
+      <rect x="426" y="38" width="48" height="20" rx="3" fill="#378ADD"></rect>
+      <text x="450" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="white">Leaf P5</text>
+      <text x="450" y="70" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#0C447C">7060XE7</text>
+      <text x="450" y="82" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#0C447C">800G ports</text>
+      <text x="450" y="94" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#0C447C">ECN mark</text>
+      <text x="450" y="108" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#0C447C">stateless</text>
+      <line x1="450" y1="140" x2="450" y2="200" stroke="#378ADD" stroke-width="1.5" stroke-dasharray="4 3"></line>
+      <text x="450" y="220" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#0C447C">↑ spine P5</text>
+
+
+      <rect x="488" y="30" width="60" height="240" rx="5" fill="#EAFAF1" stroke="#639922" stroke-width=".8"></rect>
+      <rect x="494" y="38" width="48" height="20" rx="3" fill="#639922"></rect>
+      <text x="518" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="white">Leaf P6</text>
+      <text x="518" y="70" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#2D5A00">7060XE7</text>
+      <text x="518" y="82" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#2D5A00">800G ports</text>
+      <text x="518" y="94" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#2D5A00">ECN mark</text>
+      <text x="518" y="108" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#2D5A00">stateless</text>
+      <line x1="518" y1="140" x2="518" y2="200" stroke="#639922" stroke-width="1.5" stroke-dasharray="4 3"></line>
+      <text x="518" y="220" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#2D5A00">↑ spine P6</text>
+
+
+      <rect x="556" y="30" width="60" height="240" rx="5" fill="#FDEEF6" stroke="#D4537E" stroke-width=".8"></rect>
+      <rect x="562" y="38" width="48" height="20" rx="3" fill="#D4537E"></rect>
+      <text x="586" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="white">Leaf P7</text>
+      <text x="586" y="70" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#7B1D4F">7060XE7</text>
+      <text x="586" y="82" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#7B1D4F">800G ports</text>
+      <text x="586" y="94" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#7B1D4F">ECN mark</text>
+      <text x="586" y="108" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#7B1D4F">stateless</text>
+      <line x1="586" y1="140" x2="586" y2="200" stroke="#D4537E" stroke-width="1.5" stroke-dasharray="4 3"></line>
+      <text x="586" y="220" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#7B1D4F">↑ spine P7</text>
+
+
+      <rect x="624" y="30" width="112" height="240" rx="5" fill="#F4F3EF" stroke="#888780" stroke-width=".8"></rect>
+      <rect x="630" y="38" width="100" height="20" rx="3" fill="#888780"></rect>
+      <text x="680" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="white">Leaf P8</text>
+      <text x="680" y="70" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#444441">7060XE7</text>
+      <text x="680" y="82" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#444441">800G ports</text>
+      <text x="680" y="94" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#444441">ECN mark</text>
+      <text x="680" y="108" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#444441">stateless</text>
+      <text x="680" y="122" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#444441">reads uN SID</text>
+      <text x="680" y="136" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#444441">forwards</text>
+      <line x1="680" y1="150" x2="680" y2="200" stroke="#888780" stroke-width="1.5" stroke-dasharray="4 3"></line>
+      <text x="680" y="220" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#444441">↑ spine P8</text>
+
+      <text x="680" y="250" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#888780">Planes</text>
+      <text x="680" y="261" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#888780">fully</text>
+      <text x="680" y="272" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#888780">independent</text>
+
+
+
+      <line x1="126" y1="65" x2="148" y2="65" stroke="#1D9E75" stroke-width="1.2"></line>
+
+      <line x1="126" y1="91" x2="148" y2="91" stroke="#BA7517" stroke-width="1.2"></line>
+      <line x1="148" y1="91" x2="216" y2="91" stroke="#BA7517" stroke-width="1.2"></line>
+
+      <line x1="126" y1="117" x2="148" y2="117" stroke="#534AB7" stroke-width="1.2"></line>
+      <line x1="148" y1="117" x2="284" y2="117" stroke="#534AB7" stroke-width="1.2"></line>
+
+      <line x1="126" y1="143" x2="148" y2="143" stroke="#E24B4A" stroke-width="1.2"></line>
+      <line x1="148" y1="143" x2="352" y2="143" stroke="#E24B4A" stroke-width="1.2"></line>
+
+      <line x1="126" y1="169" x2="148" y2="169" stroke="#378ADD" stroke-width="1.2"></line>
+      <line x1="148" y1="169" x2="420" y2="169" stroke="#378ADD" stroke-width="1.2"></line>
+
+      <line x1="126" y1="195" x2="148" y2="195" stroke="#639922" stroke-width="1.2"></line>
+      <line x1="148" y1="195" x2="488" y2="195" stroke="#639922" stroke-width="1.2"></line>
+
+      <line x1="126" y1="221" x2="148" y2="221" stroke="#D4537E" stroke-width="1.2"></line>
+      <line x1="148" y1="221" x2="556" y2="221" stroke="#D4537E" stroke-width="1.2"></line>
+
+      <line x1="126" y1="247" x2="148" y2="247" stroke="#888780" stroke-width="1.2"></line>
+      <line x1="148" y1="247" x2="624" y2="247" stroke="#888780" stroke-width="1.2"></line>
+
+
+      <text x="135" y="155" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#1E8449" transform="rotate(-90,135,155)">400G QSFP per plane</text>
+
+
+      <path d="M216 78 Q200 78 190 78 Q180 70 160 70" fill="none" stroke="#E67E22" stroke-width=".8" stroke-dasharray="3 2" opacity=".7"></path>
+      <polygon points="162,67 154,70 162,73" fill="#E67E22" opacity=".7"></polygon>
+      <text x="190" y="75" text-anchor="middle" font-family="Arial,sans-serif" font-size="6" fill="#E67E22">NACK→re-steer (swap EV)</text>
+
+    </svg>
+  </div>
+
+
+  <div class="card key-card">
+    <div class="card-title">Pollara 400 — MRC capabilities</div>
+
+    <div class="leg-item"><div class="swatch" style="background:#D5F5E3;border:1.5px solid #1E8449"></div><strong>Intelligent packet spray</strong> — distributes packets across all 8 planes per NIC, 32-bit EV striped across UDP src port + IPv6 flow label · 128–256 EVs per QP, equally split across planes</div>
+    <div class="leg-item"><div class="swatch" style="background:#EBF5FB;border:1.5px solid #2E86C1"></div><strong>In-order delivery</strong> — every packet carries RDMA virtual address + remote key → NIC writes directly to correct GPU memory location regardless of arrival order</div>
+    <div class="leg-item"><div class="swatch" style="background:#FEF3E2;border:1.5px solid #E67E22"></div><strong>Selective retransmission</strong> — SACK indicates precisely which packets arrived · selective retransmit only missing packets · packet trimming: payload stripped, header forwarded as loss signal</div>
+    <div class="leg-item"><div class="swatch" style="background:#F5EEF8;border:1.5px solid #7D3C98"></div><strong>Path-aware congestion avoidance</strong> — ECN CE bit at leaf (not last hop) → CNP/NACK → Pollara swaps EV to cleaner plane · PFC disabled, runs lossy</div>
+    <div class="leg-item"><div class="swatch" style="background:#FDEDEC;border:1.5px solid #E24B4A"></div><strong>Failover</strong> — packet loss (not trim) = path failure → EV retired immediately · background probes resurrect recovered paths</div>
+    <div class="leg-item"><div class="swatch" style="background:#F5F4EF;border:1.5px solid #B4B2A9"></div><strong>SW-programmable P4 ASIC</strong> — MRC transport runs in NIC firmware, updatable without hardware swap as spec evolves</div>
+    <div class="leg-item"><div class="swatch" style="background:#D5F5E3;border:1.5px solid #1E8449"></div><strong>SRv6 uN SID encoding</strong> — 32-bit EV maps algorithmically to SRv6 address template → specific switch path encoded in uN uSIDs · no dynamic routing in fabric</div>
+    <div class="leg-item"><div class="swatch" style="background:#EBF5FB;border:1.5px solid #2E86C1"></div><strong>RCCL + MRC shim</strong> — OCP MRC Rev 1.0 ibverbs shim; RCCL workloads run over MRC with no source changes</div>
+
+    <div class="note">
+      <strong>Port config flexibility:</strong> Each Pollara 400 supports 1×400G, 2×200G, or 4×100G. In a multi-plane setup, a single NIC can cover 4 planes at 100G each, or 2 NICs cover all 8 planes at 100G — enabling MRC without a full 8-NIC configuration where cost is a concern.
+    </div>
+
+    <div style="margin-top:10px">
+      <div class="card-title" style="margin-bottom:8px">Vulcano 800G (MI400 — upcoming)</div>
+      <div class="leg-item"><div class="swatch" style="background:#FEF3E2;border:1.5px solid #E67E22"></div>PCIe Gen6 host interface — removes PCIe5 bandwidth bottleneck</div>
+      <div class="leg-item"><div class="swatch" style="background:#D5F5E3;border:1.5px solid #1E8449"></div>800 Gbps per NIC — matches Nvidia CX-8</div>
+      <div class="leg-item"><div class="swatch" style="background:#EBF5FB;border:1.5px solid #2E86C1"></div>4×200G or 8×100G multi-plane configs</div>
+      <div class="leg-item"><div class="swatch" style="background:#F5EEF8;border:1.5px solid #7D3C98"></div>Up to 2.4 Tbps per GPU (3 NICs per GPU)</div>
+      <div class="note">With 3× Vulcano NICs per MI400 GPU, AMD moves to a different plane-to-NIC mapping than Nvidia's 1:1. The Arista 7060XE7 fabric topology is unchanged — only the server-side cabling discipline differs.</div>
+    </div>
+
+    <div class="stat-grid" style="margin-top:10px">
+      <div class="stat"><div class="stat-num">8</div><div class="stat-lbl">Pollara NICs/node</div></div>
+      <div class="stat"><div class="stat-num">3.2</div><div class="stat-lbl">Tbps fabric BW</div></div>
+      <div class="stat"><div class="stat-num" style="color:#1E8449">8</div><div class="stat-lbl">MRC planes</div></div>
+      <div class="stat"><div class="stat-num" style="color:#1A5276">400G</div><div class="stat-lbl">per uplink</div></div>
+      <div class="stat"><div class="stat-num" style="color:#4A235A">P4</div><div class="stat-lbl">ASIC (SW prog.)</div></div>
+      <div class="stat"><div class="stat-num" style="color:#1E8449">0</div><div class="stat-lbl">ECMP · no dyn. routing</div></div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
