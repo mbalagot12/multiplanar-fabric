@@ -1,0 +1,26 @@
+/* Shared styles for HTML content embedded in MkDocs pages */
+
+.html-page {
+  width: 100%;
+}
+
+.html-page img,
+.html-page video,
+.html-page iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.html-page table {
+  display: block;
+  overflow-x: auto;
+}
+
+.html-page pre {
+  overflow-x: auto;
+}
+
+.html-page .container,
+.html-page .wrapper {
+  max-width: 100%;
+}

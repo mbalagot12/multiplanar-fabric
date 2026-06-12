@@ -1,0 +1,46 @@
+site_name: Multiplanar Fabric Documentation
+site_description: MkDocs site rendering user-supplied HTML pages
+site_url: https://example.com/docs/
+
+repo_name: multiplanar-fabric
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - attr_list
+  - md_in_html
+
+extra_css:
+  - stylesheets/html-pages.css
+
+nav:
+  - Home: index.md
+
+strict: true

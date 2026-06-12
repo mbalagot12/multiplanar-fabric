@@ -1,0 +1,15 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.site/
+site/
+.DS_Store
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Generated MkDocs pages (rebuilt from content/html/)
+docs/generated/*.md
+!docs/generated/.gitkeep
