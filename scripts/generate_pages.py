@@ -63,7 +63,7 @@ class HeadAssetParser(HTMLParser):
         if tag == "head":
             self._in_head = False
             return
-        if tag == "title":
+        if tag == "title" and self._in_head:
             self.in_title = False
             return
         if self._in_head and tag in {"link", "script", "style"} and self._capture_tag == tag:
@@ -97,6 +97,47 @@ class HeadAssetParser(HTMLParser):
         if tag in {"link", "script"} and not inner:
             return f"<{tag}{(' ' + attrs_str) if attrs_str else ''}>"
         return f"<{tag}{(' ' + attrs_str) if attrs_str else ''}>{''.join(inner)}</{tag}>"
+
+
+def normalize_svg_attributes(html: str) -> str:
+    """Restore case-sensitive SVG attribute names mangled by HTMLParser."""
+    replacements = {
+        "viewbox=": "viewBox=",
+        "preserveaspectratio=": "preserveAspectRatio=",
+        "baseprofile=": "baseProfile=",
+        "attributename=": "attributeName=",
+        "attributetype=": "attributeType=",
+        "gradientunits=": "gradientUnits=",
+        "gradienttransform=": "gradientTransform=",
+        "spreadmethod=": "spreadMethod=",
+        "patternunits=": "patternUnits=",
+        "patterncontentunits=": "patternContentUnits=",
+        "patterntransform=": "patternTransform=",
+        "clippathunits=": "clipPathUnits=",
+        "maskcontentunits=": "maskContentUnits=",
+        "maskunits=": "maskUnits=",
+        "filterunits=": "filterUnits=",
+        "primitiveunits=": "primitiveUnits=",
+        "refx=": "refX=",
+        "refy=": "refY=",
+        "markerwidth=": "markerWidth=",
+        "markerheight=": "markerHeight=",
+        "markerunits=": "markerUnits=",
+        "strokedasharray=": "strokeDasharray=",
+        "strokedashoffset=": "strokeDashoffset=",
+        "strokelinecap=": "strokeLinecap=",
+        "strokelinejoin=": "strokeLinejoin=",
+        "strokemiterlimit=": "strokeMiterlimit=",
+        "textanchor=": "textAnchor=",
+        "dominantbaseline=": "dominantBaseline=",
+        "fontfamily=": "fontFamily=",
+        "fontsize=": "fontSize=",
+        "fontweight=": "fontWeight=",
+        "fontstyle=": "fontStyle=",
+    }
+    for lower, proper in replacements.items():
+        html = html.replace(lower, proper)
+    return html
 
 
 def slugify(name: str) -> str:
@@ -153,6 +194,7 @@ def parse_html(html_path: Path) -> tuple[str, str, str]:
     body = parser.body_html or raw
     head_assets = "\n".join(parser.head_assets)
 
+    body = normalize_svg_attributes(body)
     body = rewrite_asset_paths(body, page_slug)
     head_assets = rewrite_asset_paths(head_assets, page_slug)
     copy_page_assets(html_path, page_slug)
