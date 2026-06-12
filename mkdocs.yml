@@ -1,6 +1,6 @@
 site_name: Multiplanar Fabric Documentation
 site_description: MkDocs site rendering user-supplied HTML pages
-site_url: https://mbalagot12.github.io/multiplanar-fabric/
+site_url: !ENV [MKDOCS_SITE_URL, 'http://127.0.0.1:8000/']
 
 repo_name: mbalagot12/multiplanar-fabric
 repo_url: https://github.com/mbalagot12/multiplanar-fabric

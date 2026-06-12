@@ -31,6 +31,8 @@ jobs:
         run: python scripts/generate_pages.py
 
       - name: Build MkDocs site
+        env:
+          MKDOCS_SITE_URL: https://mbalagot12.github.io/multiplanar-fabric/
         run: mkdocs build --strict
 
       - name: Upload site artifact
