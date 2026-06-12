@@ -29,6 +29,7 @@ At the node level, **intra-node** traffic (NVLink on Nvidia, Infinity Fabric on 
 Understand how MRC encodes paths and entropy in every packet.
 
 - **[MRC Packet Structure — SRv6 + Entropy Value](generated/srv6-mrc-packet-ev-header.md)** — IPv6-in-IPv6 encapsulation, outer SRv6 uN uSID stack, 32-bit EV placement, and the role of EV in SACK/NACK feedback (not forwarding).
+- **[MRC Packet Spray Animation](generated/mrc-packet-spray-animation.md)** — Interactive simulation of per-packet EV spray across eight planes, with congestion, trimming, failure, and NACK re-steering.
 
 ### Node-level integration
 
