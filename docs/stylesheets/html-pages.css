@@ -24,3 +24,21 @@
 .html-page .wrapper {
   max-width: 100%;
 }
+
+/* Architecture overview diagram on the home page */
+.architecture-diagram {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.architecture-diagram img,
+.architecture-diagram svg {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 1px solid var(--md-default-fg-color--lightest, #d3d1c7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}

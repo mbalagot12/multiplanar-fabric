@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MRC Packet Structure — SRv6 + Entropy Value</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Arial, sans-serif;
+    background: #F8F8F6;
+    color: #1A1A18;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+  }
+  h1 { font-size: 17px; font-weight: 700; margin-bottom: 4px; text-align: center; }
+  .sub { font-size: 12px; color: #73726C; margin-bottom: 20px; text-align: center; max-width: 640px; }
+  .wrap { background: #fff; border: 1px solid #D3D1C7; border-radius: 12px; padding: 20px; width: 100%; max-width: 700px; }
+  svg { display: block; width: 100%; height: auto; }
+  .notes { width: 100%; max-width: 700px; margin-top: 16px; }
+  .note-box { background: #fff; border: 1px solid #D3D1C7; border-radius: 10px; padding: 12px 16px; margin-bottom: 10px; font-size: 12px; line-height: 1.6; color: #444441; }
+  .note-box b { color: #1A1A18; }
+</style>
+</head>
+<body>
+
+<h1>MRC packet structure — SRv6 path + 32-bit entropy value (EV)</h1>
+<p class="sub">IPv6-in-IPv6 encapsulation. The 32-bit EV is striped across the outer IPv6 flow label and UDP source port. ECMP is disabled — the SRv6 uN uSID stack statically encodes the path; the EV is carried only to be echoed back in SACK/NACK feedback.</p>
+
+<div class="wrap">
+<svg viewBox="0 0 680 590" xmlns="http://www.w3.org/2000/svg">
+
+<text x="56" y="30" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#1A1A18">Outer IPv6 header — SRv6 transport</text>
+
+<rect x="56" y="40" width="110" height="56" rx="8" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
+<text x="111" y="60" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" fill="#444441">Src address</text>
+<text x="111" y="78" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="12" fill="#5F5E5A">sender NIC</text>
+
+<rect x="182" y="40" width="290" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="327" y="60" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0C447C">Destination address</text>
+<text x="327" y="78" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="12" fill="#185FA5">SRv6 uN uSID stack</text>
+
+<rect x="488" y="40" width="136" height="56" rx="8" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.5"/>
+<text x="556" y="60" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#633806">Flow label</text>
+<text x="556" y="78" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="12" fill="#854F0B">EV bits (20b)</text>
+
+<text x="56" y="122" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#1A1A18">UDP header</text>
+
+<rect x="56" y="134" width="180" height="56" rx="8" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.5"/>
+<text x="146" y="154" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#633806">Source port</text>
+<text x="146" y="172" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="12" fill="#854F0B">EV bits (16b)</text>
+
+<rect x="252" y="134" width="180" height="56" rx="8" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
+<text x="342" y="154" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" fill="#444441">Destination port</text>
+<text x="342" y="172" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="12" fill="#5F5E5A">RoCEv2 (4791)</text>
+
+<rect x="448" y="134" width="176" height="56" rx="8" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
+<text x="536" y="154" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" fill="#444441">Length / checksum</text>
+<text x="536" y="172" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="12" fill="#5F5E5A">standard UDP</text>
+
+<text x="56" y="216" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#1A1A18">Inner IPv6 header — decap target</text>
+
+<rect x="56" y="228" width="270" height="56" rx="8" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
+<text x="191" y="248" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" fill="#444441">Source address</text>
+<text x="191" y="266" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="12" fill="#5F5E5A">sender NIC addr</text>
+
+<rect x="342" y="228" width="282" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="483" y="248" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#085041">Destination address</text>
+<text x="483" y="266" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="12" fill="#0F6E56">receiving NIC addr</text>
+
+<text x="56" y="310" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#1A1A18">RDMA transport header (BTH-like)</text>
+
+<rect x="56" y="322" width="150" height="56" rx="8" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
+<text x="131" y="342" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" fill="#444441">Opcode / PSN</text>
+<text x="131" y="360" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="12" fill="#5F5E5A">RDMA write, seq #</text>
+
+<rect x="222" y="322" width="230" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="337" y="342" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#3C3489">Virtual address</text>
+<text x="337" y="360" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="12" fill="#534AB7">GPU memory destination</text>
+
+<rect x="468" y="322" width="156" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="546" y="342" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#3C3489">Remote key</text>
+<text x="546" y="360" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="12" fill="#534AB7">memory access key</text>
+
+<text x="56" y="404" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#1A1A18">Payload</text>
+
+<rect x="56" y="416" width="460" height="56" rx="8" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
+<text x="286" y="436" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" fill="#444441">Payload</text>
+<text x="286" y="454" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="12" fill="#5F5E5A">application data, variable size</text>
+
+<rect x="532" y="416" width="92" height="56" rx="8" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
+<text x="578" y="436" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" fill="#444441">ICRC</text>
+<text x="578" y="454" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="12" fill="#5F5E5A">checksum</text>
+
+<rect x="56" y="494" width="14" height="14" rx="3" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.5"/>
+<text x="76" y="505" font-family="Arial,sans-serif" font-size="12" fill="#5F5E5A">32-bit EV: IPv6 flow label + UDP source port</text>
+
+<rect x="356" y="494" width="14" height="14" rx="3" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="376" y="505" font-family="Arial,sans-serif" font-size="12" fill="#5F5E5A">SRv6 uN uSID = source-routed path</text>
+
+<rect x="56" y="522" width="14" height="14" rx="3" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="76" y="533" font-family="Arial,sans-serif" font-size="12" fill="#5F5E5A">Inner destination = NIC decapsulation target</text>
+
+<rect x="356" y="522" width="14" height="14" rx="3" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="376" y="533" font-family="Arial,sans-serif" font-size="12" fill="#5F5E5A">RDMA fields = out-of-order placement</text>
+
+</svg>
+</div>
+
+<div class="notes">
+  <div class="note-box"><b>EV generation.</b> At QP startup, the NIC generates a set of 128–256 entropy values, equally split across the 8 MRC planes. A different EV is selected for every packet, spraying all traffic from a single QP across many paths automatically — no application changes needed.</div>
+  <div class="note-box"><b>SRv6 forwarding.</b> Each switch compares the first 48 bits of the destination address to its configured locator + uSID. On match, it left-shifts the uSID portion by 16 bits — moving the next-hop uSID into position — then does a static forwarding table lookup. Tables are set once at install and never change; dynamic routing (BGP) and ECMP are both disabled.</div>
+  <div class="note-box"><b>Why the EV still rides along.</b> Since the path is statically encoded in the uSID stack, the EV plays no role in forwarding. It exists purely so the receiving NIC can echo it back in SACK/NACK packets — telling the sender's MRC engine which EV (and therefore which path) is healthy, congested, or has failed.</div>
+  <div class="note-box"><b>Loss vs. trim.</b> A genuinely dropped packet signals path failure — its EV is retired immediately and not reused. A trimmed packet (payload stripped, header forwarded) signals congestion only — it triggers a SACK-based selective retransmit of just the missing data, not a full resend.</div>
+</div>
+
+</body>
+</html>
