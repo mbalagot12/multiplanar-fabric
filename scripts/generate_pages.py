@@ -166,7 +166,7 @@ def build_markdown(title: str, head_assets: str, body: str) -> str:
         f'title: "{title.replace(chr(34), chr(39))}"',
         "---",
         "",
-        '<div class="html-page" markdown="1">',
+        '<div class="html-page">',
     ]
     if head_assets:
         lines.extend(["", head_assets, ""])
