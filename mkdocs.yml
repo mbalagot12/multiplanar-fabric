@@ -50,5 +50,6 @@ nav:
       - 72-GPU MRC Rack — Arista 7060XE7 + Nvidia DGX H100: generated/mrc-72gpu-rack-diagram-1.md
       - 72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300: generated/mrc-blackwell-ultra-rack-1.md
       - MRC Packet Structure — SRv6 + Entropy Value: generated/srv6-mrc-packet-ev-header.md
+      - MRC Packet Spray Animation: generated/mrc-packet-spray-animation.md
 
 strict: true
