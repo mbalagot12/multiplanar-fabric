@@ -88,7 +88,7 @@ Each plane operates as an isolated 2-hop leaf–spine network. A 72-GPU rack typ
 
 ## Getting started
 
-Browse the **Pages** section in the navigation sidebar for interactive SVG diagrams covering node topology, rack wiring, packet headers, and vendor comparisons. Each page is a self-contained reference diagram with legends, callouts, and design notes.
+Browse the **Pages** tab for interactive SVG diagrams, or the **Reference** tab for the glossary and SRv6 configuration guide. Each diagram page is a self-contained reference with legends, callouts, and design notes.
 
 ---
 
