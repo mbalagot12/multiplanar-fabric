@@ -32,7 +32,7 @@ jobs:
 
       - name: Build MkDocs site
         env:
-          MKDOCS_SITE_URL: https://mbalagot12.github.io/multiplanar-fabric/
+          MKDOCS_SITE_URL: ${{ vars.MKDOCS_SITE_URL || 'https://multiplanar.agentic24x7.net/' }}
         run: mkdocs build --strict
 
       - name: Upload site artifact
