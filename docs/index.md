@@ -22,6 +22,12 @@ At the node level, **intra-node** traffic (NVLink on Nvidia, Infinity Fabric on 
 
 ---
 
+## Glossary
+
+Unfamiliar with **uN**, **PSP**, **FRR**, **EV**, or other terms in these pages? See the **[Glossary](glossary.md)** — definitions for MRC transport, SRv6 uSID micro-behaviors, behavior flavors, SONiC stack components, and fabric acronyms.
+
+---
+
 ## Documentation map
 
 ### Protocol & packet format
@@ -29,6 +35,7 @@ At the node level, **intra-node** traffic (NVLink on Nvidia, Infinity Fabric on 
 Understand how MRC encodes paths and entropy in every packet.
 
 - **[MRC Packet Structure — SRv6 + Entropy Value](generated/srv6-mrc-packet-ev-header.md)** — IPv6-in-IPv6 encapsulation, outer SRv6 uN uSID stack, 32-bit EV placement, and the role of EV in SACK/NACK feedback (not forwarding).
+- **[SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista)](srv6-usid-leaf-spine-config.md)** — Side-by-side SONiC and Arista EOS 4.36 programming model, F3216 addressing plan, and concrete leaf/spine templates for MRC static fabrics.
 - **[MRC Packet Spray Animation](generated/mrc-packet-spray-animation.md)** — Interactive simulation of per-packet EV spray across eight planes, with congestion, trimming, failure, and NACK re-steering.
 
 ### Node-level integration
