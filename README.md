@@ -1,4 +1,4 @@
-# Multiplanar Fabric Documentation
+# Multiplanar Fabric AI Networking Primer
 
 MkDocs site that renders **your HTML files** as themed documentation pages.
 

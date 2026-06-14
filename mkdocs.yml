@@ -1,4 +1,4 @@
-site_name: Multiplanar Fabric Documentation
+site_name: Multiplanar Fabric AI Networking Primer
 site_description: MkDocs site rendering user-supplied HTML pages
 site_url: !ENV [MKDOCS_SITE_URL, 'http://127.0.0.1:8000/']
 
