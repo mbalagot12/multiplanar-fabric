@@ -1,4 +1,4 @@
-# Multiplanar Fabric Documentation
+# Multiplanar Fabric AI Networking Primer
 
 Reference architecture and design diagrams for **MRC (Multipath Reliable Connection)** networking — the OCP-standard approach to scaling AI training clusters over deterministic, multi-plane Ethernet fabrics.
 
