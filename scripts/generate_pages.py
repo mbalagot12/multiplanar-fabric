@@ -15,6 +15,21 @@ GENERATED = ROOT / "docs" / "generated"
 ASSETS = ROOT / "docs" / "assets" / "html"
 MKDOCS_YML = ROOT / "mkdocs.yml"
 
+# Hand-maintained MkDocs pages (not generated from content/html/).
+STATIC_TOP_NAV: list[tuple[str, str]] = [
+    ("Glossary", "glossary.md"),
+]
+
+STATIC_PAGE_NAV: list[tuple[str, str]] = [
+    (
+        "SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista)",
+        "srv6-usid-leaf-spine-config.md",
+    ),
+]
+
+# Insert static Pages entries after this generated page when present.
+STATIC_PAGES_AFTER = "generated/srv6-mrc-packet-ev-header.md"
+
 
 class HeadAssetParser(HTMLParser):
     """Extract title and head assets (link/script/style) from an HTML document."""
@@ -227,11 +242,27 @@ def collect_html_files() -> list[Path]:
     )
 
 
-def update_nav(entries: list[tuple[str, str]]) -> None:
+def merge_page_nav(generated_entries: list[tuple[str, str]]) -> list[tuple[str, str]]:
+    """Interleave hand-maintained Pages nav entries with generated HTML pages."""
+    merged = list(generated_entries)
+    insert_at = len(merged)
+    for index, (_, path) in enumerate(merged):
+        if path == STATIC_PAGES_AFTER:
+            insert_at = index + 1
+            break
+    for offset, entry in enumerate(STATIC_PAGE_NAV):
+        merged.insert(insert_at + offset, entry)
+    return merged
+
+
+def update_nav(generated_entries: list[tuple[str, str]]) -> None:
+    page_entries = merge_page_nav(generated_entries)
     nav_lines = ["nav:", "  - Home: index.md"]
-    if entries:
+    for title, rel_path in STATIC_TOP_NAV:
+        nav_lines.append(f"  - {title}: {rel_path}")
+    if page_entries:
         nav_lines.append("  - Pages:")
-        for title, rel_path in entries:
+        for title, rel_path in page_entries:
             nav_lines.append(f"      - {title}: {rel_path}")
     nav_block = "\n".join(nav_lines) + "\n"
 
