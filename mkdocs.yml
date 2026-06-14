@@ -2,6 +2,9 @@ site_name: Multiplanar Fabric AI Networking Primer
 site_description: MkDocs site rendering user-supplied HTML pages
 site_url: !ENV [MKDOCS_SITE_URL, 'http://127.0.0.1:8000/']
 
+repo_name: mbalagot12/multiplanar-fabric
+repo_url: https://github.com/mbalagot12/multiplanar-fabric
+
 theme:
   name: material
   features:
@@ -40,6 +43,7 @@ extra_css:
 
 nav:
   - Home: index.md
+  - Glossary: glossary.md
   - Pages:
       - AMD MI350X — MRC SRv6 Fabric Connectivity: generated/amd-mi350x-mrc-srv6-fabric.md
       - Nvidia DGX H100 — MRC Fabric Integration: generated/dgx-mrc-diagram-1.md
@@ -47,6 +51,7 @@ nav:
       - 72-GPU MRC Rack — Arista 7060XE7 + Nvidia DGX H100: generated/mrc-72gpu-rack-diagram-1.md
       - 72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300: generated/mrc-blackwell-ultra-rack-1.md
       - MRC Packet Structure — SRv6 + Entropy Value: generated/srv6-mrc-packet-ev-header.md
+      - SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista): srv6-usid-leaf-spine-config.md
       - MRC Packet Spray Animation: generated/mrc-packet-spray-animation.md
 
 strict: true
