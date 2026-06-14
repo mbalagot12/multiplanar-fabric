@@ -46,10 +46,25 @@ Co-located assets (CSS, JS, images) in the same folder as an HTML file are copie
 |---------|-------------|
 | `make install` | Install Python dependencies |
 | `make generate` | Regenerate markdown from HTML |
-| `make build` | Generate + build static site to `site/` |
+| `make build` | Generate + build static site to `site/` (custom domain URL) |
+| `make build-github` | Build for `mbalagot12.github.io/multiplanar-fabric/` |
+| `make build-custom` | Build for `multiplanar.agentic24x7.net` |
 | `make serve` | Generate + local dev server |
 | `make deploy` | Build and publish to `gh-pages` branch |
+| `make deploy-github` | Deploy with GitHub Pages URL |
+| `make deploy-custom` | Deploy with Cloudflare custom domain URL |
 | `make clean` | Remove build artifacts |
+
+## Production URL (GitHub Pages vs custom domain)
+
+The site is published at **https://multiplanar.agentic24x7.net/** via Cloudflare DNS. You can switch back to the GitHub Pages URL without code changes:
+
+| Target | `MKDOCS_SITE_URL` | DNS / GitHub Pages |
+|--------|-------------------|--------------------|
+| Custom domain (default) | `https://multiplanar.agentic24x7.net/` | CNAME `multiplanar` → `mbalagot12.github.io` in Cloudflare; custom domain set in repo **Settings → Pages**; `docs/CNAME` present |
+| GitHub Pages | `https://mbalagot12.github.io/multiplanar-fabric/` | Remove custom domain in **Settings → Pages**; delete `docs/CNAME`; grey-cloud or remove Cloudflare record |
+
+**CI / deploy:** set the repository variable `MKDOCS_SITE_URL` under **Settings → Secrets and variables → Actions → Variables**. If unset, workflows default to the custom domain. After changing the URL, merge to `main` (or run deploy) so links and assets match the active hostname.
 
 ## Docker
 
