@@ -1,4 +1,4 @@
-# Multiplanar Fabric Documentation
+# Multiplanar Fabric AI Networking Primer
 
 Reference architecture and design diagrams for **MRC (Multipath Reliable Connection)** networking — the OCP-standard approach to scaling AI training clusters over deterministic, multi-plane Ethernet fabrics.
 
@@ -82,3 +82,11 @@ Each plane operates as an isolated 2-hop leaf–spine network. A 72-GPU rack typ
 ## Getting started
 
 Browse the **Pages** section in the navigation sidebar for interactive SVG diagrams covering node topology, rack wiring, packet headers, and vendor comparisons. Each page is a self-contained reference diagram with legends, callouts, and design notes.
+
+---
+
+## Resources
+
+- [OCP MRC Rev 1.0 specification](https://www.opencompute.org/documents/ocp-mrc-1-0-pdf)
+- [Resilient AI Supercomputer Networking using MRC and SRv6 (OpenAI)](https://cdn.openai.com/pdf/resilient-ai-supercomputer-networking-using-mrc-and-srv6.pdf)
+- [Arista 7060XE7 datasheet](https://www.arista.com/assets/data/pdf/Datasheets/7060XE7-Datasheet.pdf)
