@@ -13,3 +13,6 @@ build/
 # Generated MkDocs pages (rebuilt from content/html/)
 docs/generated/*.md
 !docs/generated/.gitkeep
+
+# Temporary PDF text extraction artifacts
+docs/_pdf_extract.txt

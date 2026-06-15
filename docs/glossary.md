@@ -146,6 +146,8 @@ The leftmost 16-bit uSID slot after the locator block — the instruction the cu
 
 Reserved uSID value **`0000`**. Marks unused slots; fills remaining bits to complete the 128-bit address after the last real uSID.
 
+On **DCS-7060X6** running EOS 4.36.0FX-SRV6, Arista **drops transit packets** when the CSID **immediately after the active uN or uA** is **`0000`** — even though `0000` is the standard EoC marker per RFC 9800. NIC path encoders must not place EoC in the next slot while the packet is still traversing switches; padding belongs in trailing carrier slots only. Known caveat **1294522** in [RN-4.36.0FX-SRV6-v0.1.pdf](RN-4.36.0FX-SRV6-v0.1.pdf).
+
 ### F3216
 
 Standard uSID carrier format: **F** = format name, **32** = block length (bits), **16** = uSID ID length (bits). Required interoperable format per IETF SRv6 uSID compression work and RFC 9800 ecosystem.
@@ -286,15 +288,23 @@ ConfigDB tables for static SRv6 locator prefixes and local SID-to-behavior mappi
 
 ### 7060XE7
 
-Arista data center switch (Broadcom **Tomahawk 6**) used as MRC leaf/spine in this primer's rack diagrams. Supports line-rate SRv6 uN in EOS.
+Arista data center switch (Broadcom **Tomahawk 6** / **TH6**) used as MRC leaf/spine in this primer's rack diagrams. Separate product from **7060X6**. Supports line-rate SRv6 uN in EOS on supported builds — confirm against Arista's compatibility matrix for your SKU.
+
+### 7060X6 (DCS-7060X6)
+
+Arista data center switch family (Broadcom **Tomahawk 5** / **TH5**). SRv6 uN was introduced on this line in EOS **4.34.2F** per the [SRv6 uN TOI](SRv6-uN-Support.pdf). The **4.36.0FX-SRV6** early-testing build and release notes target this platform (including known caveat **1294522** for zero CSID after active segment on transit).
 
 ### Tomahawk 5 (TH5)
 
-Broadcom switching ASIC generation in 7060XE7 and related AI fabric switches. SRv6 uSID uN forwarding at line rate in production MRC deployments.
+Broadcom switching ASIC generation in **7060X6** and related data center switches. SRv6 uSID uN forwarding at line rate where EOS SRv6 uN is supported.
+
+### Tomahawk 6 (TH6)
+
+Broadcom switching ASIC generation in **7060XE7** and related AI-fabric switches. Used in this primer's MRC rack reference design.
 
 ### EOS (Extensible Operating System)
 
-Arista network operating system. SRv6 uN uses **`router srv6`** (micro-segment domain + locator), documented in [SRv6-uN-Support.pdf](SRv6-uN-Support.pdf) (4.34.2F+). Operational: `show srv6 locator`, `show srv6 route`, `ping srv6 sid … via segment-list …`.
+Arista network operating system. SRv6 uN uses **`router srv6`** (micro-segment domain + locator), documented in [SRv6-uN-Support.pdf](SRv6-uN-Support.pdf) (4.34.2F+). Operational CLI: `show srv6 locator`, `show srv6 route`, `show srv6 capabilities`, `show srv6 domain`, `show srv6 adjacency-segments` (uA); `ping srv6 sid … via segment-list …`. eAPI JSON models for show commands: [EOS-4.36.0FX-SRV6-CommandApiGuide.pdf](EOS-4.36.0FX-SRV6-CommandApiGuide.pdf).
 
 ### TOI (Transfer of Information)
 
@@ -393,6 +403,7 @@ Two-tier data center topology. Each MRC **plane** is a miniature leaf–spine: n
 | **SRH** | Segment Routing Header |
 | **SRv6** | Segment Routing over IPv6 |
 | **TH5** | Tomahawk 5 |
+| **TH6** | Tomahawk 6 |
 | **TOI** | Transfer of Information (Arista) |
 | **uA** | uSID Adjacency (End.X + NEXT-CSID) |
 | **uDT46** | uSID Decap + DT46 |

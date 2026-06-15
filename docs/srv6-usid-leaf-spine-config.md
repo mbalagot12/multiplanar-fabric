@@ -1,6 +1,6 @@
 # SRv6 uN uSID — Leaf/Spine Config Reference (SONiC vs Arista EOS)
 
-Reference for **static SRv6 uN uSID** programming on MRC leaf–spine fabrics. Covers the comparison between **SONiC** (FRR + ConfigDB + SAI) and **Arista EOS 4.36** (7060XE7 / Tomahawk 5), with **concrete configuration templates** for a single MRC plane inside a 72-GPU rack.
+Reference for **static SRv6 uN uSID** programming on MRC leaf–spine fabrics. Covers the comparison between **SONiC** (FRR + ConfigDB + SAI) and **Arista EOS 4.36** (**7060XE7** / Tomahawk 6 — MRC rack reference design), with **concrete configuration templates** for a single MRC plane inside a 72-GPU rack.
 
 See the **[Glossary](glossary.md)** for definitions of uN, uA, PSP/USD, F3216, ConfigDB, and related terms.
 
@@ -11,12 +11,16 @@ See the **[Glossary](glossary.md)** for definitions of uN, uA, PSP/USD, F3216, C
 
 ## Documentation sources
 
-| System | Where uN/uSID is documented |
-|--------|----------------------------|
-| **SONiC** | [ConfigDB SRv6 schema](https://github.com/sonic-net/sonic-buildimage/blob/master/src/sonic-yang-models/doc/Configuration.md), [Static SRv6 HLD](https://github.com/sonic-net/SONiC/blob/master/doc/srv6/srv6_static_config_hld.md), [SRv6 uSID HLD](https://github.com/sonic-net/SONiC/blob/master/doc/srv6/SRv6_uSID.md), [FRR zebra SRv6](https://github.com/FRRouting/frr/blob/master/doc/user/zebra.rst), [FRR static-sids](https://github.com/FRRouting/frr/blob/master/doc/user/static.rst) |
-| **Arista EOS 4.36** | [SRv6 uN Support TOI (local PDF)](SRv6-uN-Support.pdf) (4.34.2F+), [SRv6 uN TOI (web)](https://www.arista.com/en/support/toi/eos-4-34-2f-srv6-un-support), [SRv6 uA TOI (4.35.0F+)](https://www.arista.com/en/support/toi/eos-4-35-0f-srv6-ua-support), [OpenAI MRC paper](https://arxiv.org/html/2605.04333v1) |
+| System | Document | Role for uN/uSID |
+|--------|----------|------------------|
+| **SONiC** | [ConfigDB SRv6 schema](https://github.com/sonic-net/sonic-buildimage/blob/master/src/sonic-yang-models/doc/Configuration.md), [Static SRv6 HLD](https://github.com/sonic-net/SONiC/blob/master/doc/srv6/srv6_static_config_hld.md), [SRv6 uSID HLD](https://github.com/sonic-net/SONiC/blob/master/doc/srv6/SRv6_uSID.md), [FRR zebra SRv6](https://github.com/FRRouting/frr/blob/master/doc/user/zebra.rst), [FRR static-sids](https://github.com/FRRouting/frr/blob/master/doc/user/static.rst) | Config + operational CLI |
+| **Arista EOS** | [SRv6 uN Support TOI (local PDF)](SRv6-uN-Support.pdf) (4.34.2F+) · [web TOI](https://www.arista.com/en/support/toi/eos-4-34-2f-srv6-un-support) | **Authoritative CLI** — `router srv6`, micro-segment domain, locator, static routes, `ping srv6` / `traceroute srv6` |
+| **Arista EOS** | [SRv6 uA TOI (4.35.0F+)](https://www.arista.com/en/support/toi/eos-4-35-0f-srv6-ua-support) | Optional static uA adjacency configuration |
+| **Arista EOS 4.36** | [EOS 4.36.0FX-SRV6 Command API Guide (local PDF)](EOS-4.36.0FX-SRV6-CommandApiGuide.pdf) | **eAPI JSON schema** for `show srv6 …` output — observability/automation only; no config or `ping srv6` |
+| **Arista EOS 4.36** | [EOS 4.36.0FX-SRV6 Release Notes v0.1 (local PDF)](RN-4.36.0FX-SRV6-v0.1.pdf) | **4.36 SRv6 build** platform matrix and known caveats (e.g. zero CSID after active segment on 7060X6) |
+| **MRC** | [OpenAI MRC paper](https://arxiv.org/html/2605.04333v1) | Fabric semantics and path encoding |
 
-The public **EOS 4.36 user manual does not include a dedicated SRv6 uSID configuration chapter**. **Authoritative Arista syntax** is in [SRv6-uN-Support.pdf](SRv6-uN-Support.pdf) (`router srv6`, micro-segment domain, locator). SONiC configuration is split between **ConfigDB** and **FRR `vtysh`**.
+The public **EOS 4.36 user manual does not include a dedicated SRv6 uSID configuration chapter**. Use the **TOI** for syntax; use the **Command API guide** to parse `show srv6 locator`, `show srv6 route`, `show srv6 capabilities`, `show srv6 domain`, and `show srv6 adjacency-segments` via JSON-RPC. SONiC configuration is split between **ConfigDB** and **FRR `vtysh`**.
 
 ---
 
@@ -33,7 +37,7 @@ Validated against **[SRv6-uN-Support.pdf](SRv6-uN-Support.pdf)** in this repo (A
 | **uN dataplane** | Match local `/48` locator → shift left 16 bits → LPM in IPv6 FIB (static routes to neighbor uNs) |
 | **Flavors** | `show srv6 capabilities`: PSP, USD, Next-CSID supported; End with NEXT-CSID in System SFIB |
 
-Rack diagrams in this primer reference **7060XE7**; the TOI platform list names **7060X6** at 4.34.2F — confirm your hardware against the current Arista compatibility matrix before deployment.
+**Platform note:** This primer’s rack diagrams use **7060XE7** (Broadcom **Tomahawk 6**). Arista’s SRv6 uN TOI and the **4.36.0FX-SRV6** release notes first document uN on **DCS-7060X6** (Broadcom **Tomahawk 5**) — a separate, concurrently shipping product line. F3216 uSID semantics and EOS CLI are the same; confirm SRv6 feature support and caveats against your exact SKU and EOS build before deployment.
 
 ### Validated Arista CLI (from TOI)
 
@@ -46,10 +50,12 @@ Rack diagrams in this primer reference **7060XE7**; the TOI platform list names 
 | Loopback for ping | `interface Loopback0` → `ipv6 address <locator-prefix>/48` | SRv6 Ping |
 | Neighbor uN reachability | `ipv6 route <neighbor-uN>/48 <nh>` or `… Ethernet N fe80::…` | SRv6 Operation |
 | Verify locator | `show srv6 locator` | Show Commands |
+| Verify micro-segment domain | `show srv6 domain` | Command API 2.1944 (GIB range, block state) |
 | Verify System SFIB | `show srv6 route` | Show Commands |
 | Verify capabilities | `show srv6 capabilities` | Show Commands |
-| Path ping | `ping srv6 sid <target> via segment-list <sid1> <sid2> …` | SRv6 Ping |
-| Path trace | `traceroute srv6 sid … via segment-list …` (4.35.0F+) | SRv6 Traceroute |
+| Verify static uA (optional) | `show srv6 adjacency-segments` | Command API 2.1942 (4.36+); uA TOI 4.35.0F+ |
+| Path ping | `ping srv6 sid <target> via segment-list <sid1> <sid2> …` | SRv6 Ping (CLI only — not in Command API) |
+| Path trace | `traceroute srv6 sid … via segment-list …` (4.35.0F+) | SRv6 Traceroute (CLI only — not in Command API) |
 
 ### Not Arista EOS syntax (do not use on EOS)
 
@@ -143,13 +149,15 @@ Canonical **`/48` uN prefix** is identical on SONiC and Arista. Columns show how
 | P2 | `0xfe02` | `fcbb:bbbb:fe02::/64` | `MRC-R1-P2\|FCBB:BBBB:FE02::/64` | … |
 | … | `0xfe0{n}` | `fcbb:bbbb:fe0{n}::/64` | … | … |
 
+When uA is configured, validate with `show srv6 adjacency-segments` (keyed by domain/locator and `usid`; reports `l3Intf`, IPv6 next-hop, flavors, and active/inactive reasons). See [Command API 2.1942](EOS-4.36.0FX-SRV6-CommandApiGuide.pdf) and the [SRv6 uA TOI](https://www.arista.com/en/support/toi/eos-4-35-0f-srv6-ua-support).
+
 **SONiC ConfigDB:** set `SRV6_MY_LOCATORS.<name>.prefix` to the `/48` without CIDR (e.g. `"FCBB:BBBB:0101::"`). **Arista:** set `interface Loopback0` to the same `/48` shown in `show srv6 locator`.
 
 **Example uSID carrier** for Leaf P1 → Spine P1 → Leaf P1 (return hop on same leaf, different port):
 
 ```text
 fcbb:bbbb:0101:0201:0101:0000:0000
-│           │    │    │    └── EoC padding
+│           │    │    │    └── EoC padding (must not be the next CSID after active uSID in transit — see MRC constraints)
 │           │    │    └── dst leaf uSID (0x0101) — final hop before NIC decap
 │           │    └── spine uSID (0x0201) — active after 1st shift at leaf
 │           └── leaf uSID (0x0101) — active at leaf ingress
@@ -173,6 +181,7 @@ At each hop the switch compares the first **48 bits** to its configured locator 
 | **Operational CLI** | Mostly `vtysh` (FRR) | `show srv6 …`, `ping srv6 …` |
 | **Verify locators** | `vtysh -c "show segment-routing srv6 locator"` | `show srv6 locator` |
 | **Verify uN in SFIB** | `vtysh -c "show segment-routing srv6 sid"` | `show srv6 route` |
+| **Verify uA (optional)** | `vtysh -c "show segment-routing srv6 sid"` | `show srv6 adjacency-segments` |
 
 ### uN forwarding (identical semantics)
 
@@ -189,7 +198,7 @@ Both platforms implement the same MRC dataplane steps described in the [OpenAI M
 
 **Role:** Accept node uplinks; uN-shift toward spine; static route to spine uSID prefix.
 
-### Arista EOS 4.36 (7060XE7)
+### Arista EOS 4.36 (7060XE7 — Tomahawk 6)
 
 ```eos
 ! ── Global ─────────────────────────────────────────────────────────
@@ -245,10 +254,13 @@ ipv6 route fcbb:bbbb:0101:0002::/80 Ethernet2 fe80::node-r2-nic1
 
 ```eos
 show srv6 locator
+show srv6 domain
 show srv6 route
 show srv6 capabilities
+show srv6 adjacency-segments    ! optional — when static uA is configured
 show ipv6 route fcbb:bbbb:0201::/48
 ! Path reachability (requires segment-list; target needs Loopback0 /48 on peer)
+! CLI only — not exposed in the 4.36 Command API guide
 ping srv6 sid fcbb:bbbb:0201:: via segment-list fcbb:bbbb:0101::
 ```
 
@@ -465,9 +477,13 @@ Both platforms in an MRC training fabric should observe the same discipline docu
 | **No dynamic routing** | Do not enable BGP, IS-IS, or OSPFv3 on MRC backend planes |
 | **No PFC** | Lossy Ethernet; MRC NIC handles retry |
 | **Static FIB** | Install full path matrix at provisioning; avoid runtime route changes |
-| **Line-rate uN** | 7060XE7 (TH5) and Spectrum-4/5 + SONiC both support line-rate uN shift in production MRC deployments |
+| **Line-rate uN** | **7060XE7** (Tomahawk 6) in this primer’s rack design; **7060X6** (Tomahawk 5) is a separate Arista line with the same F3216 EOS CLI — confirm SRv6 on your SKU/build. Spectrum-4/5 + SONiC also support line-rate uN in production MRC deployments |
+| **EoC / zero CSID on transit** | On **DCS-7060X6**, EOS **drops** packets when the CSID **immediately after the active uN or uA** is **`0000`** (EoC marker) — see [RN 1294522](RN-4.36.0FX-SRV6-v0.1.pdf). NIC path encoders must place EoC padding only in trailing slots; every post-shift active CSID during transit must be a non-zero uSID until the consuming node |
 
 The **32-bit EV** in the outer header is **not used for forwarding** — it exists for SACK/NACK feedback on the NIC. See [MRC Packet Structure](generated/srv6-mrc-packet-ev-header.md).
+
+!!! note "SRv6 agent restarts"
+    The [SRv6 uN TOI](SRv6-uN-Support.pdf) notes that SRv6 agent, SandTunnel, or StrataL3Unicast agent restarts are **hitful** — expect brief SRv6 forwarding impact during process restart.
 
 ---
 
@@ -480,7 +496,7 @@ flowchart LR
   C --> D[Static ipv6 routes per prefix]
   D --> E1[Arista: startup-config]
   D --> E2[SONiC: config_db.json + FRR]
-  E1 --> F[Lab validation: ping srv6 + show srv6]
+  E1 --> F[Lab validation: show srv6 + ping srv6]
   E2 --> F
   F --> G[Freeze config for production job]
 ```
@@ -488,7 +504,7 @@ flowchart LR
 1. **Design** — Build the uSID path matrix from rack topology (9 nodes, 8 planes, 2 hops).
 2. **Assign** — Allocate `/48` uN locators per switch from the [prefix mapping table](srv6-usid-leaf-spine-config.md#side-by-side-prefix-mapping-8-planes) (`end usid` → `fcbb:bbbb:WWWW::/48`).
 3. **Program** — Install locators + static routes on every leaf and spine.
-4. **Validate** — Inject test packets with known uSID carriers; confirm shift-and-forward on each hop.
+4. **Validate** — `show srv6 locator` / `route` / `capabilities` (and `adjacency-segments` if uA); inject test packets with known uSID carriers; confirm shift-and-forward on each hop; `ping srv6` for path reachability.
 5. **Freeze** — Treat running config as immutable for the training job (MRC handles path health at the NIC).
 
 ---
@@ -507,5 +523,7 @@ flowchart LR
 - [SRv6 uN Support TOI (local PDF)](SRv6-uN-Support.pdf)
 - [Arista SRv6 uN Support TOI (web)](https://www.arista.com/en/support/toi/eos-4-34-2f-srv6-un-support)
 - [Arista SRv6 uA Support TOI (web)](https://www.arista.com/en/support/toi/eos-4-35-0f-srv6-ua-support)
+- [EOS 4.36.0FX-SRV6 Command API Guide (local PDF)](EOS-4.36.0FX-SRV6-CommandApiGuide.pdf) — `show srv6` eAPI models
+- [EOS 4.36.0FX-SRV6 Release Notes v0.1 (local PDF)](RN-4.36.0FX-SRV6-v0.1.pdf) — platform matrix and known caveats
 - [Resilient AI Supercomputer Networking using MRC and SRv6 (OpenAI)](https://cdn.openai.com/pdf/resilient-ai-supercomputer-networking-using-mrc-and-srv6.pdf)
 - [Arista 7060XE7 datasheet](https://www.arista.com/assets/data/pdf/Datasheets/7060XE7-Datasheet.pdf)
