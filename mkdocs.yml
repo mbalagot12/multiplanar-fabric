@@ -38,6 +38,9 @@ markdown_extensions:
 extra_css:
   - stylesheets/html-pages.css
 
+extra:
+  generator: false
+
 nav:
   - Home: index.md
   - Reference:
