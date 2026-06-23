@@ -42,8 +42,8 @@ Understand how MRC encodes paths and entropy in every packet.
 
 How individual compute nodes connect GPUs to the eight-plane fabric.
 
-- **[Nvidia DGX H100 — MRC Fabric Integration](generated/dgx-mrc-diagram-1.md)** — NVLink/NVSwitch for intra-node all-reduce; ConnectX-7 NICs for inter-node MRC at 8 × 400G (3.2 Tbps per node).
 - **[AMD MI350X — MRC SRv6 Fabric Connectivity](generated/amd-mi350x-mrc-srv6-fabric.md)** — AMD Instinct MI350X with Pensando Pollara 400 NICs; OCP MRC Rev 1.0 ibverbs shim via RCCL; AMD vs Nvidia node comparison on the same fabric.
+- **Nvidia HGX Blackwell (B300)** — NVLink/NVSwitch for intra-node all-reduce; ConnectX-8 SuperNICs for inter-node MRC at 8 × 800G (6.4 Tbps per node). ConnectX-8 SuperNIC was the platform used to validate OCP MRC Rev 1.0.
 
 !!! note "Vendor-agnostic fabric"
     MRC is fabric-agnostic. Both Nvidia and AMD nodes implement the same OCP MRC Rev 1.0 semantics — identical EV generation, SRv6 forwarding, and plane wiring. An Arista 7060XE7 switch sees indistinguishable traffic from either vendor, making mixed AMD + Nvidia clusters architecturally valid.
@@ -52,20 +52,20 @@ How individual compute nodes connect GPUs to the eight-plane fabric.
 
 End-to-end rack layouts pairing compute with MRC fabric switches.
 
-- **[72-GPU MRC Rack — Arista 7060XE7 + Nvidia DGX H100](generated/mrc-72gpu-rack-diagram-1.md)** — 9 × DGX H100 (72 GPUs), 16 × 7060XE7 (8 leaf + 8 spine), 28.8 Tbps aggregate, 2-hop any-to-any.
-- **[72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300](generated/mrc-blackwell-ultra-rack-1.md)** — 9 × HGX B300 with ConnectX-8 SuperNICs at 800G per uplink, 57.6 Tbps aggregate — same MRC discipline at double the link speed.
+- **[72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300](generated/mrc-blackwell-ultra-rack-1.md)** — 9 × HGX B300 with ConnectX-8 SuperNICs at 800G per uplink, 57.6 Tbps aggregate, 2-hop any-to-any.
 - **[GB300 NVL72 — Liquid-Cooled Data Center Rack](generated/gb300-nvl72-dc-rack-1.md)** — 48U MGX rack with 72 × B300 GPUs, CDU cooling loop, 135 kW TDP, and integrated MRC fabric switching at rack scale.
 
 ---
 
 ## Key design parameters
 
-| Parameter | H100 generation | Blackwell generation |
-|-----------|-----------------|---------------------|
-| NIC | ConnectX-7 | ConnectX-8 SuperNIC |
-| Uplink speed | 400G per plane | 800G per plane |
+| Parameter | Nvidia (Blackwell) | AMD (MI350X) |
+|-----------|-------------------|--------------|
+| NIC | ConnectX-8 SuperNIC | Pollara 400 |
+| MRC Rev 1.0 validation | ConnectX-8 SuperNIC (reference platform) | Pollara 400 |
+| Uplink speed | 800G per plane | 400G per plane |
 | NICs per node | 8 | 8 |
-| Fabric BW per node | 3.2 Tbps | 6.4 Tbps |
+| Fabric BW per node | 6.4 Tbps | 3.2 Tbps |
 | Leaf/spine switch | Arista 7060XE7 | Arista 7060XE7 |
 | Planes | 8 (independent) | 8 (independent) |
 | Routing | SRv6 uN uSID (static) | SRv6 uN uSID (static) |

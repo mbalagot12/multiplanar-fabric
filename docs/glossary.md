@@ -314,9 +314,9 @@ Arista technical bulletin for new features (e.g. SRv6 uN Support, SRv6 uA Suppor
 
 Nvidia Ethernet switch ASICs running SONiC or Cumulus in OpenAI/Microsoft MRC deployments (alongside Arista EOS).
 
-### ConnectX-7 / ConnectX-8 SuperNIC
+### ConnectX-8 SuperNIC
 
-Nvidia SmartNICs with MRC engine support (400G and 800G per port respectively in this primer).
+Nvidia SmartNIC with MRC engine support (800G per port in this primer). ConnectX-8 SuperNIC was the platform used to validate OCP MRC Rev 1.0.
 
 ### Pollara 400
 

@@ -48,9 +48,7 @@ nav:
       - SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista): srv6-usid-leaf-spine-config.md
   - Pages:
       - AMD MI350X — MRC SRv6 Fabric Connectivity: generated/amd-mi350x-mrc-srv6-fabric.md
-      - Nvidia DGX H100 — MRC Fabric Integration: generated/dgx-mrc-diagram-1.md
       - GB300 NVL72 — Liquid-Cooled Data Center Rack: generated/gb300-nvl72-dc-rack-1.md
-      - 72-GPU MRC Rack — Arista 7060XE7 + Nvidia DGX H100: generated/mrc-72gpu-rack-diagram-1.md
       - 72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300: generated/mrc-blackwell-ultra-rack-1.md
       - MRC Packet Structure — SRv6 + Entropy Value: generated/srv6-mrc-packet-ev-header.md
       - MRC Packet Spray Animation: generated/mrc-packet-spray-animation.md

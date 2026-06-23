@@ -513,8 +513,7 @@ flowchart LR
 
 - [Glossary](glossary.md)
 - [MRC Packet Structure — SRv6 + Entropy Value](generated/srv6-mrc-packet-ev-header.md)
-- [72-GPU MRC Rack — Arista 7060XE7 + DGX H100](generated/mrc-72gpu-rack-diagram-1.md)
-- [72-GPU Blackwell Ultra MRC Rack](generated/mrc-blackwell-ultra-rack-1.md)
+- [72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300](generated/mrc-blackwell-ultra-rack-1.md)
 
 ## External references
 
