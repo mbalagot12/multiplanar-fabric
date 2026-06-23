@@ -55,7 +55,7 @@
 
   <rect x="40" y="236" width="286" height="56" rx="8" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.8"/>
   <text x="183" y="252" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#633806">8x SmartNIC (MRC engine)</text>
-  <text x="183" y="266" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#854F0B">ConnectX-7/8 or Pollara 400</text>
+  <text x="183" y="266" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#854F0B">ConnectX-8 SuperNIC or Pollara 400</text>
 
   <g font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#633806">
     <rect x="48" y="274" width="28" height="14" rx="2" fill="#fff" stroke="#BA7517" stroke-width="0.6"/>
