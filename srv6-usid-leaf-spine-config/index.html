@@ -1,0 +1,2523 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MkDocs site rendering user-supplied HTML pages">
+      
+      
+      
+        <link rel="canonical" href="https://multiplanar.agentic24x7.net/srv6-usid-leaf-spine-config/">
+      
+      
+        <link rel="prev" href="../glossary/">
+      
+      
+        <link rel="next" href="../arista-eos-srv6-un-ua-config/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista) - Multiplanar Fabric AI Networking Primer</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/html-pages.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#srv6-un-usid-leafspine-config-reference-sonic-vs-arista-eos" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Multiplanar Fabric AI Networking Primer" class="md-header__button md-logo" aria-label="Multiplanar Fabric AI Networking Primer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Multiplanar Fabric AI Networking Primer
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../glossary/" class="md-tabs__link">
+          
+  
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../generated/amd-mi350x-mrc-srv6-fabric/" class="md-tabs__link">
+          
+  
+  
+  Pages
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Multiplanar Fabric AI Networking Primer" class="md-nav__button md-logo" aria-label="Multiplanar Fabric AI Networking Primer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Multiplanar Fabric AI Networking Primer
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation sources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arista-eos-cli-validation-srv6-un-toi-4342f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arista EOS — CLI validation (SRv6 uN TOI 4.34.2F)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arista EOS — CLI validation (SRv6 uN TOI 4.34.2F)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-platform-toi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature &amp; platform (TOI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validated-arista-cli-from-toi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validated Arista CLI (from TOI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-arista-eos-syntax-do-not-use-on-eos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not Arista EOS syntax (do not use on EOS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-topology-one-mrc-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference topology (one MRC plane)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#addressing-plan-f3216-unified-sonic-arista" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Addressing plan (F3216 — unified SONiC &amp; Arista)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Addressing plan (F3216 — unified SONiC &amp; Arista)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#derivation-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Derivation rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usid-value-allocation-rack-r1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uSID value allocation (rack R1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-by-side-prefix-mapping-8-planes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Side-by-side prefix mapping (8 planes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#side-by-side-implementation-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Side-by-side: implementation comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Side-by-side: implementation comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-forwarding-identical-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uN forwarding (identical semantics)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-a-leaf-p1-plane-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template A — Leaf P1 (plane 1)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Template A — Leaf P1 (plane 1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arista-eos-436-7060xe7-tomahawk-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arista EOS 4.36 (7060XE7 — Tomahawk 6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sonic-configdb-compiled-frr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SONiC (ConfigDB + compiled FRR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-b-spine-p1-plane-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template B — Spine P1 (plane 1)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Template B — Spine P1 (plane 1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arista-eos-436" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arista EOS 4.36
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sonic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SONiC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-c-full-plane-matrix-8-planes-2-tiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template C — Full plane matrix (8 planes × 2 tiers)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#un-vs-ua-when-to-use-which" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uN vs uA — when to use which
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sonic-vs-arista-cli-syntax-cheat-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SONiC vs Arista — CLI syntax cheat sheet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SONiC vs Arista — CLI syntax cheat sheet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locator-usid-f3216" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locator (uSID F3216)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-local-sid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static local SID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-behaviors-in-static-configdb-sonic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported behaviors in static ConfigDB (SONiC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mrc-specific-operational-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MRC-specific operational constraints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-workflow-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration workflow (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related pages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External references
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arista-eos-srv6-un-ua-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arista EOS SRv6 uN + uA Config — Plane 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../srv6-plane1-packet-traversal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SRv6 Plane 1 — Packet Traversal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pages
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pages
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generated/amd-mi350x-mrc-srv6-fabric/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AMD MI350X — MRC SRv6 Fabric Connectivity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generated/gb300-nvl72-dc-rack-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GB300 NVL72 — Liquid-Cooled Data Center Rack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generated/mrc-blackwell-ultra-rack-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generated/srv6-mrc-packet-ev-header/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MRC Packet Structure — SRv6 + Entropy Value
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generated/mrc-packet-spray-animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MRC Packet Spray Animation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation sources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arista-eos-cli-validation-srv6-un-toi-4342f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arista EOS — CLI validation (SRv6 uN TOI 4.34.2F)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arista EOS — CLI validation (SRv6 uN TOI 4.34.2F)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-platform-toi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature &amp; platform (TOI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validated-arista-cli-from-toi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validated Arista CLI (from TOI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-arista-eos-syntax-do-not-use-on-eos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not Arista EOS syntax (do not use on EOS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-topology-one-mrc-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference topology (one MRC plane)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#addressing-plan-f3216-unified-sonic-arista" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Addressing plan (F3216 — unified SONiC &amp; Arista)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Addressing plan (F3216 — unified SONiC &amp; Arista)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#derivation-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Derivation rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usid-value-allocation-rack-r1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uSID value allocation (rack R1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-by-side-prefix-mapping-8-planes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Side-by-side prefix mapping (8 planes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#side-by-side-implementation-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Side-by-side: implementation comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Side-by-side: implementation comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-forwarding-identical-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uN forwarding (identical semantics)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-a-leaf-p1-plane-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template A — Leaf P1 (plane 1)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Template A — Leaf P1 (plane 1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arista-eos-436-7060xe7-tomahawk-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arista EOS 4.36 (7060XE7 — Tomahawk 6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sonic-configdb-compiled-frr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SONiC (ConfigDB + compiled FRR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-b-spine-p1-plane-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template B — Spine P1 (plane 1)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Template B — Spine P1 (plane 1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arista-eos-436" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arista EOS 4.36
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sonic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SONiC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-c-full-plane-matrix-8-planes-2-tiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template C — Full plane matrix (8 planes × 2 tiers)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#un-vs-ua-when-to-use-which" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uN vs uA — when to use which
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sonic-vs-arista-cli-syntax-cheat-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SONiC vs Arista — CLI syntax cheat sheet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SONiC vs Arista — CLI syntax cheat sheet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locator-usid-f3216" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locator (uSID F3216)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-local-sid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static local SID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-behaviors-in-static-configdb-sonic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported behaviors in static ConfigDB (SONiC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mrc-specific-operational-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MRC-specific operational constraints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-workflow-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration workflow (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related pages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External references
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="srv6-un-usid-leafspine-config-reference-sonic-vs-arista-eos">SRv6 uN uSID — Leaf/Spine Config Reference (SONiC vs Arista EOS)</h1>
+<p>Reference for <strong>static SRv6 uN uSID</strong> programming on MRC leaf–spine fabrics. Covers the comparison between <strong>SONiC</strong> (FRR + ConfigDB + SAI) and <strong>Arista EOS 4.36</strong> (<strong>7060XE7</strong> / Tomahawk 6 — MRC rack reference design), with <strong>concrete configuration templates</strong> for a single MRC plane inside a 72-GPU rack.</p>
+<p>See the <strong><a href="../glossary/">Glossary</a></strong> for definitions of uN, uA, PSP/USD, F3216, ConfigDB, and related terms.</p>
+<div class="admonition note">
+<p class="admonition-title">Scope</p>
+<p>Templates use an <strong>illustrative addressing plan</strong> aligned with OCP MRC / OpenAI MRC semantics (F3216 uSID, static tables, no ECMP, no dynamic routing). Replace interface names, link-local next hops, and uSID values with your deployment spreadsheet before production use.</p>
+</div>
+<hr />
+<h2 id="documentation-sources">Documentation sources</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Document</th>
+<th>Role for uN/uSID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SONiC</strong></td>
+<td><a href="https://github.com/sonic-net/sonic-buildimage/blob/master/src/sonic-yang-models/doc/Configuration.md">ConfigDB SRv6 schema</a>, <a href="https://github.com/sonic-net/SONiC/blob/master/doc/srv6/srv6_static_config_hld.md">Static SRv6 HLD</a>, <a href="https://github.com/sonic-net/SONiC/blob/master/doc/srv6/SRv6_uSID.md">SRv6 uSID HLD</a>, <a href="https://github.com/FRRouting/frr/blob/master/doc/user/zebra.rst">FRR zebra SRv6</a>, <a href="https://github.com/FRRouting/frr/blob/master/doc/user/static.rst">FRR static-sids</a></td>
+<td>Config + operational CLI</td>
+</tr>
+<tr>
+<td><strong>Arista EOS</strong></td>
+<td><a href="../SRv6-uN-Support.pdf">SRv6 uN Support TOI (local PDF)</a> (4.34.2F+) · <a href="https://www.arista.com/en/support/toi/eos-4-34-2f-srv6-un-support">web TOI</a></td>
+<td><strong>Authoritative CLI</strong> — <code>router srv6</code>, micro-segment domain, locator, static routes, <code>ping srv6</code> / <code>traceroute srv6</code></td>
+</tr>
+<tr>
+<td><strong>Arista EOS</strong></td>
+<td><a href="https://www.arista.com/en/support/toi/eos-4-35-0f-srv6-ua-support">SRv6 uA TOI (4.35.0F+)</a></td>
+<td>Optional static uA adjacency configuration</td>
+</tr>
+<tr>
+<td><strong>Arista EOS 4.36</strong></td>
+<td><a href="../EOS-4.36.0FX-SRV6-CommandApiGuide.pdf">EOS 4.36.0FX-SRV6 Command API Guide (local PDF)</a></td>
+<td><strong>eAPI JSON schema</strong> for <code>show srv6 …</code> output — observability/automation only; no config or <code>ping srv6</code></td>
+</tr>
+<tr>
+<td><strong>Arista EOS 4.36</strong></td>
+<td><a href="../RN-4.36.0FX-SRV6-v0.1.pdf">EOS 4.36.0FX-SRV6 Release Notes v0.1 (local PDF)</a></td>
+<td><strong>4.36 SRv6 build</strong> platform matrix and known caveats (e.g. zero CSID after active segment on 7060X6)</td>
+</tr>
+<tr>
+<td><strong>MRC</strong></td>
+<td><a href="https://arxiv.org/html/2605.04333v1">OpenAI MRC paper</a></td>
+<td>Fabric semantics and path encoding</td>
+</tr>
+</tbody>
+</table>
+<p>The public <strong>EOS 4.36 user manual does not include a dedicated SRv6 uSID configuration chapter</strong>. Use the <strong>TOI</strong> for syntax; use the <strong>Command API guide</strong> to parse <code>show srv6 locator</code>, <code>show srv6 route</code>, <code>show srv6 capabilities</code>, <code>show srv6 domain</code>, and <code>show srv6 adjacency-segments</code> via JSON-RPC. SONiC configuration is split between <strong>ConfigDB</strong> and <strong>FRR <code>vtysh</code></strong>.</p>
+<hr />
+<h2 id="arista-eos-cli-validation-srv6-un-toi-4342f">Arista EOS — CLI validation (SRv6 uN TOI 4.34.2F)</h2>
+<p>Validated against <strong><a href="../SRv6-uN-Support.pdf">SRv6-uN-Support.pdf</a></strong> in this repo (Arista TOI, June 2026 export). Arista EOS SRv6 uN uses a <strong>different CLI tree</strong> from SONiC/FRR and from <strong>3rd-party OS</strong> <code>segment-routing srv6</code> examples.</p>
+<h3 id="feature-platform-toi">Feature &amp; platform (TOI)</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>TOI detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Introduced</strong></td>
+<td>EOS <strong>4.34.2F</strong> — SRv6 uN on <strong>DCS-7060X6</strong>; F3216; static-route reachability to neighbor uNs; <strong>ping srv6</strong></td>
+</tr>
+<tr>
+<td><strong>Later</strong></td>
+<td>4.35.0F traceroute srv6; 4.35.1F 7280R3/7500R3/7800R3 (TCAM profile <code>srv6-usid-f3216</code>)</td>
+</tr>
+<tr>
+<td><strong>uN dataplane</strong></td>
+<td>Match local <code>/48</code> locator → shift left 16 bits → LPM in IPv6 FIB (static routes to neighbor uNs)</td>
+</tr>
+<tr>
+<td><strong>Flavors</strong></td>
+<td><code>show srv6 capabilities</code>: PSP, USD, Next-CSID supported; End with NEXT-CSID in System SFIB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Platform note:</strong> This primer’s rack diagrams use <strong>7060XE7</strong> (Broadcom <strong>Tomahawk 6</strong>). Arista’s SRv6 uN TOI and the <strong>4.36.0FX-SRV6</strong> release notes first document uN on <strong>DCS-7060X6</strong> (Broadcom <strong>Tomahawk 5</strong>) — a separate, concurrently shipping product line. F3216 uSID semantics and EOS CLI are the same; confirm SRv6 feature support and caveats against your exact SKU and EOS build before deployment.</p>
+<h3 id="validated-arista-cli-from-toi">Validated Arista CLI (from TOI)</h3>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Command / stanza</th>
+<th>TOI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enable IPv6 routing</td>
+<td><code>ipv6 unicast-routing</code></td>
+<td>Troubleshooting §1</td>
+</tr>
+<tr>
+<td>SRv6 config root</td>
+<td><code>router srv6</code> → <code>vrf default</code></td>
+<td>Configuration</td>
+</tr>
+<tr>
+<td>uSID block (F3216)</td>
+<td><code>micro-segment domain &lt;NAME&gt;</code> → <code>block fcbb:bbbb::/32</code></td>
+<td>Configuration</td>
+</tr>
+<tr>
+<td>Local uN locator</td>
+<td><code>locator &lt;NAME&gt;</code> → <code>prefix micro-segment domain &lt;NAME&gt; end usid &lt;value&gt;</code></td>
+<td>Configuration</td>
+</tr>
+<tr>
+<td>Loopback for ping</td>
+<td><code>interface Loopback0</code> → <code>ipv6 address &lt;locator-prefix&gt;/48</code></td>
+<td>SRv6 Ping</td>
+</tr>
+<tr>
+<td>Neighbor uN reachability</td>
+<td><code>ipv6 route &lt;neighbor-uN&gt;/48 &lt;nh&gt;</code> or <code>… Ethernet N fe80::…</code></td>
+<td>SRv6 Operation</td>
+</tr>
+<tr>
+<td>Verify locator</td>
+<td><code>show srv6 locator</code></td>
+<td>Show Commands</td>
+</tr>
+<tr>
+<td>Verify micro-segment domain</td>
+<td><code>show srv6 domain</code></td>
+<td>Command API 2.1944 (GIB range, block state)</td>
+</tr>
+<tr>
+<td>Verify System SFIB</td>
+<td><code>show srv6 route</code></td>
+<td>Show Commands</td>
+</tr>
+<tr>
+<td>Verify capabilities</td>
+<td><code>show srv6 capabilities</code></td>
+<td>Show Commands</td>
+</tr>
+<tr>
+<td>Verify static uA (optional)</td>
+<td><code>show srv6 adjacency-segments</code></td>
+<td>Command API 2.1942 (4.36+); uA TOI 4.35.0F+</td>
+</tr>
+<tr>
+<td>Path ping</td>
+<td><code>ping srv6 sid &lt;target&gt; via segment-list &lt;sid1&gt; &lt;sid2&gt; …</code></td>
+<td>SRv6 Ping (CLI only — not in Command API)</td>
+</tr>
+<tr>
+<td>Path trace</td>
+<td><code>traceroute srv6 sid … via segment-list …</code> (4.35.0F+)</td>
+<td>SRv6 Traceroute (CLI only — not in Command API)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="not-arista-eos-syntax-do-not-use-on-eos">Not Arista EOS syntax (do not use on EOS)</h3>
+<table>
+<thead>
+<tr>
+<th>Syntax</th>
+<th>Belongs to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>segment-routing</code> → <code>srv6</code> → <code>locators</code></td>
+<td>3rd-party OS / FRR-style examples</td>
+</tr>
+<tr>
+<td><code>micro-segment behavior unode psp-usd</code></td>
+<td>3rd-party OS</td>
+</tr>
+<tr>
+<td><code>prefix … block-len … behavior usid</code></td>
+<td>SONiC / FRR</td>
+</tr>
+<tr>
+<td><code>show segment-routing srv6 locator</code> / <code>sid</code></td>
+<td>3rd-party OS</td>
+</tr>
+<tr>
+<td><code>static-sids</code> / <code>behavior uA …</code></td>
+<td>SONiC / FRR (uA: separate Arista TOI)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="reference-topology-one-mrc-plane">Reference topology (one MRC plane)</h2>
+<p>A 72-GPU rack uses <strong>16 × Arista 7060XE7</strong> switches — one leaf and one spine per plane, with <strong>no cross-plane links</strong>. Each plane is an isolated 2-hop fabric:</p>
+<div class="highlight"><pre><span></span><code>  Node A (NIC n)          Node B (NIC n)
+       │                        ▲
+       │ 400G/800G              │
+       ▼                        │
+  ┌─────────┐   uplink   ┌─────────┐   downlink   (same leaf, different ports)
+  │ Leaf Pn │───────────▶│ Spine Pn│──────────────┘
+  └─────────┘            └─────────┘
+       ▲                        │
+       └──────── uplink ────────┘
+</code></pre></div>
+<p><strong>Traffic path (same plane, node A → node B):</strong> <code>A → Leaf → Spine → Leaf → B</code></p>
+<p>SRv6 encodes that path in the <strong>outer IPv6 destination address</strong> as a uSID carrier. Each transit switch runs <strong>uN</strong> (shift-and-lookup). See <a href="../generated/srv6-mrc-packet-ev-header/">MRC Packet Structure</a>.</p>
+<hr />
+<h2 id="addressing-plan-f3216-unified-sonic-arista">Addressing plan (F3216 — unified SONiC &amp; Arista)</h2>
+<p>Uses <strong>F3216</strong>: 32-bit block + 16-bit uSID per locator (<a href="https://www.rfc-editor.org/rfc/rfc9800">RFC 9800</a> / IETF uSID). <strong>Both vendors use the same <code>/48</code> prefixes</strong> derived from one block and one <strong>16-bit <code>end usid</code> per switch</strong>.</p>
+<h3 id="derivation-rule">Derivation rule</h3>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>SONiC / FRR</th>
+<th>Arista EOS (<a href="../SRv6-uN-Support.pdf">TOI</a>)</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Block</td>
+<td><code>prefix …/48 block-len 32 node-len 16</code> + <code>behavior usid</code></td>
+<td><code>micro-segment domain …</code> → <code>block fcbb:bbbb::/32</code></td>
+<td>F3216 block</td>
+</tr>
+<tr>
+<td>2. Local uN</td>
+<td><code>static-sids</code> → <code>sid &lt;prefix&gt;/48 … behavior uN</code></td>
+<td><code>locator …</code> → <code>prefix micro-segment domain … end usid &lt;value&gt;</code></td>
+<td><code>/48</code> uN</td>
+</tr>
+<tr>
+<td>3. Verify</td>
+<td><code>show segment-routing srv6 locator</code></td>
+<td><code>show srv6 locator</code> → <strong>Prefix</strong> field</td>
+<td>Must match loopback / static routes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Formula:</strong> <code>block fcbb:bbbb::/32</code> + <code>end usid 0xWWWW</code> → <strong><code>fcbb:bbbb:WWWW::/48</code></strong></p>
+<p>TOI example: <code>fc00:42::/32</code> + <code>0xC901</code> → <code>fc00:42:C901::/48</code>. This template uses rack block <code>fcbb:bbbb::/32</code>.</p>
+<h3 id="usid-value-allocation-rack-r1">uSID value allocation (rack R1)</h3>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th><code>end usid</code> pattern</th>
+<th>Example (P1)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leaf plane <em>n</em></td>
+<td><code>0x01{n}</code></td>
+<td><code>0x0101</code></td>
+<td><em>n</em> = 1…8 (hex digit in low byte)</td>
+</tr>
+<tr>
+<td>Spine plane <em>n</em></td>
+<td><code>0x02{n}</code></td>
+<td><code>0x0201</code></td>
+<td>Spine tier for same plane</td>
+</tr>
+<tr>
+<td>Leaf→spine uA (optional)</td>
+<td><code>0xfe0{n}</code></td>
+<td><code>0xfe01</code></td>
+<td>Static adjacency on explicit uplink</td>
+</tr>
+<tr>
+<td>Rack label (logical)</td>
+<td>high byte <code>0x01</code> / <code>0x02</code></td>
+<td>—</td>
+<td>Encoded in uSID, not a separate address field</td>
+</tr>
+</tbody>
+</table>
+<p>Shared block once per fabric: <strong><code>fcbb:bbbb::/32</code></strong>. Unique <strong><code>end usid</code></strong> per switch (GIB default <code>0x1</code>–<code>0xDFFF</code> per TOI).</p>
+<h3 id="side-by-side-prefix-mapping-8-planes">Side-by-side prefix mapping (8 planes)</h3>
+<p>Canonical <strong><code>/48</code> uN prefix</strong> is identical on SONiC and Arista. Columns show how each vendor names the same value.</p>
+<table>
+<thead>
+<tr>
+<th>Plane</th>
+<th>Tier</th>
+<th>Hostname</th>
+<th><code>end usid</code></th>
+<th><code>/48</code> uN prefix (both vendors)</th>
+<th>SONiC locator</th>
+<th>Arista locator</th>
+<th>Arista CLI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>Leaf</td>
+<td><code>leaf-p1-r1</code></td>
+<td><code>0x0101</code></td>
+<td><code>fcbb:bbbb:0101::/48</code></td>
+<td><code>MRC-R1-P1</code></td>
+<td><code>MRC-R1-P1</code></td>
+<td><code>end usid 0x0101</code></td>
+</tr>
+<tr>
+<td>P1</td>
+<td>Spine</td>
+<td><code>spine-p1-r1</code></td>
+<td><code>0x0201</code></td>
+<td><code>fcbb:bbbb:0201::/48</code></td>
+<td><code>MRC-R1-S1</code></td>
+<td><code>MRC-R1-S1</code></td>
+<td><code>end usid 0x0201</code></td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Leaf</td>
+<td><code>leaf-p2-r1</code></td>
+<td><code>0x0102</code></td>
+<td><code>fcbb:bbbb:0102::/48</code></td>
+<td><code>MRC-R1-P2</code></td>
+<td><code>MRC-R1-P2</code></td>
+<td><code>end usid 0x0102</code></td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Spine</td>
+<td><code>spine-p2-r1</code></td>
+<td><code>0x0202</code></td>
+<td><code>fcbb:bbbb:0202::/48</code></td>
+<td><code>MRC-R1-S2</code></td>
+<td><code>MRC-R1-S2</code></td>
+<td><code>end usid 0x0202</code></td>
+</tr>
+<tr>
+<td>P3</td>
+<td>Leaf</td>
+<td><code>leaf-p3-r1</code></td>
+<td><code>0x0103</code></td>
+<td><code>fcbb:bbbb:0103::/48</code></td>
+<td><code>MRC-R1-P3</code></td>
+<td><code>MRC-R1-P3</code></td>
+<td><code>end usid 0x0103</code></td>
+</tr>
+<tr>
+<td>P3</td>
+<td>Spine</td>
+<td><code>spine-p3-r1</code></td>
+<td><code>0x0203</code></td>
+<td><code>fcbb:bbbb:0203::/48</code></td>
+<td><code>MRC-R1-S3</code></td>
+<td><code>MRC-R1-S3</code></td>
+<td><code>end usid 0x0203</code></td>
+</tr>
+<tr>
+<td>P4</td>
+<td>Leaf</td>
+<td><code>leaf-p4-r1</code></td>
+<td><code>0x0104</code></td>
+<td><code>fcbb:bbbb:0104::/48</code></td>
+<td><code>MRC-R1-P4</code></td>
+<td><code>MRC-R1-P4</code></td>
+<td><code>end usid 0x0104</code></td>
+</tr>
+<tr>
+<td>P4</td>
+<td>Spine</td>
+<td><code>spine-p4-r1</code></td>
+<td><code>0x0204</code></td>
+<td><code>fcbb:bbbb:0204::/48</code></td>
+<td><code>MRC-R1-S4</code></td>
+<td><code>MRC-R1-S4</code></td>
+<td><code>end usid 0x0204</code></td>
+</tr>
+<tr>
+<td>P5</td>
+<td>Leaf</td>
+<td><code>leaf-p5-r1</code></td>
+<td><code>0x0105</code></td>
+<td><code>fcbb:bbbb:0105::/48</code></td>
+<td><code>MRC-R1-P5</code></td>
+<td><code>MRC-R1-P5</code></td>
+<td><code>end usid 0x0105</code></td>
+</tr>
+<tr>
+<td>P5</td>
+<td>Spine</td>
+<td><code>spine-p5-r1</code></td>
+<td><code>0x0205</code></td>
+<td><code>fcbb:bbbb:0205::/48</code></td>
+<td><code>MRC-R1-S5</code></td>
+<td><code>MRC-R1-S5</code></td>
+<td><code>end usid 0x0205</code></td>
+</tr>
+<tr>
+<td>P6</td>
+<td>Leaf</td>
+<td><code>leaf-p6-r1</code></td>
+<td><code>0x0106</code></td>
+<td><code>fcbb:bbbb:0106::/48</code></td>
+<td><code>MRC-R1-P6</code></td>
+<td><code>MRC-R1-P6</code></td>
+<td><code>end usid 0x0106</code></td>
+</tr>
+<tr>
+<td>P6</td>
+<td>Spine</td>
+<td><code>spine-p6-r1</code></td>
+<td><code>0x0206</code></td>
+<td><code>fcbb:bbbb:0206::/48</code></td>
+<td><code>MRC-R1-S6</code></td>
+<td><code>MRC-R1-S6</code></td>
+<td><code>end usid 0x0206</code></td>
+</tr>
+<tr>
+<td>P7</td>
+<td>Leaf</td>
+<td><code>leaf-p7-r1</code></td>
+<td><code>0x0107</code></td>
+<td><code>fcbb:bbbb:0107::/48</code></td>
+<td><code>MRC-R1-P7</code></td>
+<td><code>MRC-R1-P7</code></td>
+<td><code>end usid 0x0107</code></td>
+</tr>
+<tr>
+<td>P7</td>
+<td>Spine</td>
+<td><code>spine-p7-r1</code></td>
+<td><code>0x0207</code></td>
+<td><code>fcbb:bbbb:0207::/48</code></td>
+<td><code>MRC-R1-S7</code></td>
+<td><code>MRC-R1-S7</code></td>
+<td><code>end usid 0x0207</code></td>
+</tr>
+<tr>
+<td>P8</td>
+<td>Leaf</td>
+<td><code>leaf-p8-r1</code></td>
+<td><code>0x0108</code></td>
+<td><code>fcbb:bbbb:0108::/48</code></td>
+<td><code>MRC-R1-P8</code></td>
+<td><code>MRC-R1-P8</code></td>
+<td><code>end usid 0x0108</code></td>
+</tr>
+<tr>
+<td>P8</td>
+<td>Spine</td>
+<td><code>spine-p8-r1</code></td>
+<td><code>0x0208</code></td>
+<td><code>fcbb:bbbb:0208::/48</code></td>
+<td><code>MRC-R1-S8</code></td>
+<td><code>MRC-R1-S8</code></td>
+<td><code>end usid 0x0208</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Optional uA (leaf uplink) — same prefix on both vendors:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Plane</th>
+<th><code>end usid</code></th>
+<th><code>/64</code> uA prefix</th>
+<th>SONiC <code>SRV6_MY_SIDS</code> key suffix</th>
+<th>Arista</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td><code>0xfe01</code></td>
+<td><code>fcbb:bbbb:fe01::/64</code></td>
+<td><code>MRC-R1-P1\|FCBB:BBBB:FE01::/64</code></td>
+<td>SRv6 uA TOI (4.35.0F+)</td>
+</tr>
+<tr>
+<td>P2</td>
+<td><code>0xfe02</code></td>
+<td><code>fcbb:bbbb:fe02::/64</code></td>
+<td><code>MRC-R1-P2\|FCBB:BBBB:FE02::/64</code></td>
+<td>…</td>
+</tr>
+<tr>
+<td>…</td>
+<td><code>0xfe0{n}</code></td>
+<td><code>fcbb:bbbb:fe0{n}::/64</code></td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<p>When uA is configured, validate with <code>show srv6 adjacency-segments</code> (keyed by domain/locator and <code>usid</code>; reports <code>l3Intf</code>, IPv6 next-hop, flavors, and active/inactive reasons). See <a href="../EOS-4.36.0FX-SRV6-CommandApiGuide.pdf">Command API 2.1942</a> and the <a href="https://www.arista.com/en/support/toi/eos-4-35-0f-srv6-ua-support">SRv6 uA TOI</a>.</p>
+<p><strong>SONiC ConfigDB:</strong> set <code>SRV6_MY_LOCATORS.&lt;name&gt;.prefix</code> to the <code>/48</code> without CIDR (e.g. <code>"FCBB:BBBB:0101::"</code>). <strong>Arista:</strong> set <code>interface Loopback0</code> to the same <code>/48</code> shown in <code>show srv6 locator</code>.</p>
+<p><strong>Example uSID carrier</strong> for Leaf P1 → Spine P1 → Leaf P1 (return hop on same leaf, different port):</p>
+<div class="highlight"><pre><span></span><code>fcbb:bbbb:0101:0201:0101:0000:0000
+│           │    │    │    └── EoC padding (must not be the next CSID after active uSID in transit — see MRC constraints)
+│           │    │    └── dst leaf uSID (0x0101) — final hop before NIC decap
+│           │    └── spine uSID (0x0201) — active after 1st shift at leaf
+│           └── leaf uSID (0x0101) — active at leaf ingress
+└── 32-bit SRv6 block (fcbb:bbbb)
+</code></pre></div>
+<p>At each hop the switch compares the first <strong>48 bits</strong> to its configured locator + uSID, <strong>left-shifts 16 bits</strong>, then does a <strong>static</strong> FIB lookup. Tables are installed at build time and not changed during training.</p>
+<hr />
+<h2 id="side-by-side-implementation-comparison">Side-by-side: implementation comparison</h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>SONiC</th>
+<th>Arista EOS 4.36</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>uSID format</strong></td>
+<td>F3216 (<code>block-len 32</code>, <code>node-len 16</code>)</td>
+<td>F3216 — <code>micro-segment domain</code> + <code>block /32</code> + <code>end usid</code> (<a href="../SRv6-uN-Support.pdf">TOI</a>)</td>
+</tr>
+<tr>
+<td><strong>uN behavior</strong></td>
+<td>End + NEXT-CSID, PSP/USD</td>
+<td>End with NEXT-CSID (System SFIB); PSP/USD per <code>show srv6 capabilities</code></td>
+</tr>
+<tr>
+<td><strong>uA behavior</strong></td>
+<td>End.X + NEXT-CSID; needs <code>interface</code> + optional <code>nexthop</code></td>
+<td>Static micro-SID adjacency (SRv6 uA TOI 4.35.0F+)</td>
+</tr>
+<tr>
+<td><strong>MRC fabric control plane</strong></td>
+<td><strong>None</strong> — static only</td>
+<td><strong>None</strong> — static only</td>
+</tr>
+<tr>
+<td><strong>Config path</strong></td>
+<td>ConfigDB → bgpcfgd → FRR → srv6orch → SAI</td>
+<td><code>router srv6</code> → SRv6 agent → ASIC System SFIB</td>
+</tr>
+<tr>
+<td><strong>Persistence</strong></td>
+<td><code>/etc/sonic/config_db.json</code> + <code>config save</code></td>
+<td><code>write memory</code> / startup-config</td>
+</tr>
+<tr>
+<td><strong>Operational CLI</strong></td>
+<td>Mostly <code>vtysh</code> (FRR)</td>
+<td><code>show srv6 …</code>, <code>ping srv6 …</code></td>
+</tr>
+<tr>
+<td><strong>Verify locators</strong></td>
+<td><code>vtysh -c "show segment-routing srv6 locator"</code></td>
+<td><code>show srv6 locator</code></td>
+</tr>
+<tr>
+<td><strong>Verify uN in SFIB</strong></td>
+<td><code>vtysh -c "show segment-routing srv6 sid"</code></td>
+<td><code>show srv6 route</code></td>
+</tr>
+<tr>
+<td><strong>Verify uA (optional)</strong></td>
+<td><code>vtysh -c "show segment-routing srv6 sid"</code></td>
+<td><code>show srv6 adjacency-segments</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="un-forwarding-identical-semantics">uN forwarding (identical semantics)</h3>
+<p>Both platforms implement the same MRC dataplane steps described in the <a href="https://arxiv.org/html/2605.04333v1">OpenAI MRC paper</a>:</p>
+<ol>
+<li>Match DA[:48] against local locator + uSID.</li>
+<li>Left-shift the uSID portion by 16 bits (NEXT-CSID).</li>
+<li>Longest-prefix / static lookup on the shifted address.</li>
+<li>Forward out the configured egress port — <strong>no ECMP</strong>, <strong>no control-plane convergence</strong>.</li>
+</ol>
+<hr />
+<h2 id="template-a-leaf-p1-plane-1">Template A — Leaf P1 (plane 1)</h2>
+<p><strong>Role:</strong> Accept node uplinks; uN-shift toward spine; static route to spine uSID prefix.</p>
+<h3 id="arista-eos-436-7060xe7-tomahawk-6">Arista EOS 4.36 (7060XE7 — Tomahawk 6)</h3>
+<div class="highlight"><pre><span></span><code>! ── Global ─────────────────────────────────────────────────────────
+hostname leaf-p1-r1
+ipv6 unicast-routing
+
+! Management / underlay (link-local or GUA — illustrative)
+interface Ethernet1
+   description node-r1-nic1
+   ipv6 enable
+   ipv6 address 2001:db8:1:1::1/64
+
+interface Ethernet49
+   description uplink-to-spine-p1
+   ipv6 enable
+   ipv6 address 2001:db8:1:f001::1/64
+
+! ── SRv6 uSID locator + local uN (TOI 4.34.2F syntax) ───────────────
+! Shared F3216 block once per fabric; unique end usid per switch.
+! Confirm Prefix from &quot;show srv6 locator&quot; — must match Loopback0 below.
+! end usid 0x0101 → fcbb:bbbb:0101::/48 — see prefix mapping table
+router srv6
+   vrf default
+      micro-segment domain MRC-R1
+         block fcbb:bbbb::/32
+      !
+      locator MRC-R1-P1
+         prefix micro-segment domain MRC-R1 end usid 0x0101
+      !
+   !
+!
+
+interface Loopback0
+   ipv6 address fcbb:bbbb:0101::/48
+
+! Optional static uA: see SRv6 uA Support TOI (4.35.0F+) — not FRR static-sids syntax
+
+! ── Static transit FIB (post-shift lookups) ─────────────────────────
+! After uN shift at this leaf, active uSID is spine 0x0201 → fcbb:bbbb:0201::/48
+! TOI allows GUA or link-local next hop (see SRv6-uN-Support.pdf)
+ipv6 route fcbb:bbbb:0201::/48 Ethernet49 2001:db8:1:f001::2
+
+! Return path: after shift, DA carries next uSID slots → hairpin to node ports
+! (Program one static route per downlink uSID / node port from your path matrix)
+ipv6 route fcbb:bbbb:0101:0002::/80 Ethernet2 fe80::node-r2-nic1
+
+! ── Explicitly disable dynamic routing in MRC fabric ────────────────
+! no router bgp …
+! no router isis …
+</code></pre></div>
+<p><strong>Verify (Arista):</strong></p>
+<div class="highlight"><pre><span></span><code>show srv6 locator
+show srv6 domain
+show srv6 route
+show srv6 capabilities
+show srv6 adjacency-segments    ! optional — when static uA is configured
+show ipv6 route fcbb:bbbb:0201::/48
+! Path reachability (requires segment-list; target needs Loopback0 /48 on peer)
+! CLI only — not exposed in the 4.36 Command API guide
+ping srv6 sid fcbb:bbbb:0201:: via segment-list fcbb:bbbb:0101::
+</code></pre></div>
+<h3 id="sonic-configdb-compiled-frr">SONiC (ConfigDB + compiled FRR)</h3>
+<p><strong>Step 1 — <code>/etc/sonic/config_db.json</code> (persistent):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;SRV6_MY_LOCATORS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;MRC-R1-P1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FCBB:BBBB:0101::&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;block_len&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;node_len&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;func_len&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;arg_len&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;SRV6_MY_SIDS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;MRC-R1-P1|FCBB:BBBB:0101::/48&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uN&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;decap_dscp_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pipe&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;MRC-R1-P1|FCBB:BBBB:FE01::/64&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uA&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;decap_dscp_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pipe&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;interface&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ethernet49&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;adj&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2001:DB8:1:F001::2&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;INTERFACE&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Ethernet1|2001:DB8:1:1::1/64&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nt">&quot;Ethernet49|2001:DB8:1:F001::1/64&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Apply: <code>sudo config reload -y</code> (or let bgpcfgd push to FRR on table update).</p>
+<p><strong>Step 2 — Equivalent FRR (<code>vtysh</code>) after bgpcfgd compilation:</strong></p>
+<div class="highlight"><pre><span></span><code>configure terminal
+ segment-routing
+  srv6
+   locators
+    locator MRC-R1-P1
+     prefix fcbb:bbbb:0101::/48 block-len 32 node-len 16 func-bits 16
+     behavior usid
+    exit
+   !
+   static-sids
+    sid fcbb:bbbb:0101::/48 locator MRC-R1-P1 behavior uN
+    sid fcbb:bbbb:fe01::/64 locator MRC-R1-P1 behavior uA interface Ethernet49 nexthop 2001:db8:1:f001::2
+   exit
+  !
+ !
+ exit
+!
+ipv6 route fcbb:bbbb:0201::/48 Ethernet49 2001:db8:1:f001::2
+ipv6 route fcbb:bbbb:0101:0002::/80 Ethernet2 fe80::node-r2-nic1
+end
+write memory
+</code></pre></div>
+<p><strong>Verify (SONiC):</strong></p>
+<div class="highlight"><pre><span></span><code>vtysh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;show segment-routing srv6 locator&quot;</span>
+vtysh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;show segment-routing srv6 sid&quot;</span>
+vtysh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;show ipv6 route fcbb:bbbb:0201::/48&quot;</span>
+sudo<span class="w"> </span>ip<span class="w"> </span>-6<span class="w"> </span>route<span class="w"> </span>show<span class="w"> </span>table<span class="w"> </span>all<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>fcbb:bbbb
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">FRR persistence on SONiC</p>
+<p>Changes made <strong>only</strong> in <code>vtysh</code> are lost on reboot unless saved via ConfigDB or <code>integrated-vtysh-config</code> in <code>/etc/sonic/frr/vtysh.conf</code>. For MRC fabrics, prefer <strong>ConfigDB</strong> as the source of truth.</p>
+</div>
+<hr />
+<h2 id="template-b-spine-p1-plane-1">Template B — Spine P1 (plane 1)</h2>
+<p><strong>Role:</strong> Receive from leaf uplink; uN-shift; static forward back to leaf downlink uSIDs.</p>
+<h3 id="arista-eos-436">Arista EOS 4.36</h3>
+<div class="highlight"><pre><span></span><code>hostname spine-p1-r1
+ipv6 unicast-routing
+
+interface Ethernet1
+   description downlink-from-leaf-p1
+   ipv6 enable
+   ipv6 address 2001:db8:1:f001::2/64
+
+router srv6
+   vrf default
+      micro-segment domain MRC-R1
+         block fcbb:bbbb::/32
+      !
+      locator MRC-R1-S1
+         prefix micro-segment domain MRC-R1 end usid 0x0201
+      !
+   !
+!
+
+interface Loopback0
+   ipv6 address fcbb:bbbb:0201::/48
+
+! After uN shift, forward to leaf downlink / node uSID prefixes
+ipv6 route fcbb:bbbb:0101::/48 Ethernet1 2001:db8:1:f001::1
+ipv6 route fcbb:bbbb:0101:0001::/80 Ethernet1 2001:db8:1:f001::1
+! … repeat for each node downlink uSID in the path matrix
+</code></pre></div>
+<h3 id="sonic">SONiC</h3>
+<p><strong>ConfigDB excerpt:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;SRV6_MY_LOCATORS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;MRC-R1-S1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FCBB:BBBB:0201::&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;block_len&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;node_len&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;func_len&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;SRV6_MY_SIDS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;MRC-R1-S1|FCBB:BBBB:0201::/48&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uN&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;decap_dscp_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pipe&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>FRR static routes (same as Arista logic):</strong></p>
+<div class="highlight"><pre><span></span><code>ipv6 route fcbb:bbbb:0101::/48 Ethernet1 2001:db8:1:f001::1
+ipv6 route fcbb:bbbb:0101:0001::/80 Ethernet1 2001:db8:1:f001::1
+</code></pre></div>
+<hr />
+<h2 id="template-c-full-plane-matrix-8-planes-2-tiers">Template C — Full plane matrix (8 planes × 2 tiers)</h2>
+<p>Use a <strong>path matrix spreadsheet</strong> (one row per reachable shifted DA prefix) generated at fabric design time. Each row maps:</p>
+<table>
+<thead>
+<tr>
+<th>Shifted DA prefix</th>
+<th>Egress port</th>
+<th>Next-hop IPv6</th>
+<th>Plane</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fcbb:bbbb:0201::/48</code></td>
+<td><code>Ethernet49</code></td>
+<td><code>2001:db8:1:f001::2</code></td>
+<td>P1 leaf → spine</td>
+</tr>
+<tr>
+<td><code>fcbb:bbbb:0101::/48</code></td>
+<td><code>Ethernet1</code></td>
+<td><code>2001:db8:1:f001::1</code></td>
+<td>P1 spine → leaf</td>
+</tr>
+<tr>
+<td><code>fcbb:bbbb:0202::/48</code></td>
+<td>…</td>
+<td>…</td>
+<td>P2 leaf → spine</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Scaling rule:</strong> For <em>N</em> nodes per plane and <em>P</em> planes, each leaf/spine pair needs static routes for every uSID prefix that can appear <strong>after a uN shift</strong> on that device — not merely its own locator.</p>
+<p>Prefixes match the <a href="#side-by-side-prefix-mapping-8-planes">side-by-side prefix mapping</a> table above.</p>
+<p>Planes are <strong>fully independent</strong> — P1 switches never parse P2 uSIDs in the data path.</p>
+<hr />
+<h2 id="un-vs-ua-when-to-use-which">uN vs uA — when to use which</h2>
+<table>
+<thead>
+<tr>
+<th>Behavior</th>
+<th>SONiC <code>action</code></th>
+<th>Arista</th>
+<th>Use on leaf/spine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>uN</strong></td>
+<td><code>uN</code></td>
+<td><code>locator</code> + <code>end usid</code> → System SFIB</td>
+<td>Every switch gets a <code>/48</code> uN for shift-and-lookup transit</td>
+</tr>
+<tr>
+<td><strong>uA</strong></td>
+<td><code>uA</code> + <code>interface</code> + optional <code>adj</code></td>
+<td>static uA (SRv6 uA TOI — not FRR <code>static-sids</code>)</td>
+<td>Pin traffic to a <strong>specific uplink/downlink</strong> when multiple parallel links exist or paths must survive reload without IGP</td>
+</tr>
+</tbody>
+</table>
+<p>In a minimal <strong>1 leaf : 1 spine</strong> plane, <strong>uN + static <code>ipv6 route</code> entries</strong> are usually sufficient. Add <strong>uA</strong> when the path matrix names explicit adjacencies (OpenAI MRC uses algorithmic EV→path mapping that may reference uplink indices).</p>
+<hr />
+<h2 id="sonic-vs-arista-cli-syntax-cheat-sheet">SONiC vs Arista — CLI syntax cheat sheet</h2>
+<h3 id="locator-usid-f3216">Locator (uSID F3216)</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SONiC / FRR</th>
+<th>Arista EOS (<a href="../SRv6-uN-Support.pdf">TOI</a>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enter SRv6 mode</td>
+<td><code>segment-routing</code> → <code>srv6</code> → <code>locators</code></td>
+<td><code>router srv6</code> → <code>vrf default</code></td>
+</tr>
+<tr>
+<td>uSID block (F3216)</td>
+<td><code>prefix fcbb:bbbb:0101::/48 block-len 32 node-len 16</code> + <code>behavior usid</code></td>
+<td><code>micro-segment domain NAME</code> → <code>block fcbb:bbbb::/32</code></td>
+</tr>
+<tr>
+<td>Local uN <code>/48</code></td>
+<td><code>sid fcbb:bbbb:0101::/48 … behavior uN</code></td>
+<td><code>end usid 0x0101</code> → <code>fcbb:bbbb:0101::/48</code></td>
+</tr>
+<tr>
+<td>Loopback (for ping)</td>
+<td>(varies)</td>
+<td><code>interface Loopback0</code> → <code>ipv6 address &lt;locator&gt;/48</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="static-local-sid">Static local SID</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SONiC / FRR</th>
+<th>Arista EOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uN</td>
+<td><code>static-sids</code> → <code>sid …/48 locator … behavior uN</code></td>
+<td>Automatic from locator (<code>show srv6 route</code>)</td>
+</tr>
+<tr>
+<td>uA</td>
+<td><code>sid fcbb:bbbb:fe01::/64 … behavior uA interface Et49 nexthop 2001:…::2</code></td>
+<td>Per <a href="https://www.arista.com/en/support/toi/eos-4-35-0f-srv6-ua-support">SRv6 uA TOI</a> (not FRR <code>static-sids</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="supported-behaviors-in-static-configdb-sonic">Supported behaviors in static ConfigDB (SONiC)</h3>
+<table>
+<thead>
+<tr>
+<th>Alias</th>
+<th>SRv6 behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uN</code></td>
+<td>End with NEXT-CSID</td>
+</tr>
+<tr>
+<td><code>uA</code></td>
+<td>End.X with NEXT-CSID</td>
+</tr>
+<tr>
+<td><code>uDT46</code></td>
+<td>End.DT46 with CSID</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://github.com/sonic-net/SONiC/blob/master/doc/srv6/srv6_static_config_hld.md">SONiC Static SRv6 HLD</a>.</p>
+<hr />
+<h2 id="mrc-specific-operational-constraints">MRC-specific operational constraints</h2>
+<p>Both platforms in an MRC training fabric should observe the same discipline documented in <a href="https://www.opencompute.org/documents/ocp-mrc-1-0-pdf">OCP MRC Rev 1.0</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Leaf/spine action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>No ECMP</strong></td>
+<td>Single next-hop per shifted DA prefix; disable ECMP / multi-path</td>
+</tr>
+<tr>
+<td><strong>No dynamic routing</strong></td>
+<td>Do not enable BGP, IS-IS, or OSPFv3 on MRC backend planes</td>
+</tr>
+<tr>
+<td><strong>No PFC</strong></td>
+<td>Lossy Ethernet; MRC NIC handles retry</td>
+</tr>
+<tr>
+<td><strong>Static FIB</strong></td>
+<td>Install full path matrix at provisioning; avoid runtime route changes</td>
+</tr>
+<tr>
+<td><strong>Line-rate uN</strong></td>
+<td><strong>7060XE7</strong> (Tomahawk 6) in this primer’s rack design; <strong>7060X6</strong> (Tomahawk 5) is a separate Arista line with the same F3216 EOS CLI — confirm SRv6 on your SKU/build. Spectrum-4/5 + SONiC also support line-rate uN in production MRC deployments</td>
+</tr>
+<tr>
+<td><strong>EoC / zero CSID on transit</strong></td>
+<td>On <strong>DCS-7060X6</strong>, EOS <strong>drops</strong> packets when the CSID <strong>immediately after the active uN or uA</strong> is <strong><code>0000</code></strong> (EoC marker) — see <a href="../RN-4.36.0FX-SRV6-v0.1.pdf">RN 1294522</a>. NIC path encoders must place EoC padding only in trailing slots; every post-shift active CSID during transit must be a non-zero uSID until the consuming node</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>32-bit EV</strong> in the outer header is <strong>not used for forwarding</strong> — it exists for SACK/NACK feedback on the NIC. See <a href="../generated/srv6-mrc-packet-ev-header/">MRC Packet Structure</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">SRv6 agent restarts</p>
+<p>The <a href="../SRv6-uN-Support.pdf">SRv6 uN TOI</a> notes that SRv6 agent, SandTunnel, or StrataL3Unicast agent restarts are <strong>hitful</strong> — expect brief SRv6 forwarding impact during process restart.</p>
+</div>
+<hr />
+<h2 id="configuration-workflow-recommended">Configuration workflow (recommended)</h2>
+<div class="highlight"><pre><span></span><code>flowchart LR
+  A[Path matrix spreadsheet] --&gt; B[Assign uN /48 per switch]
+  B --&gt; C[Derive post-shift DA prefixes]
+  C --&gt; D[Static ipv6 routes per prefix]
+  D --&gt; E1[Arista: startup-config]
+  D --&gt; E2[SONiC: config_db.json + FRR]
+  E1 --&gt; F[Lab validation: show srv6 + ping srv6]
+  E2 --&gt; F
+  F --&gt; G[Freeze config for production job]
+</code></pre></div>
+<ol>
+<li><strong>Design</strong> — Build the uSID path matrix from rack topology (9 nodes, 8 planes, 2 hops).</li>
+<li><strong>Assign</strong> — Allocate <code>/48</code> uN locators per switch from the <a href="./#side-by-side-prefix-mapping-8-planes">prefix mapping table</a> (<code>end usid</code> → <code>fcbb:bbbb:WWWW::/48</code>).</li>
+<li><strong>Program</strong> — Install locators + static routes on every leaf and spine.</li>
+<li><strong>Validate</strong> — <code>show srv6 locator</code> / <code>route</code> / <code>capabilities</code> (and <code>adjacency-segments</code> if uA); inject test packets with known uSID carriers; confirm shift-and-forward on each hop; <code>ping srv6</code> for path reachability.</li>
+<li><strong>Freeze</strong> — Treat running config as immutable for the training job (MRC handles path health at the NIC).</li>
+</ol>
+<hr />
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../glossary/">Glossary</a></li>
+<li><a href="../generated/srv6-mrc-packet-ev-header/">MRC Packet Structure — SRv6 + Entropy Value</a></li>
+<li><a href="../generated/mrc-blackwell-ultra-rack-1/">72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300</a></li>
+</ul>
+<h2 id="external-references">External references</h2>
+<ul>
+<li><a href="https://github.com/sonic-net/SONiC/blob/master/doc/srv6/srv6_static_config_hld.md">SONiC Static SRv6 HLD</a></li>
+<li><a href="https://github.com/FRRouting/frr/blob/master/doc/user/zebra.rst">FRR SRv6 zebra configuration</a></li>
+<li><a href="../SRv6-uN-Support.pdf">SRv6 uN Support TOI (local PDF)</a></li>
+<li><a href="https://www.arista.com/en/support/toi/eos-4-34-2f-srv6-un-support">Arista SRv6 uN Support TOI (web)</a></li>
+<li><a href="https://www.arista.com/en/support/toi/eos-4-35-0f-srv6-ua-support">Arista SRv6 uA Support TOI (web)</a></li>
+<li><a href="../EOS-4.36.0FX-SRV6-CommandApiGuide.pdf">EOS 4.36.0FX-SRV6 Command API Guide (local PDF)</a> — <code>show srv6</code> eAPI models</li>
+<li><a href="../RN-4.36.0FX-SRV6-v0.1.pdf">EOS 4.36.0FX-SRV6 Release Notes v0.1 (local PDF)</a> — platform matrix and known caveats</li>
+<li><a href="https://cdn.openai.com/pdf/resilient-ai-supercomputer-networking-using-mrc-and-srv6.pdf">Resilient AI Supercomputer Networking using MRC and SRv6 (OpenAI)</a></li>
+<li><a href="https://www.arista.com/assets/data/pdf/Datasheets/7060XE7-Datasheet.pdf">Arista 7060XE7 datasheet</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

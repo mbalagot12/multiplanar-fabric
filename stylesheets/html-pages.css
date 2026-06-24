@@ -1,0 +1,50 @@
+/* Shared styles for HTML content embedded in MkDocs pages */
+
+.html-page {
+  width: 100%;
+  --font-sans: var(--md-text-font-family, Arial, sans-serif);
+  --color-background-primary: var(--md-default-bg-color, #ffffff);
+  --color-background-secondary: var(--md-default-bg-color--light, #f5f5f7);
+  --color-border-tertiary: var(--md-default-fg-color--lightest, #d3d1c7);
+  --color-text-primary: var(--md-default-fg-color, #1a1a18);
+  --color-text-secondary: var(--md-default-fg-color--light, #73726c);
+}
+
+.html-page img,
+.html-page video,
+.html-page iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.html-page table {
+  display: block;
+  overflow-x: auto;
+}
+
+.html-page pre {
+  overflow-x: auto;
+}
+
+.html-page .container,
+.html-page .wrapper {
+  max-width: 100%;
+}
+
+/* Architecture overview diagram on the home page */
+.architecture-diagram {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.architecture-diagram img,
+.architecture-diagram svg {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 1px solid var(--md-default-fg-color--lightest, #d3d1c7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}

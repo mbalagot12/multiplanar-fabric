@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">MRC architecture overview</title>
+  <desc id="desc">Compute node with eight GPUs and SmartNICs connected to eight independent MRC fabric planes, each with a dedicated leaf-spine pair.</desc>
+  <defs>
+    <marker id="arrow-pcie" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#BA7517"/>
+    </marker>
+    <marker id="arrow-fabric" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#0F6E56"/>
+    </marker>
+    <linearGradient id="node-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAFAF8"/>
+      <stop offset="100%" stop-color="#F4F3EF"/>
+    </linearGradient>
+    <linearGradient id="fabric-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5FBF8"/>
+      <stop offset="100%" stop-color="#EDF6F1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="520" fill="#F8F8F6" rx="12"/>
+
+  <rect x="24" y="36" width="318" height="332" rx="10" fill="url(#node-bg)" stroke="#B4B2A9" stroke-width="1.2"/>
+  <text x="183" y="58" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#444441">Compute Node</text>
+  <text x="183" y="74" text-anchor="middle" font-family="Arial,sans-serif" font-size="9.5" fill="#73726C">DGX / HGX / MI350X</text>
+
+  <rect x="40" y="88" width="286" height="118" rx="8" fill="#EEEDFE" stroke="#7F77DD" stroke-width="0.8" stroke-dasharray="5 3"/>
+  <text x="183" y="106" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#3C3489">8x GPU</text>
+
+  <g font-family="Arial,sans-serif" font-size="8" font-weight="600" fill="#3C3489">
+    <rect x="52" y="116" width="58" height="28" rx="4" fill="#fff" stroke="#7F77DD" stroke-width="0.7"/>
+    <text x="81" y="134" text-anchor="middle">GPU 1</text>
+    <rect x="118" y="116" width="58" height="28" rx="4" fill="#fff" stroke="#7F77DD" stroke-width="0.7"/>
+    <text x="147" y="134" text-anchor="middle">GPU 2</text>
+    <rect x="184" y="116" width="58" height="28" rx="4" fill="#fff" stroke="#7F77DD" stroke-width="0.7"/>
+    <text x="213" y="134" text-anchor="middle">GPU 3</text>
+    <rect x="250" y="116" width="58" height="28" rx="4" fill="#fff" stroke="#7F77DD" stroke-width="0.7"/>
+    <text x="279" y="134" text-anchor="middle">GPU 4</text>
+    <rect x="52" y="152" width="58" height="28" rx="4" fill="#fff" stroke="#7F77DD" stroke-width="0.7"/>
+    <text x="81" y="170" text-anchor="middle">GPU 5</text>
+    <rect x="118" y="152" width="58" height="28" rx="4" fill="#fff" stroke="#7F77DD" stroke-width="0.7"/>
+    <text x="147" y="170" text-anchor="middle">GPU 6</text>
+    <rect x="184" y="152" width="58" height="28" rx="4" fill="#fff" stroke="#7F77DD" stroke-width="0.7"/>
+    <text x="213" y="170" text-anchor="middle">GPU 7</text>
+    <rect x="250" y="152" width="58" height="28" rx="4" fill="#fff" stroke="#7F77DD" stroke-width="0.7"/>
+    <text x="279" y="170" text-anchor="middle">GPU 8</text>
+  </g>
+
+  <rect x="52" y="186" width="262" height="14" rx="3" fill="#CECBF6" stroke="#534AB7" stroke-width="0.6"/>
+  <text x="183" y="196" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#3C3489">NVLink / Infinity Fabric - intra-node all-reduce</text>
+
+  <line x1="183" y1="206" x2="183" y2="228" stroke="#BA7517" stroke-width="1.2" marker-end="url(#arrow-pcie)"/>
+  <text x="183" y="222" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" font-weight="600" fill="#633806">PCIe Gen5</text>
+
+  <rect x="40" y="236" width="286" height="56" rx="8" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.8"/>
+  <text x="183" y="252" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#633806">8x SmartNIC (MRC engine)</text>
+  <text x="183" y="266" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#854F0B">ConnectX-8 SuperNIC or Pollara 400</text>
+
+  <g font-family="Arial,sans-serif" font-size="7.5" font-weight="700" fill="#633806">
+    <rect x="48" y="274" width="28" height="14" rx="2" fill="#fff" stroke="#BA7517" stroke-width="0.6"/>
+    <text x="62" y="284" text-anchor="middle">NIC 1</text>
+    <rect x="82" y="274" width="28" height="14" rx="2" fill="#fff" stroke="#BA7517" stroke-width="0.6"/>
+    <text x="96" y="284" text-anchor="middle">NIC 2</text>
+    <rect x="116" y="274" width="28" height="14" rx="2" fill="#fff" stroke="#BA7517" stroke-width="0.6"/>
+    <text x="130" y="284" text-anchor="middle">NIC 3</text>
+    <rect x="150" y="274" width="28" height="14" rx="2" fill="#fff" stroke="#BA7517" stroke-width="0.6"/>
+    <text x="164" y="284" text-anchor="middle">NIC 4</text>
+    <rect x="184" y="274" width="28" height="14" rx="2" fill="#fff" stroke="#BA7517" stroke-width="0.6"/>
+    <text x="198" y="284" text-anchor="middle">NIC 5</text>
+    <rect x="218" y="274" width="28" height="14" rx="2" fill="#fff" stroke="#BA7517" stroke-width="0.6"/>
+    <text x="232" y="284" text-anchor="middle">NIC 6</text>
+    <rect x="252" y="274" width="28" height="14" rx="2" fill="#fff" stroke="#BA7517" stroke-width="0.6"/>
+    <text x="266" y="284" text-anchor="middle">NIC 7</text>
+    <rect x="286" y="274" width="28" height="14" rx="2" fill="#fff" stroke="#BA7517" stroke-width="0.6"/>
+    <text x="300" y="284" text-anchor="middle">NIC 8</text>
+  </g>
+
+  <rect x="40" y="304" width="286" height="22" rx="5" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.7"/>
+  <text x="183" y="319" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" font-weight="600" fill="#085041">Inter-node traffic - one dedicated plane per NIC</text>
+
+  <text x="183" y="352" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#73726C" font-style="italic">NIC n connects to leaf of plane n - always</text>
+
+  <rect x="368" y="36" width="568" height="332" rx="10" fill="url(#fabric-bg)" stroke="#5DCAA5" stroke-width="1.2"/>
+  <text x="652" y="58" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#085041">MRC Fabric - 8 Independent Planes</text>
+  <text x="652" y="74" text-anchor="middle" font-family="Arial,sans-serif" font-size="9.5" fill="#0F6E56">Arista 7060XE7 leaf + spine per plane - no cross-plane links</text>
+
+  <g font-family="Arial,sans-serif">
+    <rect x="384" y="92" width="58" height="260" rx="4" fill="#E1F5EE" opacity="0.55"/>
+    <text x="413" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#085041">P1</text>
+    <rect x="388" y="118" width="50" height="26" rx="4" fill="#085041"/>
+    <text x="413" y="135" text-anchor="middle" font-size="8" font-weight="600" fill="#9FE1CB">Spine</text>
+    <line x1="413" y1="144" x2="413" y2="298" stroke="#0F6E56" stroke-width="1.4"/>
+    <rect x="388" y="304" width="50" height="26" rx="4" fill="#0F6E56"/>
+    <text x="413" y="321" text-anchor="middle" font-size="8" font-weight="600" fill="#E1F5EE">Leaf</text>
+
+    <rect x="452" y="92" width="58" height="260" rx="4" fill="#D4F0E7" opacity="0.45"/>
+    <text x="481" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#085041">P2</text>
+    <rect x="456" y="118" width="50" height="26" rx="4" fill="#085041"/>
+    <text x="481" y="135" text-anchor="middle" font-size="8" font-weight="600" fill="#9FE1CB">Spine</text>
+    <line x1="481" y1="144" x2="481" y2="298" stroke="#0F6E56" stroke-width="1.4"/>
+    <rect x="456" y="304" width="50" height="26" rx="4" fill="#0F6E56"/>
+    <text x="481" y="321" text-anchor="middle" font-size="8" font-weight="600" fill="#E1F5EE">Leaf</text>
+
+    <rect x="520" y="92" width="58" height="260" rx="4" fill="#E1F5EE" opacity="0.55"/>
+    <text x="549" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#085041">P3</text>
+    <rect x="524" y="118" width="50" height="26" rx="4" fill="#085041"/>
+    <text x="549" y="135" text-anchor="middle" font-size="8" font-weight="600" fill="#9FE1CB">Spine</text>
+    <line x1="549" y1="144" x2="549" y2="298" stroke="#0F6E56" stroke-width="1.4"/>
+    <rect x="524" y="304" width="50" height="26" rx="4" fill="#0F6E56"/>
+    <text x="549" y="321" text-anchor="middle" font-size="8" font-weight="600" fill="#E1F5EE">Leaf</text>
+
+    <rect x="588" y="92" width="58" height="260" rx="4" fill="#D4F0E7" opacity="0.45"/>
+    <text x="617" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#085041">P4</text>
+    <rect x="592" y="118" width="50" height="26" rx="4" fill="#085041"/>
+    <text x="617" y="135" text-anchor="middle" font-size="8" font-weight="600" fill="#9FE1CB">Spine</text>
+    <line x1="617" y1="144" x2="617" y2="298" stroke="#0F6E56" stroke-width="1.4"/>
+    <rect x="592" y="304" width="50" height="26" rx="4" fill="#0F6E56"/>
+    <text x="617" y="321" text-anchor="middle" font-size="8" font-weight="600" fill="#E1F5EE">Leaf</text>
+
+    <rect x="656" y="92" width="58" height="260" rx="4" fill="#E1F5EE" opacity="0.55"/>
+    <text x="685" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#085041">P5</text>
+    <rect x="660" y="118" width="50" height="26" rx="4" fill="#085041"/>
+    <text x="685" y="135" text-anchor="middle" font-size="8" font-weight="600" fill="#9FE1CB">Spine</text>
+    <line x1="685" y1="144" x2="685" y2="298" stroke="#0F6E56" stroke-width="1.4"/>
+    <rect x="660" y="304" width="50" height="26" rx="4" fill="#0F6E56"/>
+    <text x="685" y="321" text-anchor="middle" font-size="8" font-weight="600" fill="#E1F5EE">Leaf</text>
+
+    <rect x="724" y="92" width="58" height="260" rx="4" fill="#D4F0E7" opacity="0.45"/>
+    <text x="753" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#085041">P6</text>
+    <rect x="728" y="118" width="50" height="26" rx="4" fill="#085041"/>
+    <text x="753" y="135" text-anchor="middle" font-size="8" font-weight="600" fill="#9FE1CB">Spine</text>
+    <line x1="753" y1="144" x2="753" y2="298" stroke="#0F6E56" stroke-width="1.4"/>
+    <rect x="728" y="304" width="50" height="26" rx="4" fill="#0F6E56"/>
+    <text x="753" y="321" text-anchor="middle" font-size="8" font-weight="600" fill="#E1F5EE">Leaf</text>
+
+    <rect x="792" y="92" width="58" height="260" rx="4" fill="#E1F5EE" opacity="0.55"/>
+    <text x="821" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#085041">P7</text>
+    <rect x="796" y="118" width="50" height="26" rx="4" fill="#085041"/>
+    <text x="821" y="135" text-anchor="middle" font-size="8" font-weight="600" fill="#9FE1CB">Spine</text>
+    <line x1="821" y1="144" x2="821" y2="298" stroke="#0F6E56" stroke-width="1.4"/>
+    <rect x="796" y="304" width="50" height="26" rx="4" fill="#0F6E56"/>
+    <text x="821" y="321" text-anchor="middle" font-size="8" font-weight="600" fill="#E1F5EE">Leaf</text>
+
+    <rect x="860" y="92" width="58" height="260" rx="4" fill="#D4F0E7" opacity="0.45"/>
+    <text x="889" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#085041">P8</text>
+    <rect x="864" y="118" width="50" height="26" rx="4" fill="#085041"/>
+    <text x="889" y="135" text-anchor="middle" font-size="8" font-weight="600" fill="#9FE1CB">Spine</text>
+    <line x1="889" y1="144" x2="889" y2="298" stroke="#0F6E56" stroke-width="1.4"/>
+    <rect x="864" y="304" width="50" height="26" rx="4" fill="#0F6E56"/>
+    <text x="889" y="321" text-anchor="middle" font-size="8" font-weight="600" fill="#E1F5EE">Leaf</text>
+  </g>
+
+  <g stroke-width="1.3" fill="none">
+    <path d="M 62 288 L 350 288 L 413 318" stroke="#E74C3C" marker-end="url(#arrow-fabric)"/>
+    <path d="M 96 288 L 350 288 L 481 318" stroke="#E67E22" marker-end="url(#arrow-fabric)"/>
+    <path d="M 130 288 L 350 288 L 549 318" stroke="#F1C40F" marker-end="url(#arrow-fabric)"/>
+    <path d="M 164 288 L 350 288 L 617 318" stroke="#27AE60" marker-end="url(#arrow-fabric)"/>
+    <path d="M 198 288 L 350 288 L 685 318" stroke="#2980B9" marker-end="url(#arrow-fabric)"/>
+    <path d="M 232 288 L 350 288 L 753 318" stroke="#8E44AD" marker-end="url(#arrow-fabric)"/>
+    <path d="M 266 288 L 350 288 L 821 318" stroke="#16A085" marker-end="url(#arrow-fabric)"/>
+    <path d="M 300 288 L 350 288 L 889 318" stroke="#C0392B" marker-end="url(#arrow-fabric)"/>
+  </g>
+
+  <rect x="384" y="338" width="534" height="22" rx="5" fill="#fff" stroke="#D3D1C7" stroke-width="0.7"/>
+  <text x="651" y="353" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" fill="#444441">Spines interconnect peer nodes - 2-hop any-to-any across the cluster</text>
+
+  <rect x="388" y="118" width="50" height="18" rx="3" fill="#fff" stroke="#B4B2A9" stroke-width="0.5" stroke-dasharray="3 2" opacity="0.85"/>
+  <text x="413" y="130" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#73726C">peer</text>
+  <rect x="864" y="118" width="50" height="18" rx="3" fill="#fff" stroke="#B4B2A9" stroke-width="0.5" stroke-dasharray="3 2" opacity="0.85"/>
+  <text x="889" y="130" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#73726C">peer</text>
+  <path d="M 438 127 L 864 127" stroke="#B4B2A9" stroke-width="0.8" stroke-dasharray="4 3" fill="none"/>
+
+  <text x="652" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="#888780" font-style="italic">planes are fully independent - no cross-plane links</text>
+
+  <rect x="24" y="388" width="912" height="108" rx="10" fill="#fff" stroke="#D3D1C7" stroke-width="1"/>
+  <text x="480" y="412" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#1A1A18">Per-packet transport</text>
+
+  <rect x="48" y="426" width="200" height="28" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.6"/>
+  <text x="148" y="444" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#0C447C">SRv6 uN uSID - static source routing</text>
+
+  <rect x="264" y="426" width="200" height="28" rx="6" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.6"/>
+  <text x="364" y="444" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#633806">32-bit EV - path health feedback</text>
+
+  <rect x="480" y="426" width="200" height="28" rx="6" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.6"/>
+  <text x="580" y="444" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#444441">128-256 EVs per QP at startup</text>
+
+  <rect x="696" y="426" width="216" height="28" rx="6" fill="#FADBD8" stroke="#C0392B" stroke-width="0.6"/>
+  <text x="804" y="444" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#78281F">ECMP / BGP / PFC - all disabled</text>
+
+  <rect x="48" y="464" width="14" height="14" rx="2" fill="#EEEDFE" stroke="#7F77DD" stroke-width="0.7"/>
+  <text x="68" y="475" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">GPU / NVLink</text>
+
+  <rect x="168" y="464" width="14" height="14" rx="2" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.7"/>
+  <text x="188" y="475" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">SmartNIC</text>
+
+  <rect x="268" y="464" width="14" height="14" rx="2" fill="#085041"/>
+  <text x="288" y="475" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">Spine switch</text>
+
+  <rect x="378" y="464" width="14" height="14" rx="2" fill="#0F6E56"/>
+  <text x="398" y="475" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">Leaf switch</text>
+
+  <line x1="488" y1="471" x2="512" y2="471" stroke="#0F6E56" stroke-width="2"/>
+  <text x="518" y="475" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">400G / 800G fabric uplink</text>
+
+  <line x1="668" y1="471" x2="692" y2="471" stroke="#B4B2A9" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="698" y="475" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">Inter-node via spine</text>
+</svg>

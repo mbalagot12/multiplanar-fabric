@@ -1,0 +1,3220 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MkDocs site rendering user-supplied HTML pages">
+      
+      
+      
+        <link rel="canonical" href="https://multiplanar.agentic24x7.net/glossary/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../srv6-usid-leaf-spine-config/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Glossary - Multiplanar Fabric AI Networking Primer</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/html-pages.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#glossary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Multiplanar Fabric AI Networking Primer" class="md-header__button md-logo" aria-label="Multiplanar Fabric AI Networking Primer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Multiplanar Fabric AI Networking Primer
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Glossary
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../generated/amd-mi350x-mrc-srv6-fabric/" class="md-tabs__link">
+          
+  
+  
+  Pages
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Multiplanar Fabric AI Networking Primer" class="md-nav__button md-logo" aria-label="Multiplanar Fabric AI Networking Primer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Multiplanar Fabric AI Networking Primer
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mrc-transport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MRC &amp; transport
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MRC &amp; transport">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mrc-multipath-reliable-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MRC (Multipath Reliable Connection)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrc-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MRC engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ev-entropy-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EV (Entropy Value)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plane
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multipath-packet-spray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multipath / packet spray
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sack-nack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SACK / NACK
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packet-trim-trimming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packet trim / trimming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lossy-ethernet-rdma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lossy Ethernet RDMA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qp-queue-pair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QP (Queue Pair)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rocev2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RoCEv2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-source-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static source routing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Path matrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#srv6-segment-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SRv6 &amp; segment routing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SRv6 &amp; segment routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#srv6-segment-routing-over-ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SRv6 (Segment Routing over IPv6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#segment-sid-segment-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segment / SID (Segment Identifier)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#segment-routing-header-srh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segment Routing Header (SRH)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source routing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locator-block-usid-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locator block (uSID block)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shift-and-lookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shift-and-lookup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-csid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NEXT-CSID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csid-compressed-sid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSID (Compressed SID)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endx-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End.X behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enddt46-udt46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End.DT46 / uDT46
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usid-micro-behaviors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uSID micro-behaviors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="uSID micro-behaviors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usid-micro-sid-micro-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uSID / micro-SID / micro-segment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usid-carrier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uSID carrier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-usid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active uSID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-of-carrier-eoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-of-Carrier (EoC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f3216" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F3216
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#micro-segment-domain-arista-eos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        micro-segment domain (Arista EOS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-usid-arista-eos-locator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        end usid (Arista EOS locator)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        unode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#behavior-usid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        behavior usid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#behavior-flavors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Behavior flavors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Behavior flavors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#psp-penultimate-segment-pop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PSP (Penultimate Segment Pop)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usd-ultimate-segment-decapsulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        USD (Ultimate Segment Decapsulation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pspusd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PSP/USD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipe-uniform-decap_dscp_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipe / Uniform (decap_dscp_mode)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#addressing-packets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Addressing &amp; packets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Addressing &amp; packets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#outer-inner-ipv6-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outer / inner IPv6 header
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flow label
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#udp-source-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UDP source port
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#da-destination-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DA (Destination Address)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fib-forwarding-information-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FIB (Forwarding Information Base)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lpm-longest-prefix-match" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LPM (Longest Prefix Match)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gua-ula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GUA / ULA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sonic-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SONiC stack
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SONiC stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sonic-software-for-open-networking-in-the-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SONiC (Software for Open Networking in the Cloud)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConfigDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appdb-appl_db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        APPDB / APPL_DB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bgpcfgd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bgpcfgd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#srv6orch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        srv6orch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sai-switch-abstraction-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SAI (Switch Abstraction Interface)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frr-frrouting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FRR (FRRouting)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vtysh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vtysh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zebra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        zebra
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staticd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        staticd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fpmsyncd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fpmsyncd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-sids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        static-sids
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#srv6_my_locators-srv6_my_sids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SRV6_MY_LOCATORS / SRV6_MY_SIDS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware &amp; platforms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware &amp; platforms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#7060xe7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7060XE7
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7060x6-dcs-7060x6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7060X6 (DCS-7060X6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tomahawk-5-th5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tomahawk 5 (TH5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tomahawk-6-th6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tomahawk 6 (TH6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eos-extensible-operating-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EOS (Extensible Operating System)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toi-transfer-of-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TOI (Transfer of Information)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectrum-4-spectrum-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spectrum-4 / Spectrum-5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectx-8-supernic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectX-8 SuperNIC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pollara-400" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pollara 400
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocols-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocols &amp; networking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocols &amp; networking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecmp-equal-cost-multi-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ECMP (Equal-Cost Multi-Path)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bgp-border-gateway-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BGP (Border Gateway Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IS-IS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pfc-priority-flow-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PFC (Priority Flow Control)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dcqcn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DCQCN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rdma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RDMA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvlink-nvswitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NVLink / NVSwitch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infinity-fabric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infinity Fabric
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ocp-open-compute-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OCP (Open Compute Project)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clos-leafspine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clos / leaf–spine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaf-spine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaf / spine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abbreviation-index-az" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abbreviation index (A–Z)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../srv6-usid-leaf-spine-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arista-eos-srv6-un-ua-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arista EOS SRv6 uN + uA Config — Plane 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../srv6-plane1-packet-traversal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SRv6 Plane 1 — Packet Traversal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pages
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pages
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generated/amd-mi350x-mrc-srv6-fabric/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AMD MI350X — MRC SRv6 Fabric Connectivity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generated/gb300-nvl72-dc-rack-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GB300 NVL72 — Liquid-Cooled Data Center Rack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generated/mrc-blackwell-ultra-rack-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generated/srv6-mrc-packet-ev-header/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MRC Packet Structure — SRv6 + Entropy Value
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generated/mrc-packet-spray-animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MRC Packet Spray Animation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mrc-transport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MRC &amp; transport
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MRC &amp; transport">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mrc-multipath-reliable-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MRC (Multipath Reliable Connection)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrc-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MRC engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ev-entropy-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EV (Entropy Value)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plane
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multipath-packet-spray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multipath / packet spray
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sack-nack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SACK / NACK
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packet-trim-trimming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packet trim / trimming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lossy-ethernet-rdma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lossy Ethernet RDMA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qp-queue-pair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QP (Queue Pair)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rocev2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RoCEv2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-source-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static source routing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Path matrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#srv6-segment-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SRv6 &amp; segment routing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SRv6 &amp; segment routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#srv6-segment-routing-over-ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SRv6 (Segment Routing over IPv6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#segment-sid-segment-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segment / SID (Segment Identifier)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#segment-routing-header-srh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segment Routing Header (SRH)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source routing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locator-block-usid-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locator block (uSID block)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shift-and-lookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shift-and-lookup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-csid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NEXT-CSID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csid-compressed-sid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSID (Compressed SID)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endx-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End.X behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enddt46-udt46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End.DT46 / uDT46
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usid-micro-behaviors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uSID micro-behaviors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="uSID micro-behaviors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usid-micro-sid-micro-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uSID / micro-SID / micro-segment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usid-carrier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uSID carrier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-usid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active uSID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-of-carrier-eoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-of-Carrier (EoC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f3216" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F3216
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#micro-segment-domain-arista-eos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        micro-segment domain (Arista EOS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-usid-arista-eos-locator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        end usid (Arista EOS locator)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        unode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#behavior-usid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        behavior usid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#behavior-flavors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Behavior flavors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Behavior flavors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#psp-penultimate-segment-pop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PSP (Penultimate Segment Pop)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usd-ultimate-segment-decapsulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        USD (Ultimate Segment Decapsulation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pspusd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PSP/USD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipe-uniform-decap_dscp_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipe / Uniform (decap_dscp_mode)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#addressing-packets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Addressing &amp; packets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Addressing &amp; packets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#outer-inner-ipv6-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outer / inner IPv6 header
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flow label
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#udp-source-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UDP source port
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#da-destination-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DA (Destination Address)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fib-forwarding-information-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FIB (Forwarding Information Base)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lpm-longest-prefix-match" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LPM (Longest Prefix Match)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gua-ula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GUA / ULA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sonic-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SONiC stack
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SONiC stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sonic-software-for-open-networking-in-the-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SONiC (Software for Open Networking in the Cloud)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConfigDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appdb-appl_db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        APPDB / APPL_DB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bgpcfgd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bgpcfgd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#srv6orch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        srv6orch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sai-switch-abstraction-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SAI (Switch Abstraction Interface)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frr-frrouting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FRR (FRRouting)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vtysh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vtysh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zebra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        zebra
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staticd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        staticd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fpmsyncd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fpmsyncd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-sids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        static-sids
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#srv6_my_locators-srv6_my_sids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SRV6_MY_LOCATORS / SRV6_MY_SIDS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware &amp; platforms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware &amp; platforms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#7060xe7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7060XE7
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7060x6-dcs-7060x6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7060X6 (DCS-7060X6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tomahawk-5-th5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tomahawk 5 (TH5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tomahawk-6-th6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tomahawk 6 (TH6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eos-extensible-operating-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EOS (Extensible Operating System)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toi-transfer-of-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TOI (Transfer of Information)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectrum-4-spectrum-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spectrum-4 / Spectrum-5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectx-8-supernic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectX-8 SuperNIC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pollara-400" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pollara 400
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocols-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocols &amp; networking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocols &amp; networking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecmp-equal-cost-multi-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ECMP (Equal-Cost Multi-Path)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bgp-border-gateway-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BGP (Border Gateway Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IS-IS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pfc-priority-flow-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PFC (Priority Flow Control)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dcqcn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DCQCN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rdma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RDMA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvlink-nvswitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NVLink / NVSwitch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infinity-fabric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infinity Fabric
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ocp-open-compute-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OCP (Open Compute Project)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clos-leafspine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clos / leaf–spine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaf-spine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leaf / spine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abbreviation-index-az" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abbreviation index (A–Z)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="glossary">Glossary</h1>
+<p>Definitions for terms used throughout this MRC networking primer. Terms are grouped by topic; use your browser search (⌘F / Ctrl+F) to jump to a specific entry.</p>
+<div class="admonition tip">
+<p class="admonition-title">Quick links</p>
+<p><a href="#mrc-transport">MRC &amp; transport</a> · <a href="#srv6-segment-routing">SRv6 &amp; segment routing</a> · <a href="#usid-micro-behaviors">uSID micro-behaviors</a> · <a href="#behavior-flavors">Behavior flavors (PSP, USD, …)</a> · <a href="#addressing-packets">Addressing &amp; packets</a> · <a href="#sonic-stack">SONiC stack</a> · <a href="#hardware-platforms">Hardware &amp; platforms</a> · <a href="#protocols-networking">Protocols &amp; networking</a></p>
+</div>
+<hr />
+<h2 id="mrc-transport">MRC &amp; transport</h2>
+<h3 id="mrc-multipath-reliable-connection">MRC (Multipath Reliable Connection)</h3>
+<p>OCP-standard RDMA transport for AI training clusters. Extends RoCEv2 with multipath packet spraying, transport-layer path health management, selective retransmission, and packet trimming. Defined in <a href="https://www.opencompute.org/documents/ocp-mrc-1-0-pdf">OCP MRC Rev 1.0</a>.</p>
+<h3 id="mrc-engine">MRC engine</h3>
+<p>Logic in a SmartNIC that generates EVs, selects paths per packet, handles SACK/NACK feedback, retransmits lost data, and retires failed paths — without application changes.</p>
+<h3 id="ev-entropy-value">EV (Entropy Value)</h3>
+<p>A <strong>32-bit per-packet identifier</strong> striped across the outer IPv6 <strong>flow label</strong> (20 bits) and <strong>UDP source port</strong> (16 bits). Generated at QP startup (typically 128–256 values per QP, split across planes). Used for <strong>path health feedback</strong> in SACK/NACK; <strong>not used by switches for forwarding</strong> in MRC.</p>
+<h3 id="plane">Plane</h3>
+<p>One of <strong>eight independent</strong> leaf–spine fabric networks. NIC <em>n</em> on every node connects only to the leaf of plane <em>n</em>. Traffic on plane 1 never crosses into plane 2.</p>
+<h3 id="multipath-packet-spray">Multipath / packet spray</h3>
+<p>Sending successive packets from the same QP over different paths (different EVs → different SRv6 uSID stacks) to spread load and survive failures without ECMP.</p>
+<h3 id="sack-nack">SACK / NACK</h3>
+<p>Selective acknowledgment and negative acknowledgment messages from the receiver NIC. Echo the EV so the sender's MRC engine knows which path (EV) is healthy, congested, or failed.</p>
+<h3 id="packet-trim-trimming">Packet trim / trimming</h3>
+<p>Congestion signal: switch strips payload but forwards headers. Triggers selective retransmit of missing data — not full QP recovery. Distinct from <strong>loss</strong> (packet dropped → EV retired immediately).</p>
+<h3 id="lossy-ethernet-rdma">Lossy Ethernet RDMA</h3>
+<p>MRC runs over best-effort Ethernet with <strong>PFC disabled</strong>. Reliability and congestion response live in the NIC transport layer, not in switch pause frames.</p>
+<h3 id="qp-queue-pair">QP (Queue Pair)</h3>
+<p>RDMA connection endpoint between two NICs. MRC assigns a set of EVs and SRv6 path templates per QP at setup time.</p>
+<h3 id="rocev2">RoCEv2</h3>
+<p>RDMA over Converged Ethernet v2 — UDP/IP encapsulation of RDMA (typically port 4791). MRC builds on RoCEv2 semantics with extended multipath and feedback.</p>
+<h3 id="static-source-routing">Static source routing</h3>
+<p>Paths are encoded in the packet (SRv6 uSID stack) by the sender NIC. Switches follow pre-provisioned static tables — no runtime route computation.</p>
+<h3 id="path-matrix">Path matrix</h3>
+<p>Spreadsheet or generated table mapping every <strong>post-shift destination prefix</strong> on each switch to an egress port and next-hop. Required to program MRC leaf/spine static FIBs.</p>
+<hr />
+<h2 id="srv6-segment-routing">SRv6 &amp; segment routing</h2>
+<h3 id="srv6-segment-routing-over-ipv6">SRv6 (Segment Routing over IPv6)</h3>
+<p>Source routing where paths are encoded as IPv6 <strong>Segment Identifiers (SIDs)</strong> in the destination address or Segment Routing Header (SRH). Switches execute <strong>local behaviors</strong> bound to each SID.</p>
+<h3 id="segment-sid-segment-identifier">Segment / SID (Segment Identifier)</h3>
+<p>A 128-bit IPv6 address (full SID) or shorter <strong>micro-SID</strong> instructing a node what to do (forward, decapsulate, lookup in VRF, etc.).</p>
+<h3 id="segment-routing-header-srh">Segment Routing Header (SRH)</h3>
+<p>IPv6 extension header (next header 43) carrying an ordered list of SIDs. In <strong>uSID</strong> deployments the path is often encoded entirely in the <strong>destination address</strong>, reducing SRH overhead.</p>
+<h3 id="source-routing">Source routing</h3>
+<p>Sender specifies the full path; transit nodes do not run dynamic routing protocols to choose next hops. MRC uses static SRv6 source routing on the backend fabric.</p>
+<h3 id="locator">Locator</h3>
+<p>An IPv6 prefix (typically <code>/48</code> in F3216 uSID) identifying a node or domain in the SRv6 addressing hierarchy. All local SIDs for that node are allocated under the locator. Comprises <strong>block + node</strong> portions in uSID format.</p>
+<h3 id="locator-block-usid-block">Locator block (uSID block)</h3>
+<p>The high-order <strong>32-bit</strong> prefix shared across a fabric domain (e.g. <code>fcbb:bbbb::/32</code>). Defines the SRv6 address space for the rack or pod.</p>
+<h3 id="shift-and-lookup">Shift-and-lookup</h3>
+<p>Core <strong>uN</strong> dataplane operation: match local uSID → left-shift the uSID field 16 bits → perform FIB/LPM lookup on the new destination address → forward.</p>
+<h3 id="next-csid">NEXT-CSID</h3>
+<p>Compressed-SID instruction executed by <strong>uN</strong> and <strong>uA</strong>: advance to the next 16-bit micro-SID in the carrier by shifting the destination address left.</p>
+<h3 id="csid-compressed-sid">CSID (Compressed SID)</h3>
+<p>A uSID instruction packed into 16 bits within the 128-bit destination address, as opposed to a full 128-bit classic SRv6 SID.</p>
+<h3 id="end-behavior">End behavior</h3>
+<p>Classic SRv6 local action on a full SID — typically "I am this node; pop/shift and continue or decapsulate." <strong>uN</strong> is the uSID variant of End with NEXT-CSID.</p>
+<h3 id="endx-behavior">End.X behavior</h3>
+<p>Classic SRv6 "cross-connect to a specific adjacency (interface/next-hop)." <strong>uA</strong> is the uSID variant of End.X with NEXT-CSID.</p>
+<h3 id="enddt46-udt46">End.DT46 / uDT46</h3>
+<p>Decapsulate outer IPv6 and lookup inner packet in a VRF routing table supporting <strong>both</strong> IPv4 and IPv6. Used at PE/NIC decapsulation points in overlay designs.</p>
+<hr />
+<h2 id="usid-micro-behaviors">uSID micro-behaviors</h2>
+<p>Micro-segment (<strong>uSID</strong>) behaviors are compact 16-bit instructions. In MRC transit fabrics, <strong>uN</strong> dominates; overlay/service behaviors appear at NIC or PE edges.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Full name</th>
+<th>Role in MRC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>uN</strong></td>
+<td>uNode / End + NEXT-CSID</td>
+<td><strong>Transit switch</strong>: shift uSID stack, lookup, forward. Every leaf and spine gets a <code>/48</code> uN locator.</td>
+</tr>
+<tr>
+<td><strong>uA</strong></td>
+<td>uAdjacency / End.X + NEXT-CSID</td>
+<td><strong>Explicit link</strong>: forward out a named interface (and optional next-hop). Used when path matrix pins a specific uplink/downlink.</td>
+</tr>
+<tr>
+<td><strong>uDT4</strong></td>
+<td>uDecap + IPv4 table</td>
+<td>Decapsulate; lookup inner IPv4 in VRF.</td>
+</tr>
+<tr>
+<td><strong>uDT6</strong></td>
+<td>uDecap + IPv6 table</td>
+<td>Decapsulate; lookup inner IPv6 in VRF.</td>
+</tr>
+<tr>
+<td><strong>uDT46</strong></td>
+<td>uDecap + IPv4/IPv6 table</td>
+<td>Decapsulate; lookup inner packet in VRF (dual-stack). NIC decap in overlay demos.</td>
+</tr>
+<tr>
+<td><strong>uDX4 / uDX6</strong></td>
+<td>uDecap + cross-connect</td>
+<td>Decapsulate and L2/L3 cross-connect to a specific neighbor (uSID variants of End.DX4/DX6).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usid-micro-sid-micro-segment">uSID / micro-SID / micro-segment</h3>
+<p>An extension of SRv6 that packs <strong>multiple 16-bit instructions</strong> into one 128-bit IPv6 destination address (<strong>uSID carrier</strong>), instead of one 128-bit SID per hop.</p>
+<h3 id="usid-carrier">uSID carrier</h3>
+<p>The 128-bit IPv6 destination address layout:</p>
+<div class="highlight"><pre><span></span><code>&lt;uSID-Block&gt;&lt;Active-uSID&gt;&lt;Next-uSID&gt;…&lt;Last-uSID&gt;&lt;End-of-Carrier&gt;…
+</code></pre></div>
+<p>Up to six uSIDs fit in F3216 format before padding.</p>
+<h3 id="active-usid">Active uSID</h3>
+<p>The leftmost 16-bit uSID slot after the locator block — the instruction the current node executes (compare first 48 bits: block + active uSID).</p>
+<h3 id="end-of-carrier-eoc">End-of-Carrier (EoC)</h3>
+<p>Reserved uSID value <strong><code>0000</code></strong>. Marks unused slots; fills remaining bits to complete the 128-bit address after the last real uSID.</p>
+<p>On <strong>DCS-7060X6</strong> running EOS 4.36.0FX-SRV6, Arista <strong>drops transit packets</strong> when the CSID <strong>immediately after the active uN or uA</strong> is <strong><code>0000</code></strong> — even though <code>0000</code> is the standard EoC marker per RFC 9800. NIC path encoders must not place EoC in the next slot while the packet is still traversing switches; padding belongs in trailing carrier slots only. Known caveat <strong>1294522</strong> in <a href="../RN-4.36.0FX-SRV6-v0.1.pdf">RN-4.36.0FX-SRV6-v0.1.pdf</a>.</p>
+<h3 id="f3216">F3216</h3>
+<p>Standard uSID carrier format: <strong>F</strong> = format name, <strong>32</strong> = block length (bits), <strong>16</strong> = uSID ID length (bits). Required interoperable format per IETF SRv6 uSID compression work and RFC 9800 ecosystem.</p>
+<h3 id="micro-segment-domain-arista-eos">micro-segment domain (Arista EOS)</h3>
+<p>Shared <strong>uSID block</strong> configuration under <code>router srv6</code> → <code>vrf default</code>. Defines the F3216 block prefix (<code>block fcbb:bbbb::/32</code>) used by all locators in the fabric. See <a href="../SRv6-uN-Support.pdf">SRv6-uN-Support.pdf</a>.</p>
+<h3 id="end-usid-arista-eos-locator"><code>end usid</code> (Arista EOS locator)</h3>
+<p>16-bit uSID value on a <strong>locator</strong> stanza: <code>prefix micro-segment domain &lt;DOM&gt; end usid 0x0101</code>. Combined with the domain block, this yields the node’s <code>/48</code> uN prefix in System SFIB (e.g. <code>fcbb:bbbb::/32</code> + <code>0x0101</code> → <code>fcbb:bbbb:0101::/48</code>). Same value maps to SONiC <code>SRV6_MY_LOCATORS</code> + FRR <code>static-sids</code>. See <a href="../srv6-usid-leaf-spine-config/#addressing-plan-f3216--unified-sonic--arista">SRv6 config reference</a>.</p>
+<h3 id="unode">unode</h3>
+<p>Informal name for <strong>uN</strong> (End with uSIDs) behavior. On Arista EOS, configured via <code>router srv6</code> locator + <code>end usid</code>, not via 3rd-party OS <code>micro-segment behavior unode psp-usd</code> syntax.</p>
+<h3 id="behavior-usid"><code>behavior usid</code></h3>
+<p>FRR/SONiC CLI phrase marking a locator as a <strong>uSID locator</strong> so allocated SIDs use uN/uA/uDT<em> behaviors instead of classic End/End.X/End.DT</em>.</p>
+<hr />
+<h2 id="behavior-flavors">Behavior flavors</h2>
+<p>Flavors modify <strong>how</strong> a behavior handles the SRH/outer header at penultimate or final hop. uN/uA in MRC deployments typically use <strong>PSP + USD</strong>.</p>
+<h3 id="psp-penultimate-segment-pop">PSP (Penultimate Segment Pop)</h3>
+<p>On the <strong>penultimate</strong> hop, remove the SRH (or outer encapsulation) before delivery to the final segment. Reduces processing on the endpoint node. With uSID, shift-and-lookup achieves similar efficiency without a full SRH.</p>
+<h3 id="usd-ultimate-segment-decapsulation">USD (Ultimate Segment Decapsulation)</h3>
+<p>On the <strong>ultimate</strong> (final) hop, decapsulate the outer IPv6 header cleanly when the node is the destination. Standard flavor paired with PSP for uN/uA.</p>
+<h3 id="pspusd">PSP/USD</h3>
+<p>Combined flavor notation; on Arista EOS see <code>show srv6 capabilities</code> (PSP, USD, Next-CSID). On SONiC/FRR: <code>uN (PSP/USD)</code> in <code>show segment-routing srv6 sid</code>.</p>
+<h3 id="pipe-uniform-decap_dscp_mode">Pipe / Uniform (<code>decap_dscp_mode</code>)</h3>
+<p>How a node preserves <strong>DSCP</strong> on decapsulation. <strong>Pipe</strong> copies outer DSCP to inner; <strong>uniform</strong> may remap. Relevant for uDT* service SIDs in ConfigDB (<code>decap_dscp_mode</code> field).</p>
+<hr />
+<h2 id="addressing-packets">Addressing &amp; packets</h2>
+<h3 id="outer-inner-ipv6-header">Outer / inner IPv6 header</h3>
+<p>MRC data packets use <strong>IPv6-in-IPv6</strong> encapsulation. The <strong>outer</strong> header carries SRv6 uSID path + EV fields; the <strong>inner</strong> header carries the actual RDMA/RoCE payload path.</p>
+<h3 id="flow-label">Flow label</h3>
+<p>20-bit field in the IPv6 header. In MRC, carries the <strong>high 20 bits of the 32-bit EV</strong>.</p>
+<h3 id="udp-source-port">UDP source port</h3>
+<p>In RoCEv2/MRC outer header, carries the <strong>low 16 bits of the EV</strong> (destination port remains 4791 for RoCEv2).</p>
+<h3 id="da-destination-address">DA (Destination Address)</h3>
+<p>IPv6 destination address of the outer header. In MRC, encodes the <strong>uSID carrier</strong> (path); switches match and shift this field.</p>
+<h3 id="fib-forwarding-information-base">FIB (Forwarding Information Base)</h3>
+<p>Hardware/software forwarding table. After uN shift, lookup hits a <strong>static</strong> FIB entry → egress port.</p>
+<h3 id="lpm-longest-prefix-match">LPM (Longest Prefix Match)</h3>
+<p>Standard IPv6 lookup. uN forwarding uses LPM (or exact static routes) on the <strong>shifted</strong> destination address.</p>
+<h3 id="gua-ula">GUA / ULA</h3>
+<p>Global Unicast Address / Unique Local Address — common choices for SRv6 locator blocks and underlay links.</p>
+<hr />
+<h2 id="sonic-stack">SONiC stack</h2>
+<h3 id="sonic-software-for-open-networking-in-the-cloud">SONiC (Software for Open Networking in the Cloud)</h3>
+<p>Open NOS for data center switches. Uses Redis <strong>ConfigDB</strong>, <strong>syncd</strong>/<strong>SAI</strong> for ASIC programming, and <strong>FRR</strong> for routing protocols and SRv6 control plane.</p>
+<h3 id="configdb">ConfigDB</h3>
+<p>SONiC configuration database (Redis DB 4). Source of truth for <code>SRV6_MY_LOCATORS</code>, <code>SRV6_MY_SIDS</code>, interfaces, etc. Persisted with <code>config save</code> to <code>/etc/sonic/config_db.json</code>.</p>
+<h3 id="appdb-appl_db">APPDB / APPL_DB</h3>
+<p>Application database — orchagent writes programmed state (e.g. <code>SRV6_MY_SID_TABLE</code>) consumed by syncd/SAI.</p>
+<h3 id="bgpcfgd">bgpcfgd</h3>
+<p>SONiC daemon that watches ConfigDB (including SRv6 tables) and compiles changes into <strong>FRR</strong> configuration via the SRv6 Manager module.</p>
+<h3 id="srv6orch">srv6orch</h3>
+<p>SONiC orchagent module that translates SRv6 MY_SID entries into <strong>SAI</strong> my-SID programming for the ASIC.</p>
+<h3 id="sai-switch-abstraction-interface">SAI (Switch Abstraction Interface)</h3>
+<p>Vendor-neutral API between SONiC and switch ASIC SDK. Defines <code>SAI_MY_SID_ENTRY_*</code> behaviors including <code>UN</code>, <code>UA</code>, <code>DT46</code>, etc.</p>
+<h3 id="frr-frrouting">FRR (FRRouting)</h3>
+<p>Open-source routing suite (zebra, bgpd, staticd, isisd, …) used by SONiC for SRv6 locators, static SIDs, and optional IGP/BGP. CLI shell: <strong><code>vtysh</code></strong>.</p>
+<h3 id="vtysh">vtysh</h3>
+<p>FRR integrated CLI (classic CLI style). On SONiC: <code>vtysh -c "show segment-routing srv6 locator"</code>. Ephemeral unless backed by ConfigDB or <code>frr.conf</code>.</p>
+<h3 id="zebra">zebra</h3>
+<p>FRR component managing RIB/FIB interaction and SRv6 locator configuration. SRv6 locators are configured under <code>segment-routing</code> → <code>srv6</code> in zebra/staticd.</p>
+<h3 id="staticd">staticd</h3>
+<p>FRR daemon for static routes and <strong><code>static-sids</code></strong> SRv6 local SID configuration.</p>
+<h3 id="fpmsyncd">fpmsyncd</h3>
+<p>SONiC daemon syncing FRR programming into APPDB for orchagent consumption.</p>
+<h3 id="static-sids"><code>static-sids</code></h3>
+<p>FRR configuration subtree for manually assigned local SIDs:</p>
+<div class="highlight"><pre><span></span><code>segment-routing → srv6 → static-sids → sid … behavior uN|uA|uDT46 …
+</code></pre></div>
+<h3 id="srv6_my_locators-srv6_my_sids"><code>SRV6_MY_LOCATORS</code> / <code>SRV6_MY_SIDS</code></h3>
+<p>ConfigDB tables for static SRv6 locator prefixes and local SID-to-behavior mappings. Compiled to FRR by bgpcfgd.</p>
+<hr />
+<h2 id="hardware-platforms">Hardware &amp; platforms</h2>
+<h3 id="7060xe7">7060XE7</h3>
+<p>Arista data center switch (Broadcom <strong>Tomahawk 6</strong> / <strong>TH6</strong>) used as MRC leaf/spine in this primer's rack diagrams. Separate product from <strong>7060X6</strong>. Supports line-rate SRv6 uN in EOS on supported builds — confirm against Arista's compatibility matrix for your SKU.</p>
+<h3 id="7060x6-dcs-7060x6">7060X6 (DCS-7060X6)</h3>
+<p>Arista data center switch family (Broadcom <strong>Tomahawk 5</strong> / <strong>TH5</strong>). SRv6 uN was introduced on this line in EOS <strong>4.34.2F</strong> per the <a href="../SRv6-uN-Support.pdf">SRv6 uN TOI</a>. The <strong>4.36.0FX-SRV6</strong> early-testing build and release notes target this platform (including known caveat <strong>1294522</strong> for zero CSID after active segment on transit).</p>
+<h3 id="tomahawk-5-th5">Tomahawk 5 (TH5)</h3>
+<p>Broadcom switching ASIC generation in <strong>7060X6</strong> and related data center switches. SRv6 uSID uN forwarding at line rate where EOS SRv6 uN is supported.</p>
+<h3 id="tomahawk-6-th6">Tomahawk 6 (TH6)</h3>
+<p>Broadcom switching ASIC generation in <strong>7060XE7</strong> and related AI-fabric switches. Used in this primer's MRC rack reference design.</p>
+<h3 id="eos-extensible-operating-system">EOS (Extensible Operating System)</h3>
+<p>Arista network operating system. SRv6 uN uses <strong><code>router srv6</code></strong> (micro-segment domain + locator), documented in <a href="../SRv6-uN-Support.pdf">SRv6-uN-Support.pdf</a> (4.34.2F+). Operational CLI: <code>show srv6 locator</code>, <code>show srv6 route</code>, <code>show srv6 capabilities</code>, <code>show srv6 domain</code>, <code>show srv6 adjacency-segments</code> (uA); <code>ping srv6 sid … via segment-list …</code>. eAPI JSON models for show commands: <a href="../EOS-4.36.0FX-SRV6-CommandApiGuide.pdf">EOS-4.36.0FX-SRV6-CommandApiGuide.pdf</a>.</p>
+<h3 id="toi-transfer-of-information">TOI (Transfer of Information)</h3>
+<p>Arista technical bulletin for new features (e.g. SRv6 uN Support, SRv6 uA Support).</p>
+<h3 id="spectrum-4-spectrum-5">Spectrum-4 / Spectrum-5</h3>
+<p>Nvidia Ethernet switch ASICs running SONiC or Cumulus in OpenAI/Microsoft MRC deployments (alongside Arista EOS).</p>
+<h3 id="connectx-8-supernic">ConnectX-8 SuperNIC</h3>
+<p>Nvidia SmartNIC with MRC engine support (800G per port in this primer). Nvidia's reference platform for OCP MRC Rev 1.0 — used in OpenAI/Microsoft production clusters and testbeds per the <a href="https://cdn.openai.com/pdf/resilient-ai-supercomputer-networking-using-mrc-and-srv6.pdf">OpenAI MRC paper</a>. ConnectX-7 does not implement MRC.</p>
+<h3 id="pollara-400">Pollara 400</h3>
+<p>AMD Pensando SmartNIC with OCP MRC Rev 1.0 support on MI350X nodes. AMD's reference platform for OCP MRC Rev 1.0 — validated in the same OpenAI MRC paper alongside ConnectX-8 and Broadcom Thor Ultra.</p>
+<hr />
+<h2 id="protocols-networking">Protocols &amp; networking</h2>
+<h3 id="ecmp-equal-cost-multi-path">ECMP (Equal-Cost Multi-Path)</h3>
+<p>Load-sharing across multiple next hops for the same prefix. <strong>Disabled in MRC</strong> — multipath is explicit via EV/SRv6 paths, not hash-based ECMP.</p>
+<h3 id="bgp-border-gateway-protocol">BGP (Border Gateway Protocol)</h3>
+<p>Path-vector routing protocol. <strong>Not used</strong> on MRC backend planes (static SRv6 only). May appear in overlay/L3VPN SRv6 service scenarios outside the backend fabric.</p>
+<h3 id="is-is">IS-IS</h3>
+<p>Link-state IGP. Can advertise SRv6 locators and auto-allocate uN/uA in dynamic SRv6 designs. <strong>Disabled in MRC</strong> backend; SR-MPLS IS-IS in EOS manual is a different data plane.</p>
+<h3 id="pfc-priority-flow-control">PFC (Priority Flow Control)</h3>
+<p>IEEE 802.1Qbb pause-based lossless Ethernet. <strong>Disabled in MRC</strong> — avoids pause storms; NIC handles retry.</p>
+<h3 id="dcqcn">DCQCN</h3>
+<p>Data Center Quantized Congestion Notification — RoCE congestion control. Not the primary MRC congestion mechanism (trim + SACK-based response instead).</p>
+<h3 id="rdma">RDMA</h3>
+<p>Remote Direct Memory Access — kernel-bypass memory read/write between nodes. MRC adds multipath reliability on top of RoCEv2 RDMA.</p>
+<h3 id="nvlink-nvswitch">NVLink / NVSwitch</h3>
+<p>Nvidia intra-node GPU interconnect and switch chip. Handles <strong>local</strong> all-reduce inside a DGX/HGX node — separate from MRC inter-node fabric.</p>
+<h3 id="infinity-fabric">Infinity Fabric</h3>
+<p>AMD intra-node interconnect — AMD analogue to NVLink for local GPU traffic.</p>
+<h3 id="ocp-open-compute-project">OCP (Open Compute Project)</h3>
+<p>Industry consortium; publishes the <strong>MRC Rev 1.0</strong> specification used throughout this primer.</p>
+<h3 id="clos-leafspine">Clos / leaf–spine</h3>
+<p>Two-tier data center topology. Each MRC <strong>plane</strong> is a miniature leaf–spine: nodes → leaf → spine → leaf → nodes (2 fabric hops).</p>
+<h3 id="leaf-spine">Leaf / spine</h3>
+<p><strong>Leaf</strong>: top-of-rack switch facing compute NICs. <strong>Spine</strong>: aggregation switch connecting leaves within a plane. One pair per plane in the 72-GPU rack reference design.</p>
+<hr />
+<h2 id="abbreviation-index-az">Abbreviation index (A–Z)</h2>
+<table>
+<thead>
+<tr>
+<th>Abbr.</th>
+<th>Expansion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BGP</strong></td>
+<td>Border Gateway Protocol</td>
+</tr>
+<tr>
+<td><strong>CSID</strong></td>
+<td>Compressed SID</td>
+</tr>
+<tr>
+<td><strong>DA</strong></td>
+<td>Destination Address</td>
+</tr>
+<tr>
+<td><strong>DCQCN</strong></td>
+<td>Data Center Quantized Congestion Notification</td>
+</tr>
+<tr>
+<td><strong>EoC</strong></td>
+<td>End-of-Carrier</td>
+</tr>
+<tr>
+<td><strong>ECMP</strong></td>
+<td>Equal-Cost Multi-Path</td>
+</tr>
+<tr>
+<td><strong>EOS</strong></td>
+<td>Extensible Operating System (Arista)</td>
+</tr>
+<tr>
+<td><strong>EV</strong></td>
+<td>Entropy Value</td>
+</tr>
+<tr>
+<td><strong>FIB</strong></td>
+<td>Forwarding Information Base</td>
+</tr>
+<tr>
+<td><strong>FRR</strong></td>
+<td>FRRouting</td>
+</tr>
+<tr>
+<td><strong>GUA</strong></td>
+<td>Global Unicast Address</td>
+</tr>
+<tr>
+<td><strong>IGP</strong></td>
+<td>Interior Gateway Protocol</td>
+</tr>
+<tr>
+<td><strong>LPM</strong></td>
+<td>Longest Prefix Match</td>
+</tr>
+<tr>
+<td><strong>MRC</strong></td>
+<td>Multipath Reliable Connection</td>
+</tr>
+<tr>
+<td><strong>OCP</strong></td>
+<td>Open Compute Project</td>
+</tr>
+<tr>
+<td><strong>PFC</strong></td>
+<td>Priority Flow Control</td>
+</tr>
+<tr>
+<td><strong>PSP</strong></td>
+<td>Penultimate Segment Pop</td>
+</tr>
+<tr>
+<td><strong>QP</strong></td>
+<td>Queue Pair</td>
+</tr>
+<tr>
+<td><strong>RDMA</strong></td>
+<td>Remote Direct Memory Access</td>
+</tr>
+<tr>
+<td><strong>RoCEv2</strong></td>
+<td>RDMA over Converged Ethernet v2</td>
+</tr>
+<tr>
+<td><strong>SAI</strong></td>
+<td>Switch Abstraction Interface</td>
+</tr>
+<tr>
+<td><strong>SACK</strong></td>
+<td>Selective ACK</td>
+</tr>
+<tr>
+<td><strong>SID</strong></td>
+<td>Segment Identifier</td>
+</tr>
+<tr>
+<td><strong>SONiC</strong></td>
+<td>Software for Open Networking in the Cloud</td>
+</tr>
+<tr>
+<td><strong>SRH</strong></td>
+<td>Segment Routing Header</td>
+</tr>
+<tr>
+<td><strong>SRv6</strong></td>
+<td>Segment Routing over IPv6</td>
+</tr>
+<tr>
+<td><strong>TH5</strong></td>
+<td>Tomahawk 5</td>
+</tr>
+<tr>
+<td><strong>TH6</strong></td>
+<td>Tomahawk 6</td>
+</tr>
+<tr>
+<td><strong>TOI</strong></td>
+<td>Transfer of Information (Arista)</td>
+</tr>
+<tr>
+<td><strong>uA</strong></td>
+<td>uSID Adjacency (End.X + NEXT-CSID)</td>
+</tr>
+<tr>
+<td><strong>uDT46</strong></td>
+<td>uSID Decap + DT46</td>
+</tr>
+<tr>
+<td><strong>uN</strong></td>
+<td>uSID Node (End + NEXT-CSID)</td>
+</tr>
+<tr>
+<td><strong>uSID</strong></td>
+<td>micro-SID / micro-segment</td>
+</tr>
+<tr>
+<td><strong>USD</strong></td>
+<td>Ultimate Segment Decapsulation</td>
+</tr>
+<tr>
+<td><strong>ULA</strong></td>
+<td>Unique Local Address</td>
+</tr>
+<tr>
+<td><strong>VRF</strong></td>
+<td>Virtual Routing and Forwarding</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

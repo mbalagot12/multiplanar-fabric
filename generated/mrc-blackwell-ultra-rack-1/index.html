@@ -1,0 +1,995 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MkDocs site rendering user-supplied HTML pages">
+      
+      
+      
+        <link rel="canonical" href="https://multiplanar.agentic24x7.net/generated/mrc-blackwell-ultra-rack-1/">
+      
+      
+        <link rel="prev" href="../gb300-nvl72-dc-rack-1/">
+      
+      
+        <link rel="next" href="../srv6-mrc-packet-ev-header/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300 - Multiplanar Fabric AI Networking Primer</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/html-pages.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Multiplanar Fabric AI Networking Primer" class="md-header__button md-logo" aria-label="Multiplanar Fabric AI Networking Primer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Multiplanar Fabric AI Networking Primer
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../glossary/" class="md-tabs__link">
+          
+  
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../amd-mi350x-mrc-srv6-fabric/" class="md-tabs__link">
+          
+  
+  
+  Pages
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Multiplanar Fabric AI Networking Primer" class="md-nav__button md-logo" aria-label="Multiplanar Fabric AI Networking Primer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Multiplanar Fabric AI Networking Primer
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../srv6-usid-leaf-spine-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arista-eos-srv6-un-ua-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arista EOS SRv6 uN + uA Config — Plane 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../srv6-plane1-packet-traversal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SRv6 Plane 1 — Packet Traversal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pages
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pages
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amd-mi350x-mrc-srv6-fabric/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AMD MI350X — MRC SRv6 Fabric Connectivity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gb300-nvl72-dc-rack-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GB300 NVL72 — Liquid-Cooled Data Center Rack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../srv6-mrc-packet-ev-header/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MRC Packet Structure — SRv6 + Entropy Value
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mrc-packet-spray-animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MRC Packet Spray Animation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div class="html-page">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #F8F8F6; min-height: 100vh;
+         display: flex; flex-direction: column; align-items: center; padding: 24px 16px; color: #1A1A18; }
+  h1 { font-size: 18px; font-weight: 700; margin-bottom: 4px; text-align: center; }
+  .sub { font-size: 12px; color: #73726C; margin-bottom: 8px; text-align: center; }
+  .provenance { width: 100%; max-width: 1200px; margin-bottom: 16px; font-size: 10px; color: #73726C;
+                line-height: 1.55; padding: 8px 12px; background: #F8F7F4; border: 1px solid #E5E3DC;
+                border-radius: 6px; text-align: left; }
+  .provenance a { color: #378ADD; }
+  .wrap { background: #fff; border: 1px solid #D3D1C7; border-radius: 12px;
+          padding: 16px; width: 100%; max-width: 1200px; }
+  svg { display: block; width: 100%; height: auto; }
+</style>
+
+<h1>72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300</h1>
+<p class="sub">9 × HGX B300 (72 B300 GPUs) · 8× CX-8 SuperNIC per node @ 800G · 8 MRC planes · 16× 7060XE7 · 57.6 Tbps aggregate</p>
+<p class="provenance">
+  <strong>Reference architecture</strong> aligned with OCP MRC Rev 1.0 and the
+  <a href="https://cdn.openai.com/pdf/resilient-ai-supercomputer-networking-using-mrc-and-srv6.pdf">OpenAI MRC paper</a>.
+  ConnectX-8 SuperNIC is Nvidia's reference platform (paper Clusters A/B on GB200).
+  This rack uses HGX B300 and Arista 7060XE7 — GPU and switch SKUs differ from the paper testbeds.
+</p>
+<div class="wrap">
+<svg viewBox="0 0 980 860" xmlns="http://www.w3.org/2000/svg">
+
+<rect x="8" y="8" width="348" height="800" rx="10" fill="#F0EFF8" stroke="#AFA9EC" stroke-width="1"></rect>
+<text x="182" y="27" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#3C3489">Server Rack</text>
+<text x="182" y="41" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#534AB7">9× HGX B300  ·  72 Blackwell Ultra GPUs</text>
+<rect x="374" y="8" width="598" height="800" rx="10" fill="#EDF6F1" stroke="#5DCAA5" stroke-width="1"></rect>
+<text x="673" y="27" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#085041">MRC Fabric — 8 independent planes</text>
+<text x="673" y="41" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#0F6E56">Arista 7060XE7  ·  800G per uplink  ·  no cross-plane links</text>
+
+<rect x="376" y="50" width="68" height="700" rx="4" fill="#E1F5EE" opacity=".55"></rect>
+<rect x="450" y="50" width="68" height="700" rx="4" fill="#D4F0E7" opacity=".4"></rect>
+<rect x="524" y="50" width="68" height="700" rx="4" fill="#E1F5EE" opacity=".55"></rect>
+<rect x="598" y="50" width="68" height="700" rx="4" fill="#D4F0E7" opacity=".4"></rect>
+<rect x="672" y="50" width="68" height="700" rx="4" fill="#E1F5EE" opacity=".55"></rect>
+<rect x="746" y="50" width="68" height="700" rx="4" fill="#D4F0E7" opacity=".4"></rect>
+<rect x="820" y="50" width="68" height="700" rx="4" fill="#E1F5EE" opacity=".55"></rect>
+<rect x="894" y="50" width="68" height="700" rx="4" fill="#D4F0E7" opacity=".4"></rect>
+
+<text x="410" y="63" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#085041">P1</text>
+<text x="484" y="63" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#085041">P2</text>
+<text x="558" y="63" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#085041">P3</text>
+<text x="632" y="63" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#085041">P4</text>
+<text x="706" y="63" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#085041">P5</text>
+<text x="780" y="63" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#085041">P6</text>
+<text x="854" y="63" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#085041">P7</text>
+<text x="928" y="63" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#085041">P8</text>
+
+
+<rect x="378" y="72" width="64" height="32" rx="4" fill="#085041"></rect><text x="410" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#9FE1CB">Spine P1</text>
+<rect x="452" y="72" width="64" height="32" rx="4" fill="#085041"></rect><text x="484" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#9FE1CB">Spine P2</text>
+<rect x="526" y="72" width="64" height="32" rx="4" fill="#085041"></rect><text x="558" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#9FE1CB">Spine P3</text>
+<rect x="600" y="72" width="64" height="32" rx="4" fill="#085041"></rect><text x="632" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#9FE1CB">Spine P4</text>
+<rect x="674" y="72" width="64" height="32" rx="4" fill="#085041"></rect><text x="706" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#9FE1CB">Spine P5</text>
+<rect x="748" y="72" width="64" height="32" rx="4" fill="#085041"></rect><text x="780" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#9FE1CB">Spine P6</text>
+<rect x="822" y="72" width="64" height="32" rx="4" fill="#085041"></rect><text x="854" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#9FE1CB">Spine P7</text>
+<rect x="896" y="72" width="64" height="32" rx="4" fill="#085041"></rect><text x="928" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#9FE1CB">Spine P8</text>
+<text x="410" y="112" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="484" y="112" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="558" y="112" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="632" y="112" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="706" y="112" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="780" y="112" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="854" y="112" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="928" y="112" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="673" y="127" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#888780" font-style="italic">← fully independent planes — no cross-plane links →</text>
+
+
+<rect x="378" y="668" width="64" height="32" rx="4" fill="#0F6E56"></rect><text x="410" y="688" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#E1F5EE">Leaf P1</text>
+<rect x="452" y="668" width="64" height="32" rx="4" fill="#0F6E56"></rect><text x="484" y="688" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#E1F5EE">Leaf P2</text>
+<rect x="526" y="668" width="64" height="32" rx="4" fill="#0F6E56"></rect><text x="558" y="688" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#E1F5EE">Leaf P3</text>
+<rect x="600" y="668" width="64" height="32" rx="4" fill="#0F6E56"></rect><text x="632" y="688" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#E1F5EE">Leaf P4</text>
+<rect x="674" y="668" width="64" height="32" rx="4" fill="#0F6E56"></rect><text x="706" y="688" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#E1F5EE">Leaf P5</text>
+<rect x="748" y="668" width="64" height="32" rx="4" fill="#0F6E56"></rect><text x="780" y="688" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#E1F5EE">Leaf P6</text>
+<rect x="822" y="668" width="64" height="32" rx="4" fill="#0F6E56"></rect><text x="854" y="688" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#E1F5EE">Leaf P7</text>
+<rect x="896" y="668" width="64" height="32" rx="4" fill="#0F6E56"></rect><text x="928" y="688" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#E1F5EE">Leaf P8</text>
+<text x="410" y="710" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="484" y="710" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="558" y="710" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="632" y="710" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="706" y="710" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="780" y="710" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="854" y="710" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+<text x="928" y="710" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#0F6E56">7060XE7</text>
+
+
+<line x1="410" y1="104" x2="410" y2="668" stroke="#085041" stroke-width="1.5" stroke-dasharray="4 3" opacity=".35"></line>
+<line x1="484" y1="104" x2="484" y2="668" stroke="#085041" stroke-width="1.5" stroke-dasharray="4 3" opacity=".35"></line>
+<line x1="558" y1="104" x2="558" y2="668" stroke="#085041" stroke-width="1.5" stroke-dasharray="4 3" opacity=".35"></line>
+<line x1="632" y1="104" x2="632" y2="668" stroke="#085041" stroke-width="1.5" stroke-dasharray="4 3" opacity=".35"></line>
+<line x1="706" y1="104" x2="706" y2="668" stroke="#085041" stroke-width="1.5" stroke-dasharray="4 3" opacity=".35"></line>
+<line x1="780" y1="104" x2="780" y2="668" stroke="#085041" stroke-width="1.5" stroke-dasharray="4 3" opacity=".35"></line>
+<line x1="854" y1="104" x2="854" y2="668" stroke="#085041" stroke-width="1.5" stroke-dasharray="4 3" opacity=".35"></line>
+<line x1="928" y1="104" x2="928" y2="668" stroke="#085041" stroke-width="1.5" stroke-dasharray="4 3" opacity=".35"></line>
+
+
+
+
+
+
+<rect x="16" y="80" width="348" height="50" rx="5" fill="#EEEDFE" stroke="#7F77DD" stroke-width=".8"></rect>
+<text x="26" y="97" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#3C3489">HGX B300 #9  — GPU 65–72</text>
+<text x="26" y="109" font-family="Arial,sans-serif" font-size="8" fill="#534AB7">8× B300 · NVSwitch5 1.8TB/s · 8× CX-8 SuperNIC @ 800G</text>
+<rect x="310" y="83" width="50" height="14" rx="3" fill="#085041"></rect><text x="335" y="93" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#9FE1CB">800G×8</text>
+<circle cx="70" cy="118" r="5" fill="#1D9E75" stroke="#085041" stroke-width=".5"></circle>
+<circle cx="107" cy="118" r="5" fill="#BA7517" stroke="#633806" stroke-width=".5"></circle>
+<circle cx="144" cy="118" r="5" fill="#534AB7" stroke="#26215C" stroke-width=".5"></circle>
+<circle cx="181" cy="118" r="5" fill="#E24B4A" stroke="#501313" stroke-width=".5"></circle>
+<circle cx="218" cy="118" r="5" fill="#378ADD" stroke="#042C53" stroke-width=".5"></circle>
+<circle cx="255" cy="118" r="5" fill="#639922" stroke="#173404" stroke-width=".5"></circle>
+<circle cx="292" cy="118" r="5" fill="#D4537E" stroke="#4B1528" stroke-width=".5"></circle>
+<circle cx="329" cy="118" r="5" fill="#888780" stroke="#444441" stroke-width=".5"></circle>
+<line x1="70" y1="123" x2="410" y2="668" stroke="#1D9E75" stroke-width=".9" opacity=".55"></line>
+<line x1="107" y1="123" x2="484" y2="668" stroke="#BA7517" stroke-width=".9" opacity=".55"></line>
+<line x1="144" y1="123" x2="558" y2="668" stroke="#534AB7" stroke-width=".9" opacity=".55"></line>
+<line x1="181" y1="123" x2="632" y2="668" stroke="#E24B4A" stroke-width=".9" opacity=".55"></line>
+<line x1="218" y1="123" x2="706" y2="668" stroke="#378ADD" stroke-width=".9" opacity=".55"></line>
+<line x1="255" y1="123" x2="780" y2="668" stroke="#639922" stroke-width=".9" opacity=".55"></line>
+<line x1="292" y1="123" x2="854" y2="668" stroke="#D4537E" stroke-width=".9" opacity=".55"></line>
+<line x1="329" y1="123" x2="928" y2="668" stroke="#888780" stroke-width=".9" opacity=".55"></line>
+
+<rect x="16" y="144" width="348" height="50" rx="5" fill="#EEEDFE" stroke="#7F77DD" stroke-width=".8"></rect>
+<text x="26" y="161" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#3C3489">HGX B300 #1  — GPU 1–8</text>
+<text x="26" y="173" font-family="Arial,sans-serif" font-size="8" fill="#534AB7">8× B300 · NVSwitch5 1.8TB/s · 8× CX-8 SuperNIC @ 800G</text>
+<rect x="310" y="147" width="50" height="14" rx="3" fill="#085041"></rect><text x="335" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#9FE1CB">800G×8</text>
+<circle cx="70" cy="182" r="5" fill="#1D9E75" stroke="#085041" stroke-width=".5"></circle>
+<circle cx="107" cy="182" r="5" fill="#BA7517" stroke="#633806" stroke-width=".5"></circle>
+<circle cx="144" cy="182" r="5" fill="#534AB7" stroke="#26215C" stroke-width=".5"></circle>
+<circle cx="181" cy="182" r="5" fill="#E24B4A" stroke="#501313" stroke-width=".5"></circle>
+<circle cx="218" cy="182" r="5" fill="#378ADD" stroke="#042C53" stroke-width=".5"></circle>
+<circle cx="255" cy="182" r="5" fill="#639922" stroke="#173404" stroke-width=".5"></circle>
+<circle cx="292" cy="182" r="5" fill="#D4537E" stroke="#4B1528" stroke-width=".5"></circle>
+<circle cx="329" cy="182" r="5" fill="#888780" stroke="#444441" stroke-width=".5"></circle>
+<line x1="70" y1="187" x2="410" y2="668" stroke="#1D9E75" stroke-width=".9" opacity=".55"></line>
+<line x1="107" y1="187" x2="484" y2="668" stroke="#BA7517" stroke-width=".9" opacity=".55"></line>
+<line x1="144" y1="187" x2="558" y2="668" stroke="#534AB7" stroke-width=".9" opacity=".55"></line>
+<line x1="181" y1="187" x2="632" y2="668" stroke="#E24B4A" stroke-width=".9" opacity=".55"></line>
+<line x1="218" y1="187" x2="706" y2="668" stroke="#378ADD" stroke-width=".9" opacity=".55"></line>
+<line x1="255" y1="187" x2="780" y2="668" stroke="#639922" stroke-width=".9" opacity=".55"></line>
+<line x1="292" y1="187" x2="854" y2="668" stroke="#D4537E" stroke-width=".9" opacity=".55"></line>
+<line x1="329" y1="187" x2="928" y2="668" stroke="#888780" stroke-width=".9" opacity=".55"></line>
+
+
+
+
+
+<rect x="16" y="650" width="348" height="10" rx="3" fill="#FAEEDA" stroke="#BA7517" stroke-width=".5"></rect>
+<text x="190" y="659" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="600" fill="#633806">ConnectX-8 SuperNIC · Nvidia OCP MRC Rev 1.0 reference NIC · 800G per plane</text>
+
+
+<rect x="8" y="730" width="964" height="66" rx="8" fill="#FFFFFF" stroke="#D3D1C7" stroke-width=".8"></rect>
+<text x="80" y="752" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#3C3489">72</text>
+<text x="80" y="768" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">B300 GPUs</text>
+<text x="80" y="784" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#888780">9× HGX B300</text>
+<text x="220" y="752" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#633806">72</text>
+<text x="220" y="768" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">CX-8 SuperNICs</text>
+<text x="220" y="784" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#888780">800G each · 1:1 GPU:NIC</text>
+<text x="380" y="752" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#085041">16</text>
+<text x="380" y="768" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">7060XE7 switches</text>
+<text x="380" y="784" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#888780">8 leaf + 8 spine</text>
+<text x="545" y="748" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#085041">57.6</text>
+<text x="545" y="768" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">Tbps total fabric</text>
+<text x="545" y="784" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#888780">9 nodes × 6.4 Tbps (8×800G)</text>
+<text x="710" y="752" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#085041">2</text>
+<text x="710" y="768" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">hops any-to-any</text>
+<text x="710" y="784" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#888780">leaf → spine → leaf</text>
+<text x="880" y="748" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#085041">1.0</text>
+<text x="880" y="768" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">OCP MRC Rev</text>
+<text x="880" y="784" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#888780">validated on CX-8 SuperNIC</text>
+<line x1="150" y1="736" x2="150" y2="790" stroke="#D3D1C7" stroke-width=".5"></line>
+<line x1="310" y1="736" x2="310" y2="790" stroke="#D3D1C7" stroke-width=".5"></line>
+<line x1="470" y1="736" x2="470" y2="790" stroke="#D3D1C7" stroke-width=".5"></line>
+<line x1="640" y1="736" x2="640" y2="790" stroke="#D3D1C7" stroke-width=".5"></line>
+<line x1="800" y1="736" x2="800" y2="790" stroke="#D3D1C7" stroke-width=".5"></line>
+
+
+<text x="14" y="818" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#444441">Cable = plane:</text>
+<circle cx="112" cy="814" r="5" fill="#1D9E75"></circle><text x="122" y="818" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">P1</text>
+<circle cx="148" cy="814" r="5" fill="#BA7517"></circle><text x="158" y="818" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">P2</text>
+<circle cx="184" cy="814" r="5" fill="#534AB7"></circle><text x="194" y="818" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">P3</text>
+<circle cx="220" cy="814" r="5" fill="#E24B4A"></circle><text x="230" y="818" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">P4</text>
+<circle cx="256" cy="814" r="5" fill="#378ADD"></circle><text x="266" y="818" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">P5</text>
+<circle cx="292" cy="814" r="5" fill="#639922"></circle><text x="302" y="818" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">P6</text>
+<circle cx="328" cy="814" r="5" fill="#D4537E"></circle><text x="338" y="818" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">P7</text>
+<circle cx="364" cy="814" r="5" fill="#888780"></circle><text x="374" y="818" font-family="Arial,sans-serif" font-size="9" fill="#5F5E5A">P8</text>
+<text x="420" y="818" font-family="Arial,sans-serif" font-size="9" fill="#888780">· CX-8 NIC n → leaf of plane n · 32-bit EV in SRv6 uN SID · 128–256 EVs/QP · no ECMP · no dynamic routing · liquid cooling req · 1,400W TDP</text>
+</svg>
+</div>
+
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
