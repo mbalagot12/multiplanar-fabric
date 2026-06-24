@@ -22,6 +22,14 @@ STATIC_REFERENCE_NAV: list[tuple[str, str]] = [
         "SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista)",
         "srv6-usid-leaf-spine-config.md",
     ),
+    (
+        "Arista EOS SRv6 uN + uA Config — Plane 1",
+        "arista-eos-srv6-un-ua-config.md",
+    ),
+    (
+        "SRv6 Plane 1 — Packet Traversal",
+        "srv6-plane1-packet-traversal.md",
+    ),
 ]
 
 
