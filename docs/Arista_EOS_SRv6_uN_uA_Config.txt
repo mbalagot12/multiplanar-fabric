@@ -1,0 +1,372 @@
+! ============================================================
+! Arista EOS — SRv6 uN + uA Configuration
+! Plane 1 MRC fabric — T0 Leaf and T1 Spine
+!
+! Platform:  DCS-7060X6 / DCS-7060XE7
+! EOS:       4.35.2+ (uN from 4.34.2F, uA GA from 4.35.2)
+! uSID fmt:  F3216 — 32-bit block + 16-bit uSID
+! Domain:    PLANE1-DOMAIN  block fc00:1::/32
+!
+! uN GIB range:  0x0001–0xDFFF (1–57343)   — node SIDs
+! uA LIB range:  0xE000–0xFFFF (57344–65535) — adjacency SIDs
+!
+! Address plan — Plane 1:
+!   Block prefix:      fc00:1::/32
+!   leaf1-p1 locator:  fc00:1:0001::/48  uSID 0x0001 = 1
+!   leaf2-p1 locator:  fc00:1:0002::/48  uSID 0x0002 = 2
+!   spine1-p1 locator: fc00:1:6501::/48  uSID 0x6501 = 25857
+!
+!   leaf1 uA uplink to spine:  fc00:1:e001::/48  uSID 0xe001 = 57345
+!   spine uA downlink leaf1:   fc00:1:e101::/48  uSID 0xe101 = 57601
+!   spine uA downlink leaf2:   fc00:1:e102::/48  uSID 0xe102 = 57602
+!   leaf2 uA downlink to srv:  fc00:1:f001::/48  uSID 0xf001 = 61441
+!
+! Verified CLI syntax — source documents:
+!   Arista EOS SRv6 uN Support TOI (EOS 4.34.2F)
+!   Arista EOS SRv6 uA Support TOI (EOS 4.35.2 GA)
+! ============================================================
+
+
+! ############################################################
+!  PART A — T0 LEAF SWITCH:  leaf1-p1
+!  uN:  fc00:1:0001::/48  (node SID, GIB range)
+!  uA:  fc00:1:e001::/48  (adj SID on uplink Ethernet64, LIB range)
+! ############################################################
+
+hostname leaf1-p1
+
+! ── Prerequisite: IPv6 unicast routing in default VRF ────────
+! Required for SRv6 to be operational (see uN TOI troubleshooting)
+ipv6 unicast-routing
+
+! ── Loopback — carries this node's uN prefix ─────────────────
+! Must be configured as /48 (block 32b + uSID 16b = 48b)
+! Linux kernel responds to SRv6 ping on this address
+interface Loopback0
+   description SRv6 uN source — leaf1-p1
+   ipv6 address fc00:1:1::/48
+!
+
+! ── Server-facing downlinks (plane 1 NIC connections) ────────
+! ECN marking NOT applied here — last-hop rule (MRC paper)
+! No adjacency segments on server-facing ports (not needed for uA)
+interface Ethernet1
+   description to gpu-server-01 NIC-plane1 — 800G
+   no switchport
+   ipv6 address 2001:db8:1:1::1/127
+   mtu 9214
+!
+interface Ethernet2
+   description to gpu-server-02 NIC-plane1 — 800G
+   no switchport
+   ipv6 address 2001:db8:1:2::1/127
+   mtu 9214
+!
+! ... Ethernet3–9 follow same pattern for servers 3–9
+!
+
+! ── Uplink to spine — uA adjacency segment configured here ───
+! uA is configured ON the egress interface (uA TOI page 1)
+! uSID 0xe001 is in LIB range (57344–65535) — distinct from uN GIB range
+! p2p link-local: nexthop auto-discovered via IPv6 Router Advertisement
+! Note: allow up to 150-200s for link-local discovery on first boot
+interface Ethernet64
+   description to spine1-p1 uplink — 800G — plane 1
+   no switchport
+   ipv6 address 2001:db8:1:fe::1/127
+   mtu 9214
+   !
+   ! uA adjacency segment — explicit link steering to spine
+   ! SID prefix: fc00:1:e001::/48  (block fc00:1:: + uSID 0xe001)
+   ! Behavior:   End.X with NEXT-CSID  (confirmed in uA TOI show output)
+   ! Use case:   Source encodes 0xe001 to force traffic out this exact link,
+   !             bypassing FIB lookup — useful for traffic engineering
+   adjacency-segment srv6 domain PLANE1-DOMAIN usid 57345 behavior end.x p2p link-local
+!
+
+! ── SRv6 uN configuration ─────────────────────────────────────
+! Configures the node SID (locator) for this leaf switch
+! Both uN and uA share the same micro-segment domain and block prefix
+router srv6
+   vrf default
+      !
+      ! Source address for SRv6 ping and traceroute
+      local address 2001:db8:1:1::1
+      !
+      ! Micro-segment domain — shared by all plane 1 nodes
+      ! Block prefix defines the uSID domain (F3216: /32 block + 16b uSID)
+      ! All locators and adjacency segments in plane 1 use this domain
+      ! CRITICAL: block prefix must NOT overlap with other domains
+      micro-segment domain PLANE1-DOMAIN
+         block fc00:1::/32
+         ! GIB range default: 1–57343 (0x0001–0xDFFF) — uN values
+         ! LIB range default: 57344–65535 (0xE000–0xFFFF) — uA values
+         ! No explicit gib range command needed — defaults are correct
+      !
+      ! Locator — this node's uN (node SID)
+      ! uSID value 1 (0x0001) — in GIB range
+      ! Resulting locator prefix: fc00:1:1::/48
+      ! SFIB entry: fc00:1:1::/48, End with NEXT-CSID
+      locator LEAF1-P1-LOC
+         prefix micro-segment domain PLANE1-DOMAIN end usid 1
+      !
+   !
+!
+
+! ── Static routes to neighboring node uNs ────────────────────
+! Required for uN forwarding — one static route per neighbor
+! No BGP, no OSPF, no IS-IS — static only (MRC architecture)
+! Nexthop = interface address on the far end of the point-to-point link
+!
+! Route to spine1-p1 uN — via uplink Ethernet64
+ipv6 route fc00:1:6501::/48 2001:db8:1:fe::0
+!
+! Alternative using link-local nexthop (also valid per uN TOI):
+! ipv6 route fc00:1:6501::/48 Ethernet64 fe80::<spine-link-local>
+!
+
+! ── ECN marking — transit ports only ─────────────────────────
+! MRC: ECN enabled on all transit hops, DISABLED on last hop (server-facing)
+! leaf1 uplink (Ethernet64) is a transit hop — ECN enabled
+! leaf1 downlinks (Ethernet1-9) are last-hop — ECN disabled
+policy-map type qos ECN-MARK-TRANSIT
+   class class-default
+      set ecn
+!
+interface Ethernet64
+   service-policy type qos input ECN-MARK-TRANSIT
+!
+! Note: Ethernet1-9 (server-facing) do NOT get ECN policy
+
+! ── Management plane — MGMT VRF ───────────────────────────────
+! Completely separate from SRv6 data plane address space
+! Used by Clustermapper agents (gNMI telemetry, 1ms polling)
+vrf instance MGMT
+!
+interface Management1
+   description OOB management — Clustermapper
+   vrf MGMT
+   ipv6 address 2001:db8:fe:1::1/64
+!
+ipv6 route vrf MGMT ::/0 2001:db8:fe:1::fe
+!
+
+
+! ############################################################
+!  PART B — T1 SPINE SWITCH:  spine1-p1
+!  uN:  fc00:1:6501::/48  (node SID, GIB range 0x6501=25857)
+!  uA:  fc00:1:e101::/48  (adj SID on downlink to leaf1, 0xe101=57601)
+!  uA:  fc00:1:e102::/48  (adj SID on downlink to leaf2, 0xe102=57602)
+! ############################################################
+
+hostname spine1-p1
+
+ipv6 unicast-routing
+
+! ── Loopback — spine uN prefix ───────────────────────────────
+interface Loopback0
+   description SRv6 uN source — spine1-p1
+   ipv6 address fc00:1:6501::/48
+!
+
+! ── Downlinks to T0 leaves ────────────────────────────────────
+! Each leaf connects via one 800G port
+! uA adjacency segments configured here for explicit link steering
+
+interface Ethernet1
+   description to leaf1-p1 downlink — 800G — plane 1
+   no switchport
+   ipv6 address 2001:db8:1:fe::0/127
+   mtu 9214
+   !
+   ! uA to leaf1 — forces traffic out this exact downlink to leaf1
+   ! SID prefix: fc00:1:e101::/48  (block fc00:1:: + uSID 0xe101)
+   ! Behavior:   End.X with NEXT-CSID
+   adjacency-segment srv6 domain PLANE1-DOMAIN usid 57601 behavior end.x p2p link-local
+!
+interface Ethernet2
+   description to leaf2-p1 downlink — 800G — plane 1
+   no switchport
+   ipv6 address 2001:db8:1:fd::0/127
+   mtu 9214
+   !
+   ! uA to leaf2 — forces traffic out this exact downlink to leaf2
+   ! SID prefix: fc00:1:e102::/48  (block fc00:1:: + uSID 0xe102)
+   adjacency-segment srv6 domain PLANE1-DOMAIN usid 57602 behavior end.x p2p link-local
+!
+! ... Ethernet3–64: one per T0 leaf in plane 1, same pattern
+! uA uSID values: 0xe103 (57603), 0xe104 (57604) ... 0xe140 (57664)
+!
+
+! ── SRv6 uN configuration ─────────────────────────────────────
+router srv6
+   vrf default
+      !
+      local address 2001:db8:1:6501::1
+      !
+      ! Same domain and block as all plane 1 nodes
+      micro-segment domain PLANE1-DOMAIN
+         block fc00:1::/32
+      !
+      ! Spine locator — uSID 0x6501 = 25857 (in GIB range)
+      ! Locator prefix: fc00:1:6501::/48
+      ! SFIB: fc00:1:6501::/48, End with NEXT-CSID
+      locator SPINE1-P1-LOC
+         prefix micro-segment domain PLANE1-DOMAIN end usid 25857
+      !
+   !
+!
+
+! ── Static routes to neighboring leaf uNs ────────────────────
+! One static route per T0 leaf — nexthop is far-end interface address
+ipv6 route fc00:1:1::/48 2001:db8:1:fe::1
+ipv6 route fc00:1:2::/48 2001:db8:1:fd::1
+! ... ipv6 route fc00:1:<n>::/48 <nexthop>  for each leaf in plane 1
+!
+! Note: spine does NOT need routes to its own uA prefixes —
+! those are programmed directly into SFIB by the adjacency-segment config
+
+! ── ECN marking — spine is always a transit hop ───────────────
+! All spine ports are transit — ECN marking on all downlinks
+policy-map type qos ECN-MARK-TRANSIT
+   class class-default
+      set ecn
+!
+interface Ethernet1-64
+   service-policy type qos input ECN-MARK-TRANSIT
+!
+
+! ── Management plane ──────────────────────────────────────────
+vrf instance MGMT
+!
+interface Management1
+   description OOB management — Clustermapper
+   vrf MGMT
+   ipv6 address 2001:db8:fe:2::1/64
+!
+ipv6 route vrf MGMT ::/0 2001:db8:fe:2::fe
+!
+
+
+! ############################################################
+!  VERIFICATION COMMANDS — run on both leaf1 and spine
+! ############################################################
+
+! ── Domain and locator status ─────────────────────────────────
+!
+! show srv6 domain
+!   Confirms PLANE1-DOMAIN is active, block fc00:1::/32
+!   GIB Range: 1-57343  uSID Length: 16
+!
+! show srv6 locator
+!   Confirms locator is active, type micro-SID, uSID value correct
+!   State must be "active" — if inactive, check:
+!     1. ipv6 unicast-routing is enabled in default VRF
+!     2. micro-segment domain block is configured
+!     3. uSID value is within GIB range (1–57343)
+!     4. No conflicting locator prefix from another domain
+!
+! ── SFIB table — both uN and uA entries ──────────────────────
+!
+! show srv6 route
+!   Expected entries on leaf1-p1:
+!     S fc00:1:1::/48,    End with NEXT-CSID,   locator LEAF1-P1-LOC
+!   (uN node SID — matches incoming packet whose active SID = this leaf)
+!
+! show srv6 route end behavior end-x
+!   Expected entries on leaf1-p1:
+!     S fc00:1:e001::/48,  End.X with NEXT-CSID, domain PLANE1-DOMAIN
+!       via fe80::<spine-link-local>, Ethernet64
+!   (uA adj SID — matches packet that explicitly steers via this link)
+!
+! show srv6 adjacency-segments
+!   Lists all uA entries grouped by domain:
+!   Domain PLANE1-DOMAIN
+!     uSID  Hex     Prefix              Interface  Via                    State
+!     57345 0xe001  fc00:1:e001::/48    Ethernet64 fe80::xxxx:xxxx:xxxx   active
+!   State must be "active" — if inactive, check:
+!     1. Domain state is active (show srv6 domain)
+!     2. uSID is in LIB range (57344–65535)
+!     3. Link-local of remote interface has been discovered
+!        (may take 150-200s after interface comes up)
+!     4. Interface is a routed port in default VRF with IPv6 enabled
+!
+! show srv6 adjacency-segments detail
+!   Shows: Behaviour: End.X with NEXT-CSID  (confirmed uA behavior)
+!   Shows: Source: static
+!   Shows: Via: fe80::<addr>, Ethernet64
+!
+! ── Reachability tests ────────────────────────────────────────
+!
+! Test uN path: leaf1 → spine (via uN node SIDs only)
+!   ping srv6 sid fc00:1:6501:: via segment-list fc00:1:1::
+!   (pings spine uN via leaf1 uN — verifies uN forwarding)
+!
+! Test uN full path: leaf1 → spine → leaf2
+!   ping srv6 sid fc00:1:2:: via segment-list fc00:1:1:: fc00:1:6501::
+!   (verifies full 2-hop path with two uN hops)
+!
+! Test uA path: explicit link steering leaf1 → spine via Ethernet64
+!   ping srv6 sid fc00:1:6501:: via segment-list fc00:1:e001::
+!   Note: source node must have IPv6 route to first SID in segment list
+!   Note: cannot use locally configured uA as FIRST SID (uA TOI page 7)
+!   Correct: use uN of source node first, then uA of next hop
+!   ping srv6 sid fc00:1:6501:: via segment-list fc00:1:1:: fc00:1:e001::
+!
+! Traceroute to see DA transformation at each hop:
+!   traceroute srv6 sid fc00:1:6501:: via segmentlist fc00:1:1::
+!   Output shows DA changing at each hop (uN shift-and-lookup)
+!
+! ── Neighbor discovery check (required for uA p2p link-local) ─
+!
+! show ipv6 nd ra neighbors
+!   Verifies spine link-local has been learned on Ethernet64
+!   uA state is "inactive" until this entry appears
+!
+! show ipv6 neighbors
+!   Verifies IPv6 neighbor entries exist for uA via addresses
+!   Required for traffic forwarding (uA TOI page 9)
+!
+! show srv6 capabilities
+!   Confirms: End supported, End.X supported (4.35.2+), Next-CSID supported
+!   uSID Formats: F3216
+!   Note: End.X was unsupported in 4.34.x — requires 4.35.2+ for uA
+
+
+! ############################################################
+!  ARCHITECTURAL NOTES
+! ############################################################
+!
+! uN vs uA — when to use each:
+!
+!   uN (End with NEXT-CSID) — node segment:
+!     - Standard MRC forwarding — source encodes destination path
+!       as a stack of node uSIDs (leaf → spine → leaf)
+!     - Switch matches its own locator prefix, shifts 16b, does
+!       LPM lookup in FIB to determine egress (standard uN behavior)
+!     - No explicit link specified — FIB chooses the outgoing port
+!     - Use for: all standard MRC packet spraying
+!
+!   uA (End.X with NEXT-CSID) — adjacency segment:
+!     - Explicit link steering — source encodes a specific interface
+!       as a uSID; switch forwards out THAT interface, bypasses FIB
+!     - Configured on the egress interface itself
+!     - uSID value must be in LIB range (0xE000–0xFFFF)
+!     - Use for: traffic engineering, pinning flows to a specific
+!       physical link, bypassing a specific link (failure avoidance)
+!
+!   Both run in the same SFIB on the same switch simultaneously.
+!   A source NIC can mix uN and uA uSIDs in the same uSID container:
+!     fc00:1 : 0001 : e101 : 0002 : ...
+!              leaf1  spine-uA  leaf2
+!   This forces leaf→spine via the specific physical link identified
+!   by uA 0xe101 while leaving leaf ingress/egress as standard uN.
+!
+!   ECMP caveat (uA TOI page 9):
+!   "While the same adjacency segment can be configured on multiple
+!    interfaces forming ECMP, it is not supported in the hardware."
+!   Only single-interface uA is hardware-enforced.
+!
+! ============================================================
+! End of configuration
+! ============================================================
