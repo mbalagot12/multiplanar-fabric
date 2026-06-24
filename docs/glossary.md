@@ -316,11 +316,11 @@ Nvidia Ethernet switch ASICs running SONiC or Cumulus in OpenAI/Microsoft MRC de
 
 ### ConnectX-8 SuperNIC
 
-Nvidia SmartNIC with MRC engine support (800G per port in this primer). ConnectX-8 SuperNIC was the platform used to validate OCP MRC Rev 1.0.
+Nvidia SmartNIC with MRC engine support (800G per port in this primer). Nvidia's reference platform for OCP MRC Rev 1.0 — used in OpenAI/Microsoft production clusters and testbeds per the [OpenAI MRC paper](https://cdn.openai.com/pdf/resilient-ai-supercomputer-networking-using-mrc-and-srv6.pdf). ConnectX-7 does not implement MRC.
 
 ### Pollara 400
 
-AMD Pensando SmartNIC with OCP MRC Rev 1.0 support on MI350X nodes.
+AMD Pensando SmartNIC with OCP MRC Rev 1.0 support on MI350X nodes. AMD's reference platform for OCP MRC Rev 1.0 — validated in the same OpenAI MRC paper alongside ConnectX-8 and Broadcom Thor Ultra.
 
 ---
 

@@ -42,8 +42,8 @@ Understand how MRC encodes paths and entropy in every packet.
 
 How individual compute nodes connect GPUs to the eight-plane fabric.
 
-- **[AMD MI350X — MRC SRv6 Fabric Connectivity](generated/amd-mi350x-mrc-srv6-fabric.md)** — AMD Instinct MI350X with Pensando Pollara 400 NICs; OCP MRC Rev 1.0 ibverbs shim via RCCL; AMD vs Nvidia node comparison on the same fabric.
-- **Nvidia HGX Blackwell (B300)** — NVLink/NVSwitch for intra-node all-reduce; ConnectX-8 SuperNICs for inter-node MRC at 8 × 800G (6.4 Tbps per node). ConnectX-8 SuperNIC was the platform used to validate OCP MRC Rev 1.0.
+- **[AMD MI350X — MRC SRv6 Fabric Connectivity](generated/amd-mi350x-mrc-srv6-fabric.md)** — AMD Instinct MI350X with Pensando Pollara 400 NICs (AMD's OCP MRC Rev 1.0 reference platform); ibverbs shim via RCCL; AMD vs Nvidia node comparison on the same fabric.
+- **Nvidia HGX Blackwell (B300)** — NVLink/NVSwitch for intra-node all-reduce; ConnectX-8 SuperNICs for inter-node MRC at 8 × 800G (6.4 Tbps per node). ConnectX-8 SuperNIC is Nvidia's OCP MRC Rev 1.0 reference platform — ConnectX-7 is not MRC-capable.
 
 !!! note "Vendor-agnostic fabric"
     MRC is fabric-agnostic. Both Nvidia and AMD nodes implement the same OCP MRC Rev 1.0 semantics — identical EV generation, SRv6 forwarding, and plane wiring. An Arista 7060XE7 switch sees indistinguishable traffic from either vendor, making mixed AMD + Nvidia clusters architecturally valid.
@@ -52,8 +52,8 @@ How individual compute nodes connect GPUs to the eight-plane fabric.
 
 End-to-end rack layouts pairing compute with MRC fabric switches.
 
-- **[72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300](generated/mrc-blackwell-ultra-rack-1.md)** — 9 × HGX B300 with ConnectX-8 SuperNICs at 800G per uplink, 57.6 Tbps aggregate, 2-hop any-to-any.
-- **[GB300 NVL72 — Liquid-Cooled Data Center Rack](generated/gb300-nvl72-dc-rack-1.md)** — 48U MGX rack with 72 × B300 GPUs, CDU cooling loop, 135 kW TDP, and integrated MRC fabric switching at rack scale.
+- **[72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300](generated/mrc-blackwell-ultra-rack-1.md)** — Reference rack: 9 × HGX B300, ConnectX-8 SuperNIC (Nvidia's OCP MRC Rev 1.0 reference NIC) at 800G per uplink; GPU/switch SKUs differ from paper Table 1.
+- **[GB300 NVL72 — Liquid-Cooled Data Center Rack](generated/gb300-nvl72-dc-rack-1.md)** — Reference 48U MGX rack (72 × B300, CDU, 135 kW TDP); MRC fabric uses CX-8 — rack form factor not validated end-to-end in the OpenAI paper.
 
 ---
 
@@ -62,7 +62,7 @@ End-to-end rack layouts pairing compute with MRC fabric switches.
 | Parameter | Nvidia (Blackwell) | AMD (MI350X) |
 |-----------|-------------------|--------------|
 | NIC | ConnectX-8 SuperNIC | Pollara 400 |
-| MRC Rev 1.0 validation | ConnectX-8 SuperNIC (reference platform) | Pollara 400 |
+| OCP MRC Rev 1.0 reference NIC | Nvidia reference platform | AMD reference platform |
 | Uplink speed | 800G per plane | 400G per plane |
 | NICs per node | 8 | 8 |
 | Fabric BW per node | 6.4 Tbps | 3.2 Tbps |
@@ -71,6 +71,8 @@ End-to-end rack layouts pairing compute with MRC fabric switches.
 | Routing | SRv6 uN uSID (static) | SRv6 uN uSID (static) |
 | EVs per QP | 128–256 | 128–256 |
 | ECMP / dynamic routing | Disabled | Disabled |
+
+OCP MRC Rev 1.0 was validated across multiple NIC vendors — not on a single platform. Per the [OpenAI MRC paper](https://cdn.openai.com/pdf/resilient-ai-supercomputer-networking-using-mrc-and-srv6.pdf), production clusters and testbeds used **ConnectX-8** (Nvidia), **Pollara** (AMD), and **Thor Ultra** (Broadcom). Earlier ConnectX-7 or H100 content was incorrect; those platforms do not implement MRC.
 
 ---
 
