@@ -8,7 +8,9 @@
 *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
 body{background:#F4F3EF;color:#1A1A18;padding:16px;min-height:100vh}
 h1{font-size:15px;font-weight:700;color:#1A1A18;text-align:center;margin-bottom:4px}
-.sub{font-size:11px;color:#73726C;text-align:center;margin-bottom:14px}
+.sub{font-size:11px;color:#73726C;text-align:center;margin-bottom:8px}
+.provenance{max-width:1300px;margin:0 auto 14px;font-size:10px;color:#73726C;line-height:1.55;padding:8px 12px;background:#F8F7F4;border:1px solid #E5E3DC;border-radius:6px}
+.provenance a{color:#378ADD}
 .layout{display:flex;gap:14px;align-items:flex-start;max-width:1300px;margin:0 auto}
 .svg-wrap{flex:1;min-width:0;background:#fff;border:1px solid #D3D1C7;border-radius:10px;padding:12px}
 .sidebar{width:230px;flex-shrink:0}
@@ -30,6 +32,13 @@ svg{display:block;width:100%;height:auto}
 <body>
 <h1>NVIDIA GB300 NVL72 — Liquid-Cooled Data Center Rack</h1>
 <p class="sub">48U MGX rack &nbsp;·&nbsp; 18 compute trays &nbsp;·&nbsp; 9 NVLink switch trays &nbsp;·&nbsp; CDU cooling loop &nbsp;·&nbsp; 72× B300 GPUs &nbsp;·&nbsp; 135 kW TDP &nbsp;·&nbsp; 1.1 ExaFLOPS FP4</p>
+
+<p class="provenance">
+  <strong>Reference architecture</strong> aligned with OCP MRC Rev 1.0 and the
+  <a href="https://cdn.openai.com/pdf/resilient-ai-supercomputer-networking-using-mrc-and-srv6.pdf">OpenAI MRC paper</a>.
+  ConnectX-8 SuperNIC is Nvidia's reference platform. GB300 NVL72 layout, B300 GPUs, and Arista 7060XE7 fabric are reference designs;
+  the paper validated GB200 + CX-8 on Spectrum/Tomahawk 5, not this rack end-to-end.
+</p>
 
 <div class="layout">
 <div class="svg-wrap">

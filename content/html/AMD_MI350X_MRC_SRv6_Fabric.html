@@ -8,7 +8,9 @@
 *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
 body{background:#F4F3EF;color:#1A1A18;padding:20px;min-height:100vh}
 h1{font-size:16px;font-weight:700;text-align:center;margin-bottom:4px;color:#1A1A18}
-.sub{font-size:11px;color:#73726C;text-align:center;margin-bottom:16px}
+.sub{font-size:11px;color:#73726C;text-align:center;margin-bottom:8px}
+.provenance{max-width:1200px;margin:0 auto 16px;font-size:10px;color:#73726C;line-height:1.55;padding:8px 12px;background:#F8F7F4;border:1px solid #E5E3DC;border-radius:6px}
+.provenance a{color:#378ADD}
 
 /* ── Layout ── */
 .page{display:flex;flex-direction:column;gap:16px;max-width:1200px;margin:0 auto}
@@ -52,6 +54,13 @@ svg{display:block;width:100%;height:auto}
 <h1>AMD Instinct MI350X — MRC + SRv6 Fabric Connectivity</h1>
 <p class="sub">
   AMD Pensando Pollara 400 NIC  ·  8× 400G per node  ·  8-plane MRC fabric  ·  Arista 7060XE7 leaf+spine  ·  OCP MRC Rev 1.0
+</p>
+
+<p class="provenance">
+  <strong>Reference architecture</strong> aligned with OCP MRC Rev 1.0 and the
+  <a href="https://cdn.openai.com/pdf/resilient-ai-supercomputer-networking-using-mrc-and-srv6.pdf">OpenAI MRC paper</a>.
+  OCP MRC Rev 1.0 was validated across multiple NIC vendors — Pollara 400 is AMD's reference platform (paper Cluster C).
+  This diagram uses MI350X and Arista 7060XE7; the paper testbed used MI355 and Broadcom Tomahawk 5 with 4×100G planes per NIC.
 </p>
 
 <div class="page">
