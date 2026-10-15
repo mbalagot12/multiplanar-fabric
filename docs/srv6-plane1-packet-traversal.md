@@ -79,4 +79,5 @@ A source NIC can mix uN and uA in the same uSID container — for example, forci
 - [Arista EOS SRv6 uN + uA Config — Plane 1](arista-eos-srv6-un-ua-config.md)
 - [SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista)](srv6-usid-leaf-spine-config.md)
 - [MRC Packet Structure — SRv6 + Entropy Value](generated/srv6-mrc-packet-ev-header.md)
+- [MRC — multipath and multiplane packet spray](generated/mrc-multipath-multiplane.md)
 - [Glossary](glossary.md)

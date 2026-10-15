@@ -36,14 +36,14 @@ Understand how MRC encodes paths and entropy in every packet.
 
 - **[MRC Packet Structure — SRv6 + Entropy Value](generated/srv6-mrc-packet-ev-header.md)** — IPv6-in-IPv6 encapsulation, outer SRv6 uN uSID stack, 32-bit EV placement, and the role of EV in SACK/NACK feedback (not forwarding).
 - **[SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista)](srv6-usid-leaf-spine-config.md)** — Side-by-side SONiC and Arista EOS 4.36 programming model, F3216 addressing plan, and concrete leaf/spine templates for MRC static fabrics.
-- **[MRC Packet Spray Animation](generated/mrc-packet-spray-animation.md)** — Interactive simulation of per-packet EV spray across eight planes, with congestion, trimming, failure, and NACK re-steering.
+- **[MRC — multipath and multiplane packet spray](generated/mrc-multipath-multiplane.md)** — Interactive simulation of one queue pair spraying across 4 planes × 3 paths (12 EVs), with ECN/NSCC, trimming, SACK-driven retransmit, denylisting, and autonomous demo walkthrough.
 
 ### Node-level integration
 
 How individual compute nodes connect GPUs to the eight-plane fabric.
 
 - **[AMD MI350X — MRC SRv6 Fabric Connectivity](generated/amd-mi350x-mrc-srv6-fabric.md)** — AMD Instinct MI350X with Pensando Pollara 400 NICs (AMD's OCP MRC Rev 1.0 reference platform); ibverbs shim via RCCL; AMD vs Nvidia node comparison on the same fabric.
-- **Nvidia HGX Blackwell (B300)** — NVLink/NVSwitch for intra-node all-reduce; ConnectX-8 SuperNICs for inter-node MRC at 8 × 800G (6.4 Tbps per node). ConnectX-8 SuperNIC is Nvidia's OCP MRC Rev 1.0 reference platform — ConnectX-7 is not MRC-capable.
+- **[Nvidia HGX Blackwell (B300)](generated/mrc-blackwell-ultra-rack-1.md)** — NVLink/NVSwitch for intra-node all-reduce; ConnectX-8 SuperNICs for inter-node MRC at 8 × 800G (6.4 Tbps per node). ConnectX-8 is Nvidia's OCP MRC Rev 1.0 reference platform — ConnectX-7 is not MRC-capable.
 
 !!! note "Vendor-agnostic fabric"
     MRC is fabric-agnostic. Both Nvidia and AMD nodes implement the same OCP MRC Rev 1.0 semantics — identical EV generation, SRv6 forwarding, and plane wiring. An Arista 7060XE7 switch sees indistinguishable traffic from either vendor, making mixed AMD + Nvidia clusters architecturally valid.
@@ -88,9 +88,39 @@ Each plane operates as an isolated 2-hop leaf–spine network. A 72-GPU rack typ
 
 ---
 
+## Reference (configuration & traversal)
+
+Hand-maintained guides that pair with the diagram pages above.
+
+- **[Glossary](glossary.md)** — MRC transport, SRv6 uSID, behavior flavors, SONiC/FRR, and platform terms.
+- **[SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista)](srv6-usid-leaf-spine-config.md)** — F3216 addressing, prefix mapping for eight planes, SONiC ConfigDB vs Arista EOS 4.36 CLI.
+- **[Arista EOS SRv6 uN + uA Config — Plane 1](arista-eos-srv6-un-ua-config.md)** — Worked Plane 1 locators, static routes, and uA adjacency segments on Arista.
+- **[SRv6 Plane 1 — Packet Traversal](srv6-plane1-packet-traversal.md)** — Hop-by-hop DA transformation for a three-segment uN path (leaf → spine → leaf).
+
+---
+
 ## Getting started
 
-Browse the **Pages** tab for interactive SVG diagrams, or the **Reference** tab for the glossary and SRv6 configuration guide. Each diagram page is a self-contained reference with legends, callouts, and design notes.
+Browse **Pages** for interactive diagrams and simulations, or **Reference** for glossary and SRv6 programming guides. On **[MRC — multipath and multiplane packet spray](generated/mrc-multipath-multiplane.md)**, use **Run demo** for an autonomous walkthrough of congestion, path failure, plane port down, and trim behavior.
+
+---
+
+## For reviewers (AI tech lead)
+
+This primer aligns with **[OCP MRC Rev 1.0](https://www.opencompute.org/documents/ocp-mrc-1-0-pdf)** and the [OpenAI MRC + SRv6 paper](https://cdn.openai.com/pdf/resilient-ai-supercomputer-networking-using-mrc-and-srv6.pdf). Use this checklist when validating content:
+
+| Area | What to verify | Primary pages |
+|------|----------------|---------------|
+| **Packet format** | Outer SRv6 uN stack, 32-bit EV in flow label + UDP sport (feedback only, not forwarding) | [Packet structure](generated/srv6-mrc-packet-ev-header.md), [Glossary — EV](glossary.md#ev-entropy-value) |
+| **Fabric topology** | Eight isolated planes; NIC *n* → plane *n* leaf; no ECMP/BGP on backend | [Architecture SVG](assets/mrc-architecture-overview.svg), [Leaf/spine config](srv6-usid-leaf-spine-config.md) |
+| **Transport behavior** | Congestion (CE/NSCC) vs path failure (loss, denylist, probes) vs plane port (instant exclusion) | [Multipath simulation](generated/mrc-multipath-multiplane.md) — **Run demo** |
+| **Platforms** | MRC reference NICs: **ConnectX-8**, **Pollara 400**, **Thor Ultra** — not ConnectX-7 | [Home — key parameters](#key-design-parameters), [AMD MI350X](generated/amd-mi350x-mrc-srv6-fabric.md) |
+| **Switch SKUs in diagrams** | Rack art uses **Arista 7060XE7** (Tomahawk 6); EOS release notes also cite **7060X6** (Tomahawk 5) for some SRv6 caveats | [Glossary — 7060XE7 / 7060X6](glossary.md#7060xe7), [SONiC vs Arista config](srv6-usid-leaf-spine-config.md) |
+| **Deployment art** | Blackwell Ultra rack and GB300 NVL72 are **reference designs**; SKUs may differ from paper Table 1 | [Blackwell rack](generated/mrc-blackwell-ultra-rack-1.md), [GB300 NVL72](generated/gb300-nvl72-dc-rack-1.md) |
+
+**Build validation:** from repo root, `make generate && make build` (MkDocs `--strict` — broken internal links fail the build).
+
+**Source of truth for interactive sim:** `content/html/mrc_multipath_multiplane.html` (published via `make generate`).
 
 ---
 

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MRC — multipath and multiplane packet spray</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.mrc-mp-root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  background:var(--t-bg);color:var(--t-text);width:100%;max-width:none;margin:0;padding:0 0 8px;
+  transition:background .18s ease,color .18s ease}
+.mrc-mp-root h1{font-size:1.35rem;font-weight:500;margin-bottom:6px;text-align:center;line-height:1.35}
+.mrc-mp-root .sub{font-size:0.9rem;color:var(--t-text2);margin-bottom:14px;text-align:center;line-height:1.45;
+  max-width:72rem;margin-left:auto;margin-right:auto}
+#hud{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 12px;align-items:center;justify-content:center}
+.st{background:var(--t-surf);border:0.5px solid var(--t-bd);border-radius:8px;padding:8px 14px;
+  font-size:0.8rem;color:var(--t-text2);min-width:88px;text-align:center}
+.st span{display:block;font-size:1.15rem;font-weight:500;color:var(--t-text);margin-top:2px}
+.st span.warn{color:#BA7517}
+#cw{position:relative;width:100%;height:clamp(420px, 58vh, 720px);min-height:420px;background:var(--t-surf);
+  border:0.5px solid var(--t-bd);border-radius:8px;overflow:hidden}
+canvas{position:absolute;inset:0;width:100%;height:100%}
+#msg{font-size:0.85rem;color:var(--t-text2);margin-top:8px;min-height:36px;line-height:1.5}
+.lg{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;justify-content:center}
+.i{display:flex;align-items:center;gap:6px;font-size:0.85rem;color:var(--t-text2)}
+.i s{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.i d{width:9px;height:9px;transform:rotate(45deg);flex-shrink:0}
+.i o{width:9px;height:9px;border-radius:50%;border:1.5px solid #7F77DD;flex-shrink:0}
+#ctl{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px;justify-content:center}
+label{font-size:0.85rem;color:var(--t-text2);display:flex;align-items:center;gap:8px}
+input[type=range]{max-width:140px;accent-color:#7F77DD}
+button{font-size:0.9rem;cursor:pointer;padding:7px 15px;border-radius:6px;background:var(--t-surf);
+  color:var(--t-text);border:0.5px solid var(--t-bd);font-family:inherit}
+button:hover{border-color:var(--t-text2)}
+button.demo-on{background:#7F77DD;color:#fff;border-color:#7F77DD}
+button.demo-on:hover{border-color:#534AB7}
+button:disabled{opacity:.45;cursor:not-allowed}
+#ctl.demo-lock button:not(#b-demo){pointer-events:none;opacity:.55}
+#ctl.demo-lock label{pointer-events:none;opacity:.55}
+button.btn-pulse{background:#7F77DD;color:#fff;border-color:#7F77DD;
+  box-shadow:0 0 0 3px rgba(127,119,221,.35);transition:box-shadow .15s ease}
+#b-theme{margin-left:auto}
+#demo-bar{height:3px;background:var(--t-bd);border-radius:2px;margin-top:10px;overflow:hidden;display:none}
+#demo-bar i{display:block;height:100%;width:0;background:#7F77DD;transition:width .25s linear}
+#demo-cap{font-size:0.9rem;color:var(--t-text);margin-top:10px;min-height:44px;line-height:1.55;
+  padding:10px 12px;background:var(--t-surf);border:0.5px solid var(--t-bd);border-radius:8px;display:none}
+#demo-cap em{font-style:normal;color:var(--t-text2);font-size:0.8rem;display:block;margin-top:4px}
+</style>
+</head>
+<body>
+<div class="mrc-mp-root">
+<h1>MRC — one queue pair, four planes, twelve entropy values</h1>
+<p class="sub">Per-packet EV spray, ECN CE marking with NSCC window response, optional trimming, SACK-driven selective retransmission, EV denylisting and probes, and Port Status plane exclusion</p>
+
+<div id="hud">
+  <div class="st">Sent<span id="s-sent">0</span></div>
+  <div class="st">Delivered<span id="s-del">0</span></div>
+  <div class="st">CE marked<span id="s-ce">0</span></div>
+  <div class="st">Retransmits<span id="s-rtx">0</span></div>
+  <div class="st">NSCC window<span id="s-cw">64 KB</span></div>
+  <div class="st">EVs denied<span id="s-den">0</span></div>
+  <div class="st">Active EVs<span id="s-act">12</span></div>
+  <button id="b-theme">Dark</button>
+</div>
+
+<div id="cw"><canvas id="bg"></canvas><canvas id="fg"></canvas></div>
+<div id="msg"></div>
+
+<div class="lg">
+  <div class="i"><s style="background:#1D9E75"></s>Data packet</div>
+  <div class="i"><s style="background:#EF9F27"></s>ECN CE marked</div>
+  <div class="i"><s style="background:#E24B4A"></s>Trimmed</div>
+  <div class="i"><s style="background:#378ADD"></s>Selective retransmit</div>
+  <div class="i"><d style="background:#EF9F27;border:1px solid #7A4E0B"></d>SACK carrying CE</div>
+  <div class="i"><d style="background:#7F77DD"></d>SACK reporting a gap</div>
+  <div class="i"><o></o>EV probe</div>
+</div>
+
+<div id="demo-bar"><i id="demo-prog"></i></div>
+<div id="demo-cap"></div>
+
+<div id="ctl">
+  <button id="b-demo">Run demo</button>
+  <button id="b-play">Pause</button>
+  <button id="b-cong">Congest EV 6</button>
+  <button id="b-break">Break EV 9</button>
+  <button id="b-fail">Fail plane 3 port</button>
+  <button id="b-trim">Trim: on</button>
+  <button id="b-reset">Reset</button>
+  <label>Rate <input type="range" id="r-sl" min="1" max="5" value="3" step="1"> <span id="r-v">3</span></label>
+</div>
+</div>
+
+<script>
+/* Theme: manual toggle, defaults to light, remembered per browser. */
+const DEFAULT_THEME = 'light';
+const P = {
+  light:{bg:'#FFFFFF',surf:'#F8F7F4',bd:'#D3D1C7',text:'#1F1E1C',text2:'#73726C',
+    line:'#DDDBD2',band:'#FFFFFF',bandBd:'#E5E3DC',nic:'#EEEDFE',nicBd:'#AFA9EC',nicTx:'#3C3489'},
+  dark:{bg:'#1A1A18',surf:'#242420',bd:'#3A3936',text:'#EDEDE8',text2:'#9FA09A',
+    line:'#3E3D39',band:'#2B2B27',bandBd:'#3A3936',nic:'#3C3489',nicBd:'#534AB7',nicTx:'#CECBF6'}
+};
+let tn = DEFAULT_THEME, T = P[DEFAULT_THEME];
+try { const s = localStorage.getItem('mrc-theme'); if (s && P[s]) tn = s; } catch(e) {}
+function theme(n){
+  tn = n; T = P[n];
+  const s = document.documentElement.style;
+  s.setProperty('--t-bg',T.bg); s.setProperty('--t-surf',T.surf);
+  s.setProperty('--t-bd',T.bd); s.setProperty('--t-text',T.text);
+  s.setProperty('--t-text2',T.text2);
+  document.getElementById('b-theme').textContent = n === 'light' ? 'Dark' : 'Light';
+  try { localStorage.setItem('mrc-theme', n); } catch(e) {}
+  if (typeof W !== 'undefined') bgd();
+}
+
+/* Topology: NP planes (port and failure-domain diversity),
+   NL paths per plane (routing diversity). NP*NL = this QP's EV set. */
+const NP = 4, NL = 3;
+
+/* Congestion and path failure are DIFFERENT events with different responses.
+     congested -> CE marking -> SACK carries CE -> NSCC shrinks the byte window.
+                  The path STAYS in the active EV set. Congestion is not failure.
+     broken    -> loss -> SACK reports a gap -> selective retransmit on another
+                  EV, and after FAIL_LIMIT gaps the EV is denylisted.
+   FAIL_DECAY stops the occasional trim under heavy congestion from slowly
+   accumulating into a false denylist. */
+const FAIL_LIMIT   = 3;
+const FAIL_DECAY   = 150;   /* frames; one failure credit forgiven per interval */
+const PROBE_EVERY  = 200;   /* frames between EV probes of denylisted paths */
+const CE_PROB      = 0.75;  /* of packets on a congested EV that get CE marked */
+const CONG_TRIM    = 0.30;  /* of the remainder that overflow into loss */
+const CWND_MAX     = 64;    /* NSCC byte window, arbitrary KB */
+const CWND_MIN     = 8;
+const CWND_CUT     = 0.82;  /* multiplicative decrease per CE-bearing SACK */
+const CWND_GROW    = 0.045; /* additive recovery per frame */
+let trimOn = true;
+let cwnd = CWND_MAX;
+
+const bgC = document.getElementById('bg'), fgC = document.getElementById('fg');
+const cw = document.getElementById('cw');
+const bg = bgC.getContext('2d'), fg = fgC.getContext('2d');
+let W, H, SX, DX, X0, X1, bandTop = [], bandH = 0;
+
+function newEvs(){
+  const a = [];
+  for (let p = 0; p < NP; p++)
+    for (let l = 0; l < NL; l++)
+      a.push({id:p*NL+l, plane:p, lane:l, cong:false, broken:false,
+              denied:false, fails:0, load:0, flash:0});
+  return a;
+}
+let evs = newEvs();
+let planes = [{f:0},{f:0},{f:0},{f:0}];
+let pk = [], fb = [], pr = [], psn = 100;
+let st = {sent:0, del:0, rtx:0, ce:0};
+let paused = false, rate = 3, fr = 0;
+let demoOn = false, demoScene = 0, demoLeft = 0, demoSceneDur = 0, demoSavedRate = 3;
+let demoFiring = false;
+
+function laneY(p,l){ return bandTop[p] + bandH*(0.30 + l*0.20); }
+function portY(p){ return bandTop[p] + bandH*0.5; }
+function lay(){
+  SX = W*0.085; DX = W*0.915; X0 = W*0.19; X1 = W*0.81;
+  const t = 24, b = 34;
+  bandH = (H - t - b) / NP;
+  bandTop = [];
+  for (let p = 0; p < NP; p++) bandTop.push(t + p*bandH);
+}
+function rr(c,x,y,w,h,r){
+  c.beginPath();c.moveTo(x+r,y);c.lineTo(x+w-r,y);c.quadraticCurveTo(x+w,y,x+w,y+r);
+  c.lineTo(x+w,y+h-r);c.quadraticCurveTo(x+w,y+h,x+w-r,y+h);c.lineTo(x+r,y+h);
+  c.quadraticCurveTo(x,y+h,x,y+h-r);c.lineTo(x,y+r);c.quadraticCurveTo(x,y,x+r,y);c.closePath();
+}
+function resize(){
+  W = cw.clientWidth; H = cw.clientHeight;
+  bgC.width = fgC.width = W*devicePixelRatio;
+  bgC.height = fgC.height = H*devicePixelRatio;
+  bgC.style.width = fgC.style.width = W+'px';
+  bgC.style.height = fgC.style.height = H+'px';
+  bgd();
+}
+function reset(){
+  evs = newEvs(); planes = [{f:0},{f:0},{f:0},{f:0}];
+  pk = []; fb = []; pr = []; psn = 100; cwnd = CWND_MAX;
+  st = {sent:0, del:0, rtx:0, ce:0}; fr = 0; hud();
+}
+
+function live(){ return evs.filter(e => !e.denied && !planes[e.plane].f); }
+
+function pick(){
+  const a = live(); if (!a.length) return null;
+  const w = a.map(e => Math.max(0.05, 1 - e.load*0.85));
+  const s = w.reduce((x,y) => x+y, 0);
+  let r = Math.random()*s;
+  for (let i = 0; i < a.length; i++){ r -= w[i]; if (r <= 0) return a[i]; }
+  return a[a.length-1];
+}
+
+function send(rtx){
+  const e = pick(); if (!e) return;
+  let ce = false, tr = false, lo = false;
+  if (e.broken){
+    /* A broken path drops. With trim the header survives and the loss is
+       detected fast; without it the drop is silent until SACK catches it. */
+    if (trimOn) tr = true; else lo = true;
+  } else if (e.cong){
+    ce = Math.random() < CE_PROB;
+    if (!ce){
+      if (Math.random() < CONG_TRIM){ if (trimOn) tr = true; else lo = true; }
+      else ce = true;
+    }
+  }
+  pk.push({ev:e.id, seg:0, t:0, sp:0.030 + Math.random()*0.012,
+           ce:ce, tr:tr, lost:lo, rtx:!!rtx, psn:psn++, d:0});
+  if (rtx) st.rtx++; else st.sent++;
+  if (ce) st.ce++;
+  e.load = Math.min(1, e.load + 0.05);
+}
+
+function bgd(){
+  bg.save(); bg.scale(devicePixelRatio, devicePixelRatio); lay(); bg.clearRect(0,0,W,H);
+  for (let p = 0; p < NP; p++){
+    bg.fillStyle = T.band;
+    bg.strokeStyle = planes[p].f ? '#A32D2D' : T.bandBd;
+    bg.lineWidth = planes[p].f ? 1.2 : 0.5;
+    rr(bg, X0-16, bandTop[p]+4, X1-X0+32, bandH-8, 7); bg.fill(); bg.stroke();
+
+    bg.fillStyle = T.text2; bg.font = Math.max(11, Math.round(W/95))+'px sans-serif';
+    bg.textAlign = 'left'; bg.textBaseline = 'middle';
+    bg.fillText('plane '+p+(planes[p].f ? ' \u2014 port down' : ''), X0-10, bandTop[p]+14);
+
+    for (let l = 0; l < NL; l++){
+      const e = evs[p*NL+l], y = laneY(p,l);
+      const off = e.denied || planes[p].f;
+      bg.strokeStyle = off ? (planes[p].f ? T.line : '#E24B4A')
+                     : e.broken ? '#E24B4A' : e.cong ? '#EF9F27' : T.line;
+      bg.lineWidth = off ? 1 : 1 + e.load*2.2;
+      bg.setLineDash(off ? [4,4] : []);
+      bg.beginPath(); bg.moveTo(X0,y); bg.lineTo(X1,y); bg.stroke();
+      bg.setLineDash([]);
+
+      let tag = 'EV '+e.id;
+      if (e.denied) tag += ' denied';
+      else if (e.broken) tag += ' \u2715';
+      else if (e.cong) tag += ' CE';
+      bg.fillStyle = off ? (planes[p].f ? T.text2 : '#A32D2D')
+                   : e.broken ? '#A32D2D' : e.cong ? '#854F0B' : T.text2;
+      bg.font = Math.max(11, Math.round(W/95))+'px sans-serif'; bg.textAlign = 'right';
+      bg.fillText(tag, X0-22, y);
+    }
+    [SX, DX].forEach(function(qx){
+      bg.fillStyle = T.nic;
+      bg.strokeStyle = planes[p].f ? '#A32D2D' : T.nicBd;
+      bg.lineWidth = 1;
+      rr(bg, qx-17, portY(p)-11, 34, 22, 5); bg.fill(); bg.stroke();
+      bg.fillStyle = planes[p].f ? '#A32D2D' : T.nicTx;
+      bg.font = '500 '+Math.max(11, Math.round(W/95))+'px sans-serif'; bg.textAlign = 'center';
+      bg.fillText('port '+p, qx, portY(p));
+    });
+    for (let l = 0; l < NL; l++){
+      bg.strokeStyle = T.line; bg.lineWidth = 0.5;
+      bg.beginPath(); bg.moveTo(SX+17, portY(p)); bg.lineTo(X0, laneY(p,l)); bg.stroke();
+      bg.beginPath(); bg.moveTo(X1, laneY(p,l)); bg.lineTo(DX-17, portY(p)); bg.stroke();
+    }
+  }
+  const fL = Math.max(12, Math.round(W/85)), fS = Math.max(11, Math.round(W/95));
+  bg.fillStyle = T.text2; bg.font = '500 '+fL+'px sans-serif'; bg.textAlign = 'center';
+  bg.fillText('XPU A', SX, 14); bg.fillText('XPU B', DX, 14);
+  bg.font = fS+'px sans-serif';
+  bg.fillText('one MRC QP', SX, H-20);
+  bg.fillText('same connection', DX, H-20);
+  bg.fillText('4 planes \u00d7 3 paths = 12 EVs in this QP\u2019s EV set (production: 128\u2013256)', W/2, H-20);
+  bg.restore();
+}
+
+function pos(o, back){
+  const e = evs[o.ev], y = laneY(e.plane, e.lane), py = portY(e.plane);
+  const a = back ? DX-17 : SX+17, b = back ? SX+17 : DX-17;
+  const x0 = back ? X1 : X0, x1 = back ? X0 : X1;
+  if (o.seg === 0) return {x: a + (x0-a)*o.t, y: py + (y-py)*o.t};
+  if (o.seg === 1) return {x: x0 + (x1-x0)*o.t, y: y};
+  return {x: x1 + (b-x1)*o.t, y: y + (py-y)*o.t};
+}
+
+function fgd(){
+  fg.save(); fg.scale(devicePixelRatio, devicePixelRatio); fg.clearRect(0,0,W,H);
+  pk.forEach(function(o){
+    const q = pos(o,false);
+    fg.beginPath(); fg.arc(q.x, q.y, o.tr ? 3 : 4.2, 0, 6.284);
+    fg.fillStyle = o.rtx ? '#378ADD' : o.tr ? '#E24B4A' : o.ce ? '#EF9F27' : '#1D9E75';
+    fg.fill();
+    if (o.ce){ fg.strokeStyle = '#EF9F27'; fg.lineWidth = 1.4; fg.stroke(); }
+  });
+  /* Feedback diamonds: amber outlined = SACK carrying CE state,
+     purple = SACK reporting a gap. Both reflect the EV. */
+  fb.forEach(function(o){
+    const q = pos(o,true);
+    fg.beginPath();
+    fg.moveTo(q.x-5.2,q.y); fg.lineTo(q.x,q.y-5.2);
+    fg.lineTo(q.x+5.2,q.y); fg.lineTo(q.x,q.y+5.2); fg.closePath();
+    fg.fillStyle = o.gap ? '#7F77DD' : '#EF9F27'; fg.fill();
+    if (!o.gap){ fg.strokeStyle = '#7A4E0B'; fg.lineWidth = 1; fg.stroke(); }
+  });
+  pr.forEach(function(o){
+    const q = pos(o, o.back);
+    fg.beginPath(); fg.arc(q.x, q.y, 4.2, 0, 6.284);
+    fg.strokeStyle = '#7F77DD'; fg.lineWidth = 1.6; fg.stroke();
+  });
+  fg.restore();
+}
+
+function hud(){
+  document.getElementById('s-sent').textContent = st.sent.toLocaleString();
+  document.getElementById('s-del').textContent = st.del.toLocaleString();
+  document.getElementById('s-ce').textContent = st.ce.toLocaleString();
+  document.getElementById('s-rtx').textContent = st.rtx.toLocaleString();
+  const cwEl = document.getElementById('s-cw');
+  cwEl.textContent = Math.round(cwnd) + ' KB';
+  cwEl.className = cwnd < CWND_MAX*0.92 ? 'warn' : '';
+  const d = evs.filter(e => e.denied);
+  document.getElementById('s-den').textContent = d.length;
+  document.getElementById('s-act').textContent = live().length;
+
+  if (demoOn) return;
+
+  const c = evs.filter(e => e.cong && !e.denied).map(e => 'EV '+e.id);
+  const b = evs.filter(e => e.broken && !e.denied).map(e => 'EV '+e.id);
+  const fp = planes.map((p,i) => p.f ? i : -1).filter(i => i >= 0);
+  let m = [];
+  if (c.length) m.push('Congested: '+c.join(', ')+
+    ' \u2014 CE marked, SACK carries CE plus the reflected EV, NSCC cuts the byte window. The path stays in the active EV set.');
+  if (b.length) m.push('Failing: '+b.join(', ')+
+    ' \u2014 loss, SACK reports the gap, selective retransmit goes out on another EV.');
+  if (d.length) m.push('Denylisted: '+d.map(e => 'EV '+e.id).join(', ')+
+    ' \u2014 excluded after repeated loss; EV probes test them periodically.');
+  if (fp.length) m.push('Port down on plane '+fp.join(', ')+
+    ' \u2014 Port Status excludes every EV in that plane at once, no probe needed.');
+  document.getElementById('msg').textContent = m.join('   ');
+}
+
+/* Autonomous demo: click fault buttons with a pause between each step.
+   pause = seconds to observe after the button fires (or after reset on step 0).
+   btn   = button id to .click(), or null for observe-only / reset. */
+const DEMO_SCRIPT = [
+  {pause:5, btn:null, title:'Baseline',
+   cap:'All 12 EVs spraying. Next: Congest EV 6.', em:'Pausing before first fault\u2026'},
+  {pause:8, btn:'b-cong', title:'Congest EV 6',
+   cap:'CE marks on EV 6; NSCC window shrinks. Path stays in the active set.', em:'Pausing before next fault\u2026'},
+  {pause:5, btn:'b-cong', title:'Clear EV 6',
+   cap:'Congestion cleared; window recovers additively.', em:'Pausing before next fault\u2026'},
+  {pause:10, btn:'b-break', title:'Break EV 9',
+   cap:'Gap SACKs, blue retransmits, EV 9 denylisted after repeated loss.', em:'Pausing before next fault\u2026'},
+  {pause:7, btn:'b-break', title:'Repair EV 9',
+   cap:'Probes (purple rings) restore denylisted EV 9.', em:'Pausing before next fault\u2026'},
+  {pause:7, btn:'b-fail', title:'Fail plane 3 port',
+   cap:'EVs 9\u201311 excluded instantly via Port Status.', em:'Pausing before next fault\u2026'},
+  {pause:4, btn:'b-fail', title:'Restore plane 3 port',
+   cap:'All plane-3 EVs rejoin the spray set.', em:'Pausing before next fault\u2026'},
+  {pause:6, btn:'b-trim', title:'Trim off',
+   cap:'Silent drops until gap SACK \u2014 slower loss detection.', em:'Pausing before next fault\u2026'},
+  {pause:4, btn:'b-trim', title:'Trim on',
+   cap:'Fast trim-based loss detection restored.', em:'Demo complete \u2014 click Run demo to replay.'}
+];
+
+function setRate(v){
+  rate = v;
+  const sl = document.getElementById('r-sl');
+  sl.value = v;
+  document.getElementById('r-v').textContent = v;
+}
+function setCongest(on){
+  const e = evs[6];
+  e.cong = on;
+  if (on) e.load = 0.8; else e.fails = 0;
+  document.getElementById('b-cong').textContent = on ? 'Clear EV 6' : 'Congest EV 6';
+  bgd();
+}
+function setBroken(on){
+  const e = evs[9];
+  e.broken = on;
+  if (!on) e.fails = 0;
+  document.getElementById('b-break').textContent = on ? 'Repair EV 9' : 'Break EV 9';
+  bgd();
+}
+function setPlaneFail(on){
+  planes[3].f = on ? 1 : 0;
+  document.getElementById('b-fail').textContent = on ? 'Restore plane 3 port' : 'Fail plane 3 port';
+  bgd();
+}
+function setTrim(on){
+  trimOn = on;
+  document.getElementById('b-trim').textContent = 'Trim: ' + (on ? 'on' : 'off');
+}
+function clearAllFaults(){
+  setCongest(false);
+  setBroken(false);
+  setPlaneFail(false);
+  setTrim(true);
+}
+function pulseBtn(id){
+  const el = document.getElementById(id);
+  el.classList.add('btn-pulse');
+  setTimeout(function(){ el.classList.remove('btn-pulse'); }, 700);
+}
+function fireBtn(id){
+  demoFiring = true;
+  pulseBtn(id);
+  document.getElementById(id).click();
+  demoFiring = false;
+}
+function demoUi(on){
+  document.getElementById('demo-bar').style.display = on ? 'block' : 'none';
+  document.getElementById('demo-cap').style.display = on ? 'block' : 'none';
+  document.getElementById('b-demo').textContent = on ? 'Stop demo' : 'Run demo';
+  document.getElementById('b-demo').className = on ? 'demo-on' : '';
+  document.getElementById('ctl').classList.toggle('demo-lock', on);
+}
+function showDemoStep(i){
+  const s = DEMO_SCRIPT[i];
+  demoSceneDur = s.pause;
+  demoLeft = s.pause;
+  document.getElementById('demo-cap').innerHTML =
+    '<strong>'+(i+1)+' / '+DEMO_SCRIPT.length+' \u2014 '+s.title+'</strong> '+s.cap+
+    (s.em ? '<em>'+s.em+'</em>' : '');
+  document.getElementById('msg').textContent = '';
+  document.getElementById('demo-prog').style.width = '0%';
+  if (s.btn) fireBtn(s.btn);
+  hud();
+}
+function demoTick(dt){
+  if (!demoOn) return;
+  demoLeft -= dt;
+  const pct = Math.max(0, 100 * (1 - demoLeft / demoSceneDur));
+  document.getElementById('demo-prog').style.width = pct + '%';
+  if (demoLeft > 0) return;
+  demoScene++;
+  if (demoScene >= DEMO_SCRIPT.length){
+    stopDemo(false);
+    return;
+  }
+  showDemoStep(demoScene);
+}
+function startDemo(){
+  if (demoOn) return;
+  demoSavedRate = rate;
+  demoFiring = true;
+  reset();
+  clearAllFaults();
+  document.getElementById('b-cong').textContent = 'Congest EV 6';
+  document.getElementById('b-break').textContent = 'Break EV 9';
+  document.getElementById('b-fail').textContent = 'Fail plane 3 port';
+  document.getElementById('b-trim').textContent = 'Trim: on';
+  demoFiring = false;
+  paused = false;
+  document.getElementById('b-play').textContent = 'Pause';
+  setRate(3);
+  demoOn = true;
+  demoScene = 0;
+  demoUi(true);
+  showDemoStep(0);
+}
+function stopDemo(restoreRate){
+  demoOn = false;
+  demoUi(false);
+  document.getElementById('demo-prog').style.width = '0%';
+  document.getElementById('demo-cap').style.display = 'none';
+  if (restoreRate !== false) setRate(demoSavedRate);
+  hud();
+}
+
+let lastTs = 0;
+function step(ts){
+  if (demoOn && lastTs) demoTick(Math.min(0.1, (ts - lastTs) / 1000));
+  lastTs = ts;
+  if (!paused){
+    fr++;
+    /* NSCC: the byte window gates how much goes out per interval. */
+    cwnd = Math.min(CWND_MAX, cwnd + CWND_GROW);
+    const iv = Math.max(1, Math.round(9/rate));
+    if (fr % iv === 0){
+      const n = Math.max(1, Math.round(rate * cwnd / CWND_MAX));
+      for (let i = 0; i < n; i++) send(false);
+    }
+
+    evs.forEach(function(e){
+      e.load = Math.max(0, e.load - 0.004);
+      if (e.flash > 0) e.flash--;
+    });
+    if (fr % FAIL_DECAY === 0)
+      evs.forEach(function(e){ if (!e.denied && e.fails > 0) e.fails--; });
+
+    pk.forEach(function(o){
+      if (o.d) return;
+      o.t += o.sp;
+      if (o.t >= 1){
+        o.t = 0; o.seg++;
+        /* An untrimmed drop never reaches the responder. */
+        if (o.seg === 2 && o.lost){
+          o.d = 1; fb.push({ev:o.ev, seg:0, t:0, sp:0.04, gap:1}); return;
+        }
+        if (o.seg >= 3){
+          o.d = 1; st.del++;
+          if (o.ce || o.tr) fb.push({ev:o.ev, seg:0, t:0, sp:0.04, gap:o.tr ? 1 : 0});
+        }
+      }
+    });
+    pk = pk.filter(o => !o.d);
+
+    fb.forEach(function(o){
+      if (o.d) return;
+      o.t += o.sp;
+      if (o.t >= 1){
+        o.t = 0; o.seg++;
+        if (o.seg >= 3){
+          o.d = 1;
+          const e = evs[o.ev];
+          e.flash = 10;
+          if (o.gap){
+            /* Loss: retransmit the PSN on a different EV, and count against
+               this EV's health. Enough gaps and it leaves the active set. */
+            send(true);
+            e.fails++;
+            if (e.fails >= FAIL_LIMIT && !e.denied && live().length > 1) e.denied = true;
+          } else {
+            /* CE: congestion, not failure. NSCC cuts the window and the load
+               balancer shifts selection away. The EV stays active. */
+            cwnd = Math.max(CWND_MIN, cwnd * CWND_CUT);
+            e.load = Math.min(1, e.load + 0.25);
+          }
+        }
+      }
+    });
+    fb = fb.filter(o => !o.d);
+
+    /* EV probe: path-scoped liveness for denylisted EVs. */
+    if (fr % PROBE_EVERY === 0){
+      const d = evs.filter(e => e.denied && !planes[e.plane].f);
+      if (d.length) pr.push({ev:d[0].id, seg:0, t:0, sp:0.05, back:false, ret:0});
+    }
+    pr.forEach(function(o){
+      if (o.d) return;
+      o.t += o.sp;
+      if (o.t >= 1){
+        o.t = 0; o.seg++;
+        if (o.seg >= 3){
+          if (!o.ret){ o.ret = 1; o.seg = 0; o.back = true; }
+          else {
+            o.d = 1;
+            const e = evs[o.ev];
+            if (!e.broken){ e.denied = false; e.fails = 0; }
+          }
+        }
+      }
+    });
+    pr = pr.filter(o => !o.d);
+
+    hud(); bgd();
+  }
+  fgd();
+  requestAnimationFrame(step);
+}
+
+document.getElementById('b-theme').onclick = function(){ theme(tn === 'light' ? 'dark' : 'light'); };
+document.getElementById('b-demo').onclick = function(){ demoOn ? stopDemo() : startDemo(); };
+document.getElementById('b-play').onclick = function(){
+  paused = !paused; this.textContent = paused ? 'Play' : 'Pause';
+};
+document.getElementById('b-cong').onclick = function(){ setCongest(!evs[6].cong); };
+document.getElementById('b-break').onclick = function(){ setBroken(!evs[9].broken); };
+document.getElementById('b-fail').onclick = function(){ setPlaneFail(!planes[3].f); };
+document.getElementById('b-trim').onclick = function(){ setTrim(!trimOn); };
+document.getElementById('b-reset').onclick = function(){
+  if (demoOn && !demoFiring) stopDemo();
+  reset();
+  clearAllFaults();
+  document.getElementById('b-cong').textContent = 'Congest EV 6';
+  document.getElementById('b-break').textContent = 'Break EV 9';
+  document.getElementById('b-fail').textContent = 'Fail plane 3 port';
+  document.getElementById('b-trim').textContent = 'Trim: on';
+  bgd();
+};
+document.getElementById('r-sl').oninput = function(){
+  rate = +this.value;
+  document.getElementById('r-v').textContent = rate;
+};
+
+window.addEventListener('resize', resize);
+theme(tn);
+resize();
+requestAnimationFrame(step);
+</script>
+</body>
+</html>

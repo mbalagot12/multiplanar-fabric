@@ -1,5 +1,17 @@
 /* Shared styles for HTML content embedded in MkDocs pages */
 
+/* Embedded simulations use the full article column (Material caps .md-content__inner by default). */
+.md-content__inner:has(.html-page--full) {
+  max-width: none;
+  width: 100%;
+}
+
+.html-page--full {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
 .html-page {
   width: 100%;
   --font-sans: var(--md-text-font-family, Arial, sans-serif);

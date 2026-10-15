@@ -72,4 +72,5 @@ Source file: [Arista_EOS_SRv6_uN_uA_Config.txt](Arista_EOS_SRv6_uN_uA_Config.txt
 - [SRv6 Plane 1 — Packet Traversal](srv6-plane1-packet-traversal.md)
 - [SRv6 uN uSID — Leaf/Spine Config (SONiC vs Arista)](srv6-usid-leaf-spine-config.md)
 - [MRC Packet Structure — SRv6 + Entropy Value](generated/srv6-mrc-packet-ev-header.md)
+- [MRC — multipath and multiplane packet spray](generated/mrc-multipath-multiplane.md)
 - [Glossary](glossary.md)

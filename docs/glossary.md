@@ -27,7 +27,7 @@ One of **eight independent** leaf–spine fabric networks. NIC *n* on every node
 
 ### Multipath / packet spray
 
-Sending successive packets from the same QP over different paths (different EVs → different SRv6 uSID stacks) to spread load and survive failures without ECMP.
+Sending successive packets from the same QP over different paths (different EVs → different SRv6 uSID stacks) to spread load and survive failures without ECMP. See the [interactive multipath simulation](generated/mrc-multipath-multiplane.md) (**Run demo** on that page).
 
 ### SACK / NACK
 
@@ -158,7 +158,7 @@ Shared **uSID block** configuration under `router srv6` → `vrf default`. Defin
 
 ### `end usid` (Arista EOS locator)
 
-16-bit uSID value on a **locator** stanza: `prefix micro-segment domain <DOM> end usid 0x0101`. Combined with the domain block, this yields the node’s `/48` uN prefix in System SFIB (e.g. `fcbb:bbbb::/32` + `0x0101` → `fcbb:bbbb:0101::/48`). Same value maps to SONiC `SRV6_MY_LOCATORS` + FRR `static-sids`. See [SRv6 config reference](srv6-usid-leaf-spine-config.md#addressing-plan-f3216--unified-sonic--arista).
+16-bit uSID value on a **locator** stanza: `prefix micro-segment domain <DOM> end usid 0x0101`. Combined with the domain block, this yields the node’s `/48` uN prefix in System SFIB (e.g. `fcbb:bbbb::/32` + `0x0101` → `fcbb:bbbb:0101::/48`). Same value maps to SONiC `SRV6_MY_LOCATORS` + FRR `static-sids`. See [SRv6 config reference](srv6-usid-leaf-spine-config.md#addressing-plan-f3216).
 
 ### unode
 

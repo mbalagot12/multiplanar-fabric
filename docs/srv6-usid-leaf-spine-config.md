@@ -91,7 +91,7 @@ SRv6 encodes that path in the **outer IPv6 destination address** as a uSID carri
 
 ---
 
-## Addressing plan (F3216 — unified SONiC & Arista)
+## Addressing plan (F3216 — unified SONiC & Arista) {#addressing-plan-f3216}
 
 Uses **F3216**: 32-bit block + 16-bit uSID per locator ([RFC 9800](https://www.rfc-editor.org/rfc/rfc9800) / IETF uSID). **Both vendors use the same `/48` prefixes** derived from one block and one **16-bit `end usid` per switch**.
 
@@ -513,7 +513,12 @@ flowchart LR
 
 - [Glossary](glossary.md)
 - [MRC Packet Structure — SRv6 + Entropy Value](generated/srv6-mrc-packet-ev-header.md)
+- [MRC — multipath and multiplane packet spray](generated/mrc-multipath-multiplane.md) — interactive transport simulation (**Run demo**)
+- [SRv6 Plane 1 — Packet Traversal](srv6-plane1-packet-traversal.md)
+- [Arista EOS SRv6 uN + uA Config — Plane 1](arista-eos-srv6-un-ua-config.md)
+- [AMD MI350X — MRC SRv6 Fabric Connectivity](generated/amd-mi350x-mrc-srv6-fabric.md)
 - [72-GPU Blackwell Ultra MRC Rack — Arista 7060XE7 + Nvidia HGX B300](generated/mrc-blackwell-ultra-rack-1.md)
+- [GB300 NVL72 — Liquid-Cooled Data Center Rack](generated/gb300-nvl72-dc-rack-1.md)
 
 ## External references
 
